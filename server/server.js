@@ -7,9 +7,12 @@ const port = process.env.PORT;
 
 
 
-server.use("/", router);
+
+server.set("views", "view");
+server.set("view engine", "ejs");
 
 server.listen(port, () => {
   console.log(`Server listening on ${port}`);
 })
+server.use("/", router);
 module.exports = server;

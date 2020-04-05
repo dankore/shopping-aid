@@ -1,0 +1,24 @@
+{
+  "name": "shopping-aid",
+  "version": "1.0.0",
+  "description": "An app to simplify shopping",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dankore/shopping-aid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dankore/shopping-aid/issues"
+  },
+  "homepage": "https://github.com/dankore/shopping-aid#readme"
+}

@@ -10,6 +10,7 @@ const port = process.env.PORT;
 
 server.set("views", "view");
 server.set("view engine", "ejs");
+server.use(express.static("public"));
 
 server.listen(port, () => {
   console.log(`Server listening on ${port}`);

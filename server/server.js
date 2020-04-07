@@ -12,8 +12,8 @@ server.set("views", "view");
 server.set("view engine", "ejs");
 server.use(express.static("public"));
 
-server.listen(port, () => {
-  console.log(`Server listening on ${port}`);
-})
+// server.listen(port, () => {
+//   console.log(`Server listening on ${port}`);
+// })
 server.use("/", router);
 module.exports = server;

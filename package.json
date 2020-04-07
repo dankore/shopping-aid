@@ -2,21 +2,23 @@
   "name": "shopping-aid",
   "version": "1.0.0",
   "description": "An app to simplify shopping",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "mongodb": "^3.5.5",
     "nodemon": "^2.0.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon server/server",
+    "start": "nodemon db",
     "watch": "webpack --watch"
   },
   "repository": {

@@ -1,30 +1,32 @@
-
 <%- include('includes/header') %>
-<div id="main-wrapper" class="flex flex-wrap justify-center items-center max-w-3xl mx-auto mt-10">
+<div
+  id="main-wrapper"
+  class="flex flex-wrap justify-center items-center max-w-3xl mx-auto mt-10"
+>
   <section id="" class="sticky w-64">
     <div id="card" class="bg-white p-4 my-3 w-full sm:w-64 shadow-2xl rounded">
-      <div id="checkbox">
+      <div id="item-title">
         <h2 class="text-blue-600 pb-4 text-lg">FRUITS</h2>
       </div>
-      <div  id="checkbox">
-        <input type="checkbox" id="orange" value="orange">
-        <label for="orange">Orange</label><br>
-        <input type="checkbox" id="apple" value="Apple">
-        <label for="apple">Apple</label><br>
-        <input type="checkbox" id="pear" value="Pear">
-        <label for="pear">Pear</label><br>
-        <input type="checkbox" id="tangerine" value="Tangerine">
-        <label for="tangerine">Tangerine</label><br>
-        <input type="checkbox" id="lemon" value="Lemon">
-        <label for="lemon">Lemon</label><br>
-        <input type="checkbox" id="citrus" value="Citrus">
-        <label for="citrus">Citrus</label><br>
+      <div id="checkbox">
+        <input type="checkbox" id="orange" value="orange" />
+        <label for="orange">Orange</label><br />
+        <input type="checkbox" id="apple" value="Apple" />
+        <label for="apple">Apple</label><br />
+        <input type="checkbox" id="pear" value="Pear" />
+        <label for="pear">Pear</label><br />
+        <input type="checkbox" id="tangerine" value="Tangerine" />
+        <label for="tangerine">Tangerine</label><br />
+        <input type="checkbox" id="lemon" value="Lemon" />
+        <label for="lemon">Lemon</label><br />
+        <input type="checkbox" id="citrus" value="Citrus" />
+        <label for="citrus">Citrus</label><br />
       </div>
     </div>
   </section>
-  <section id="content" class="w-full sm:max-w-sm shadow-inner mx-3 bg-white border border-2 p-4">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <section class="mx-3">
+    <div id="display-content" class="w-full rounded  sm:w-64 border border-2 p-4 shadow-2xl bg-white" style="min-height: 60px;"></div>
+    <button id="submit-btn" class="float-right">Submit</button>
   </section>
 </div>
 <%- include('includes/footer') %>
-

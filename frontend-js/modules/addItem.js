@@ -21,17 +21,12 @@ export default class AddItem {
   }
 
   handleClick(e) {
-    this.arr.push(e.target.value);
-
-    this.displyaContainer.insertAdjacentHTML(
-      "beforeend",
-      this.html(e.target.value)
-    );
-  }
-  html(item) {
-    return `
-    <p>${item}</p>
-    `;
+    if (e.srcElement.checked) {
+      this.arr.push(e.target.value);
+    } else {
+      this.arr.splice(this.arr.indexOf(e.target.value), 1);
+    }
+    console.log(this.arr);
   }
 
   // END CLASS

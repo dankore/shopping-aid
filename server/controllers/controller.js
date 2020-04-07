@@ -5,5 +5,5 @@ exports.home = (req, res) => {
 }
 
 exports.addItem = (req, res) => {
-  console.log(req.body);
+  console.log(req.body.item);
 }

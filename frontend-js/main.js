@@ -1,5 +1,5 @@
 import AddItem from "./modules/addItem";
 
-// if(document.querySelector("#id-checkbox")){
+if(document.querySelector("input[type=checkbox]")){
   new AddItem();
-// }
+}

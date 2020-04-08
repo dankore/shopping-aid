@@ -52,3 +52,6 @@
   margin-bottom: 10px;
   display: block;
 }
+.hide {
+  display: none;
+}

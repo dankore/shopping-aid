@@ -5,6 +5,9 @@ export default class AddNewItem{
     this.input = document.querySelector("#new-item-input");
     this.addNewItemBtn = document.querySelector("#add-new-item-btn");
     this.checkboxes = document.querySelectorAll(".checkbox-new-item");
+    this.modalOverlay = document.querySelector(".modal-overlay");
+    this.openAddNewItemModal = document.querySelector("#open-add-modal");
+    this.addNewItemModal = document.querySelector("#new-item-container-wrapper");
     this.arr = [];
     this.events();
   }
@@ -14,9 +17,21 @@ export default class AddNewItem{
       checkbox.addEventListener("click", e => this.handleCheckboxClick(e));
     });
     this.addNewItemBtn.addEventListener("click", e => this.handleSubmit(e));
+    this.openAddNewItemModal.addEventListener("click", e => this.handleOpenCloseModal(e));
   }
 
   // METHODS
+  handleOpenCloseModal(e){
+    if (this.addNewItemModal.style.display == "none") {
+      this.addNewItemModal.style.display = "block";
+
+      this.modalOverlay.classList.add("active");
+      this.addNewItemModal.classList.add("active");
+    } else {
+      this.addNewItemModal.style.display = "none";
+    }
+  }
+  
   handleSubmit(e){
     // DIS-ALLOW EMPTY FIELDS
     if(!this.input.value || this.arr.length == 0) return;

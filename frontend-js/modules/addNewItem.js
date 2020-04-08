@@ -3,7 +3,7 @@ const axios = require("axios");
 export default class AddNewItem{
   constructor(){
     this.input = document.querySelector("#new-item-input");
-    this.checkboxes = document.querySelectorAll("input[type=checkbox]");
+    this.checkboxes = document.querySelectorAll(".checkbox-new-item");
     this.arr = [];
     this.events();
   }
@@ -21,6 +21,7 @@ export default class AddNewItem{
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
+    console.log("add item");
     console.log(this.arr);
   }
 

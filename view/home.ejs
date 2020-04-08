@@ -3,39 +3,33 @@
     <div id="card" class="m-2 w-full sm:w-64">
       <h2 id="category-title" class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-blue-600 bg-white text-lg">FRUITS</h2>
       <div class="p-4 rounded-br  rounded-bl bg-gray-200" id="checkboxes-wrapper" style="display: none;">
-        <input class="cursor-pointer" type="checkbox" id="orange" value="orange" />
-        <label class="cursor-pointer" for="orange">Orange</label><br />
-        <input class="cursor-pointer" type="checkbox" id="apple" value="Apple" />
-        <label class="cursor-pointer" for="apple">Apple</label><br />
-        <input class="cursor-pointer" type="checkbox" id="pear" value="Pear" />
-        <label class="cursor-pointer" for="pear">Pear</label><br />
-        <input class="cursor-pointer" type="checkbox" id="tangerine" value="Tangerine" />
-        <label class="cursor-pointer" for="tangerine">Tangerine</label><br />
-        <input class="cursor-pointer" type="checkbox" id="lemon" value="Lemon" />
-        <label class="cursor-pointer" for="lemon">Lemon</label><br />
-        <input class="cursor-pointer" type="checkbox" id="citrus" value="Citrus" />
-        <label class="cursor-pointer" for="citrus">Citrus</label><br />
+        <label class="cursor-pointer" for="orange">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="orange" value="orange" />
+          Orange
+        </label><br />
+        <label class="cursor-pointer" for="apple">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="apple" value="Apple" />
+          Apple
+        </label><br />
+        <label class="cursor-pointer" for="pear">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="pear" value="Pear" />
+          Pear
+        </label><br />
+        <label class="cursor-pointer" for="tangerine">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="tangerine" value="Tangerine" />
+          Tangerine
+        </label><br />
+        <label class="cursor-pointer" for="lemon">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="lemon" value="Lemon" />
+          Lemon
+        </label><br />
+        <label class="cursor-pointer" for="citrus">
+          <input class="cursor-pointer checkbox-select-item" type="checkbox" id="citrus" value="Citrus" />
+          Citrus
+        </label><br />
       </div>
+      <button id="submit-btn">Submit</button>
     </div>
-    <div id="card" class="m-2 w-full sm:w-64">
-      <h2 id="category-title" class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-blue-600 bg-white text-lg">FRUITS</h2>
-      <div class="p-4 rounded-br  rounded-bl bg-gray-200" id="checkboxes-wrapper" style="display: none;">
-        <input class="cursor-pointer" type="checkbox" id="orange" value="orange" />
-        <label class="cursor-pointer" for="orange">Orange</label><br />
-        <input class="cursor-pointer" type="checkbox" id="apple" value="Apple" />
-        <label class="cursor-pointer" for="apple">Apple</label><br />
-        <input class="cursor-pointer" type="checkbox" id="pear" value="Pear" />
-        <label class="cursor-pointer" for="pear">Pear</label><br />
-        <input class="cursor-pointer" type="checkbox" id="tangerine" value="Tangerine" />
-        <label class="cursor-pointer" for="tangerine">Tangerine</label><br />
-        <input class="cursor-pointer" type="checkbox" id="lemon" value="Lemon" />
-        <label class="cursor-pointer" for="lemon">Lemon</label><br />
-        <input class="cursor-pointer" type="checkbox" id="citrus" value="Citrus" />
-        <label class="cursor-pointer" for="citrus">Citrus</label><br />
-      </div>
-      <button id="submit-btn" class="">Submit</button>
-    </div>
-    
   </section>
   <section class="mt-10">
     <%- include("includes/newItem") %>

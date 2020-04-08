@@ -3,7 +3,6 @@ const axios = require("axios");
 export default class AddItem {
   constructor() {
     this.checkboxes = document.querySelectorAll("input[type=checkbox]");
-    this.checkboxesWrapper = document.querySelector("#checkboxes-wrapper");
     this.categoryTitle = document.querySelectorAll("#category-title");
     this.submitBtn = document.querySelector("#submit-btn");
     this.events();
@@ -21,13 +20,13 @@ export default class AddItem {
   }
   // METHODS
   handleOpenClose(e){
-    if(this.checkboxesWrapper.style.display == "none"){
-      this.checkboxesWrapper.style.display = "block";
+    if(e.target.nextElementSibling.style.display == "none"){
+      e.target.nextElementSibling.style.display = "block";
     } else {
-      this.checkboxesWrapper.style.display = "none";
+      e.target.nextElementSibling.style.display = "none";
     }
   }
-  
+
   handleSubmit(e) {
     axios.post("/add-items", { items: this.arr });
   }

@@ -9,8 +9,9 @@ exports.addItem = (req, res) => {
 };
 
 exports.addNewItem = (req, res) => {
-  console.log(req.body.item);
-  console.log(req.body.categories);
+  
+  let item = new Item(req.body);
+  item.addItem();
 };
 
 

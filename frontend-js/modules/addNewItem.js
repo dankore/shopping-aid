@@ -22,6 +22,8 @@ export default class AddNewItem{
     if(!this.input.value || this.arr.length == 0) return;
     
     axios.post("/add-new-item", {item : this.input.value, categories: this.arr });
+    this.input.value = "";
+    this.input.focus();
   }
   handleCheckboxClick(e){
     if(e.srcElement.checked){

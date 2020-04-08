@@ -32,6 +32,7 @@ export default class SelectItem {
     if(this.arr.length == 0) return;
 
     axios.post("/add-items", { items: this.arr });
+    
   }
 
   handleClick(e) {

@@ -27,11 +27,10 @@ export default class AddNewItem{
 
       this.modalOverlay.classList.add("active");
       this.addNewItemModal.classList.add("active");
-    } else {
-      this.addNewItemModal.style.display = "none";
+      this.openAddNewItemModal.style.display = "none";
     }
   }
-  
+
   handleSubmit(e){
     // DIS-ALLOW EMPTY FIELDS
     if(!this.input.value || this.arr.length == 0) return;

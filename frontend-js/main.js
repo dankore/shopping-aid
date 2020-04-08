@@ -1,5 +1,9 @@
-import AddItem from "./modules/addItem";
+import SelectItem from "./modules/selectItem";
+import AddNewItem from "./modules/addNewItem";
 
 if(document.querySelector("input[type=checkbox]")){
-  new AddItem();
+  new SelectItem();
+}
+if(document.querySelector("input[type=checkbox]")){
+  new AddNewItem();
 }

@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export default class AddItem {
+export default class SelectItem {
   constructor() {
     this.checkboxes = document.querySelectorAll("input[type=checkbox]");
     this.categoryTitle = document.querySelectorAll("#category-title");

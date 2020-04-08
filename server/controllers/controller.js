@@ -7,3 +7,10 @@ exports.home = (req, res) => {
 exports.addItem = (req, res) => {
   console.log(req.body.items);
 };
+
+exports.addNewItem = (req, res) => {
+  console.log(req.body.item);
+  console.log(req.body.categories);
+};
+
+

@@ -28,6 +28,9 @@ export default class SelectItem {
   }
 
   handleSubmit(e) {
+    // DIS-ALLOW EMPTY FIELD
+    if(this.arr.length == 0) return;
+
     axios.post("/add-items", { items: this.arr });
   }
 
@@ -37,7 +40,6 @@ export default class SelectItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    console.log("select item");
     console.log(this.arr);
   }
 

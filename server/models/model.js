@@ -8,7 +8,11 @@ let Item = class item {
 
 Item.prototype.addItem = function() {
   return new Promise(async (resolve, reject) => {
-    await itemsCollection.insertOne(this.data).then((info) => {
+    await itemsCollection.findOneAndUpdate(
+      {item: this.data.item },
+      {$push: {itemsArray: {$each: [this.data.categories ]}}},
+      {upsert: true }
+      ).then((info) => {
       console.log(info.ops);
       resolve();
     });

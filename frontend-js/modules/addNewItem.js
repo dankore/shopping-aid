@@ -109,7 +109,6 @@ export default class AddNewItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    console.log(this.arr);
   }
 
   // END CLASS

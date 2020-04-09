@@ -2,23 +2,23 @@ const axios = require("axios");
 
 export default class SelectItem {
   constructor() {
-    
-    this.categoryTitle = document.querySelectorAll("#category-title");
-    this.checkboxes = document.querySelectorAll(".checkbox-select-item");
-    this.submitBtn = document.querySelector("#submit-btn");
+    this.mainWrapper = document.querySelector("#main-wrapper");
     this.events();
     this.arr = [];
   }
   // EVENTS
   events() {
-    Array.prototype.forEach.call(this.checkboxes, (checkbox) => {
-      checkbox.addEventListener("click", (e) => this.handleClick(e));
+    this.mainWrapper.addEventListener("click", (e) => {
+      if (e.target && e.target.classList.contains("checkbox-select-item")) {
+        this.handleCheckBoxClick(e);
+      }
+      if (e.target && e.target.id == "category-title") {
+        this.handleOpenClose(e);
+      }
+      if (e.target && e.target.id == "submit-btn") {
+        this.handleSubmit(e);
+      }
     });
-    Array.prototype.forEach.call(this.categoryTitle, (title) => {
-      title.addEventListener("click", (e) => this.handleOpenClose(e));
-    });
-
-    this.submitBtn.addEventListener("click", (e) => this.handleSubmit(e));
   }
   // METHODS
   handleOpenClose(e) {
@@ -36,13 +36,12 @@ export default class SelectItem {
     axios.post("/add-items", { items: this.arr });
   }
 
-  handleClick(e) {
+  handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
       this.arr.push(e.target.value);
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    console.log(this.arr);
   }
 
   // END CLASS

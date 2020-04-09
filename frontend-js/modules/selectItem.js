@@ -16,11 +16,12 @@ export default class SelectItem {
     Array.prototype.forEach.call(this.categoryTitle, (title) => {
       title.addEventListener("click", (e) => this.handleOpenClose(e));
     });
+
     this.submitBtn.addEventListener("click", (e) => this.handleSubmit(e));
   }
   // METHODS
-  handleOpenClose(e){
-    if(e.target.nextElementSibling.style.display == "none"){
+  handleOpenClose(e) {
+    if (e.target.nextElementSibling.style.display == "none") {
       e.target.nextElementSibling.style.display = "block";
     } else {
       e.target.nextElementSibling.style.display = "none";
@@ -29,10 +30,9 @@ export default class SelectItem {
 
   handleSubmit(e) {
     // DIS-ALLOW EMPTY FIELD
-    if(this.arr.length == 0) return;
+    if (this.arr.length == 0) return;
 
     axios.post("/add-items", { items: this.arr });
-    
   }
 
   handleClick(e) {

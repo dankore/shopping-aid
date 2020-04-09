@@ -72,7 +72,7 @@ export default class AddNewItem {
       switch (elem) {
         case "fruits":
           this.checkboxesWrapperFruits.insertAdjacentHTML(
-            "beforebegin",
+            "afterbegin",
             this.html(data.item)
           );
           break;

@@ -9,15 +9,11 @@ export default class SelectItem {
   // EVENTS
   events() {
     this.mainWrapper.addEventListener("click", (e) => {
-      if (e.target && e.target.classList.contains("checkbox-select-item")) {
+      e.target &&
+        e.target.classList.contains("checkbox-select-item") &&
         this.handleCheckBoxClick(e);
-      }
-      if (e.target && e.target.id == "category-title") {
-        this.handleOpenClose(e);
-      }
-      if (e.target && e.target.id == "submit-btn") {
-        this.handleSubmit(e);
-      }
+      e.target && e.target.id == "category-title" && this.handleOpenClose(e);
+      e.target && e.target.id == "submit-btn" && this.handleSubmit(e);
     });
   }
   // METHODS
@@ -42,6 +38,7 @@ export default class SelectItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
+    console.log(this.arr);
   }
 
   // END CLASS

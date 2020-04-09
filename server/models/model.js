@@ -6,16 +6,18 @@ let Item = class item {
   }
 };
 
-Item.prototype.addItem = function() {
+Item.prototype.addItem = function () {
   return new Promise(async (resolve, reject) => {
-    await itemsCollection.findOneAndUpdate(
-      {item: this.data.item },
-      {$set: {categories: this.data.categories }},
-      {upsert: true, returnOriginal: false}
-      ).then((info) => {
-      console.log(info.value);
-      resolve();
-    });
+    await itemsCollection
+      .findOneAndUpdate(
+        { item: this.data.item },
+        { $set: { categories: this.data.categories } },
+        { upsert: true, returnOriginal: false }
+      )
+      .then((info) => {
+        // console.log(info.value);
+        resolve(info.value);
+      });
   });
 };
 

@@ -52,10 +52,14 @@ export default class AddNewItem {
     // DIS-ALLOW EMPTY FIELDS
     if (!this.input.value || this.arr.length == 0) return;
 
-    axios.post("/add-new-item", {
-      item: this.input.value,
-      categories: this.arr,
-    });
+    axios
+      .post("/add-new-item", {
+        item: this.input.value,
+        categories: this.arr,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
     this.input.value = "";
     this.input.focus();
   }

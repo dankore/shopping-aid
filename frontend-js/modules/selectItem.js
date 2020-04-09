@@ -2,8 +2,9 @@ const axios = require("axios");
 
 export default class SelectItem {
   constructor() {
-    this.checkboxes = document.querySelectorAll(".checkbox-select-item");
+    
     this.categoryTitle = document.querySelectorAll("#category-title");
+    this.checkboxes = document.querySelectorAll(".checkbox-select-item");
     this.submitBtn = document.querySelector("#submit-btn");
     this.events();
     this.arr = [];

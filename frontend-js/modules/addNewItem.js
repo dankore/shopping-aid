@@ -10,6 +10,9 @@ export default class AddNewItem {
     this.checkboxesWrapperFruits = document.querySelector(
       "#checkboxes-wrapper-fruits"
     );
+    this.checkboxesWrapperVeg = document.querySelector(
+      "#checkboxes-wrapper-veg"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -76,6 +79,13 @@ export default class AddNewItem {
             this.html(data.item)
           );
           break;
+        case "vegetables":
+          this.checkboxesWrapperVeg.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data.item)
+          );
+          break;
+
       }
     }
   }

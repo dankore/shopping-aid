@@ -15,7 +15,6 @@ Item.prototype.addItem = function () {
         { upsert: true, returnOriginal: false }
       )
       .then((info) => {
-        // console.log(info.value);
         resolve(info.value);
       });
   });

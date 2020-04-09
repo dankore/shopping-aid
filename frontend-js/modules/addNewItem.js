@@ -7,6 +7,9 @@ export default class AddNewItem {
     this.checkboxes = document.querySelectorAll(".checkbox-new-item");
     this.modalOverlay = document.querySelector(".modal-overlay");
     this.openAddNewItemModal = document.querySelector("#open-add-modal");
+    this.checkboxesWrapperFruits = document.querySelector(
+      "#checkboxes-wrapper-fruits"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -58,10 +61,36 @@ export default class AddNewItem {
         categories: this.arr,
       })
       .then((res) => {
-        console.log(res.data);
+        this.yellowFifa(res.data);
       });
     this.input.value = "";
     this.input.focus();
+  }
+  yellowFifa(data) {
+    for (let i = 0; i < data.categories.length; i++) {
+      const elem = data.categories[i].toLowerCase();
+      switch (elem) {
+        case "fruits":
+          this.checkboxesWrapperFruits.insertAdjacentHTML(
+            "beforebegin",
+            this.html(data.item)
+          );
+          break;
+      }
+    }
+  }
+  html(item) {
+    return `
+     <label class="cursor-pointer" for="${item}">
+        <input
+          class="cursor-pointer checkbox-select-item"
+          type="checkbox"
+          id="${item}"
+          value="${item}"
+        />
+        ${item} </label
+      ><br />
+    `;
   }
 
   handleCheckboxClick(e) {

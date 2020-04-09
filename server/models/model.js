@@ -11,7 +11,7 @@ Item.prototype.addItem = function() {
     await itemsCollection.findOneAndUpdate(
       {item: this.data.item },
       {$set: {categories: [this.data.categories ]}},
-      {upsert: true }
+      {upsert: true, returnOriginal: false}
       ).then((info) => {
       console.log(info.ops);
       resolve();

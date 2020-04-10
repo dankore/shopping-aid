@@ -36,8 +36,8 @@
   transition: 200ms ease-in-out;
   border-radius: 10px;
   z-index: 0;
-  width: 450px;
-  min-height: 350px;
+  width: 350px;
+  max-width: 90%;
 }
 
 .modal.active {

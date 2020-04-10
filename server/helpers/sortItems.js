@@ -6,12 +6,17 @@ module.exports = {
       frozen = [];
 
     for (let i = 0; i < array.length; i++) {
-      array[i].categories.indexOf("Fruits") != -1 && fruits.push(array[i].item);
+      array[i].categories.indexOf("Fruits") != -1 &&
+        fruits.push([array[i]._id, array[i].item]);
+
       array[i].categories.indexOf("Vegetables") != -1 &&
-        veg.push(array[i].item);
+        veg.push([array[i]._id, array[i].item]);
+
       array[i].categories.indexOf("Condiments") != -1 &&
-        cond.push(array[i].item);
-      array[i].categories.indexOf("Frozen") != -1 && frozen.push(array[i].item);
+        cond.push([array[i]._id, array[i].item]);
+
+      array[i].categories.indexOf("Frozen") != -1 &&
+        frozen.push([array[i]._id, array[i].item]);
     }
 
     return [reverse(fruits), reverse(veg), reverse(cond), reverse(frozen)];

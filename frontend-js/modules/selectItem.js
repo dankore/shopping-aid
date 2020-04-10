@@ -14,9 +14,29 @@ export default class SelectItem {
         this.handleCheckBoxClick(e);
       e.target && e.target.id == "category-title" && this.handleOpenClose(e);
       e.target && e.target.id == "submit-btn" && this.handleSubmit(e);
+      e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
     });
   }
   // METHODS
+  handleDeleteItem(e) {
+    console.log(e.target.parentElement);
+    e.target.parentElement.remove();
+
+    if (confirm("Are you sure?")) {
+      axios
+        .post("/delete-item", {
+          id: e.target.getAttribute("data-id"),
+          item: e.target.getAttribute("data-item"),
+          category: e.target.getAttribute("data-cat"),
+        })
+        .then(() => {
+          e.target.parentElement.remove();
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+  }
   handleOpenClose(e) {
     if (e.target.nextElementSibling.style.display == "none") {
       e.target.nextElementSibling.style.display = "block";

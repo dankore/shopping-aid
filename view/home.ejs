@@ -16,15 +16,18 @@
       style="display: none;"
     >
       <% fruits.forEach(item => { %>
-      <label class="cursor-pointer" for="<%= item %>">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="<%= item %>"
-          value="<%= item %>"
-        />
-        <%= item %> </label
-      ><br />
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button id="delete-item" data-id="<%= item[0] %>" data-item="<%= item[1] %>" class="text-red-600">Delete</button>
+      </div>
       <% }) %>
       <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
       <div class="cursor-pointer checkbox-select-item"></div>
@@ -43,15 +46,18 @@
       style="display: none;"
     >
       <% veg.forEach(item => { %>
-      <label class="cursor-pointer" for="<%= item %>">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="<%= item %>"
-          value="<%= item %>"
-        />
-        <%= item %> </label
-      ><br />
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+         <button id="delete-item" data-id="<%= item[0] %>" data-item="<%= item[1] %>" class="text-red-600">Delete</button>
+      </div>
       <% }) %>
       <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
       <div class="cursor-pointer checkbox-select-item"></div>

@@ -20,17 +20,22 @@ export default class SelectItem {
   // METHODS
   handleDeleteItem(e) {
     console.log(e.target.parentElement);
-    axios
-      .post("/delete-item", {
-        id: e.target.getAttribute("data-id"),
-        item: e.target.getAttribute("data-item"),
-      })
-      .then(() => {
-        // e.target.parentElement.remove();
-      })
-      .catch((err) => {
-        alert("Item not deleted. Please try again later.");
-      });
+    e.target.parentElement.remove();
+
+    if (confirm("Are you sure?")) {
+      axios
+        .post("/delete-item", {
+          id: e.target.getAttribute("data-id"),
+          item: e.target.getAttribute("data-item"),
+          category: e.target.getAttribute("data-cat"),
+        })
+        .then(() => {
+          e.target.parentElement.remove();
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
   }
   handleOpenClose(e) {
     if (e.target.nextElementSibling.style.display == "none") {

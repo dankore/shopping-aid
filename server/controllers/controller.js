@@ -20,5 +20,11 @@ exports.addNewItem = (req, res) => {
 };
 
 exports.deleteItem = (req, res) => {
-  console.log(req.body);
-}
+  Item.delete(req.body)
+    .then(() => {
+      res.json("Success");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};

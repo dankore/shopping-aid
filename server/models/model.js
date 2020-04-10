@@ -23,13 +23,26 @@ Item.prototype.addItem = function () {
 Item.getAll = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      let allItems = await itemsCollection
-        .find({})
-        .toArray();
+      let allItems = await itemsCollection.find({}).toArray();
       resolve(allItems);
     } catch (error) {
       reject();
     }
   });
 };
+
+Item.delete = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await itemsCollection.findOneAndUpdate(
+        { item: data.item },
+        { $pull: { categories: data.category } }
+      );
+      resolve();
+    } catch {
+      reject("Item not removed. Please try again.");
+    }
+  });
+};
+
 module.exports = Item;

@@ -76,30 +76,32 @@ export default class AddNewItem {
         case "fruits":
           this.checkboxesWrapperFruits.insertAdjacentHTML(
             "afterbegin",
-            this.html(data.item)
+            this.html(data)
           );
           break;
         case "vegetables":
           this.checkboxesWrapperVeg.insertAdjacentHTML(
             "afterbegin",
-            this.html(data.item)
+            this.html(data)
           );
           break;
-
       }
     }
   }
-  html(item) {
+  html(data) {
     return `
-     <label class="cursor-pointer" for="${item}">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="${item}"
-          value="${item}"
-        />
-        ${item} </label
-      ><br />
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="${data.item}">
+            <input
+              class="cursor-pointer checkbox-select-item"
+              type="checkbox"
+              id="${data.item}"
+              value="${data.item}"
+            />
+            ${data.item} 
+        </label>
+        <button id="delete-item" data-cat="Vegetables" data-id="${data._id}" data-item="${data.item}" class="text-red-600">Delete</button>
+      </div>
     `;
   }
 

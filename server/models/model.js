@@ -1,5 +1,5 @@
 const itemsCollection = require("../../db").db().collection("items");
-
+const ObjectId = require("mongodb").ObjectID;
 let Item = class item {
   constructor(data) {
     this.data = data;
@@ -35,7 +35,7 @@ Item.delete = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       await itemsCollection.findOneAndUpdate(
-        { item: data.item },
+        { _id: new ObjectId(data.id) },
         { $pull: { categories: data.category } }
       );
       resolve();

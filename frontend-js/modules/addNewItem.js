@@ -10,6 +10,9 @@ export default class AddNewItem {
     this.checkboxesWrapperFruits = document.querySelector(
       "#checkboxes-wrapper-fruits"
     );
+    this.checkboxesWrapperVeg = document.querySelector(
+      "#checkboxes-wrapper-veg"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -72,10 +75,17 @@ export default class AddNewItem {
       switch (elem) {
         case "fruits":
           this.checkboxesWrapperFruits.insertAdjacentHTML(
-            "beforebegin",
+            "afterbegin",
             this.html(data.item)
           );
           break;
+        case "vegetables":
+          this.checkboxesWrapperVeg.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data.item)
+          );
+          break;
+
       }
     }
   }
@@ -99,7 +109,6 @@ export default class AddNewItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    console.log(this.arr);
   }
 
   // END CLASS

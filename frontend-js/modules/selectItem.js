@@ -2,25 +2,23 @@ const axios = require("axios");
 
 export default class SelectItem {
   constructor() {
-    this.checkboxes = document.querySelectorAll(".checkbox-select-item");
-    this.categoryTitle = document.querySelectorAll("#category-title");
-    this.submitBtn = document.querySelector("#submit-btn");
+    this.mainWrapper = document.querySelector("#main-wrapper");
     this.events();
     this.arr = [];
   }
   // EVENTS
   events() {
-    Array.prototype.forEach.call(this.checkboxes, (checkbox) => {
-      checkbox.addEventListener("click", (e) => this.handleClick(e));
+    this.mainWrapper.addEventListener("click", (e) => {
+      e.target &&
+        e.target.classList.contains("checkbox-select-item") &&
+        this.handleCheckBoxClick(e);
+      e.target && e.target.id == "category-title" && this.handleOpenClose(e);
+      e.target && e.target.id == "submit-btn" && this.handleSubmit(e);
     });
-    Array.prototype.forEach.call(this.categoryTitle, (title) => {
-      title.addEventListener("click", (e) => this.handleOpenClose(e));
-    });
-    this.submitBtn.addEventListener("click", (e) => this.handleSubmit(e));
   }
   // METHODS
-  handleOpenClose(e){
-    if(e.target.nextElementSibling.style.display == "none"){
+  handleOpenClose(e) {
+    if (e.target.nextElementSibling.style.display == "none") {
       e.target.nextElementSibling.style.display = "block";
     } else {
       e.target.nextElementSibling.style.display = "none";
@@ -29,13 +27,12 @@ export default class SelectItem {
 
   handleSubmit(e) {
     // DIS-ALLOW EMPTY FIELD
-    if(this.arr.length == 0) return;
+    if (this.arr.length == 0) return;
 
     axios.post("/add-items", { items: this.arr });
-    
   }
 
-  handleClick(e) {
+  handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
       this.arr.push(e.target.value);
     } else {

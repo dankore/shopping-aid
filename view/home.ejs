@@ -14,7 +14,21 @@
       class="p-4 rounded-br rounded-bl bg-white"
       id="checkboxes-wrapper-fruits"
       style="display: none;"
-    ></div>
+    >
+      <% fruits.forEach(item => { %>
+      <label class="cursor-pointer" for="<%= item %>">
+        <input
+          class="cursor-pointer checkbox-select-item"
+          type="checkbox"
+          id="<%= item %>"
+          value="<%= item %>"
+        />
+        <%= item %> </label
+      ><br />
+      <% }) %>
+      <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+      <div class="cursor-pointer checkbox-select-item"></div>
+    </div>
   </div>
   <div id="category-wrapper" class="m-2 w-full">
     <h2
@@ -25,9 +39,23 @@
     </h2>
     <div
       class="p-4 rounded-br rounded-bl bg-white"
-      id="checkboxes-wrapper"
+      id="checkboxes-wrapper-veg"
       style="display: none;"
-    ></div>
+    >
+      <% veg.forEach(item => { %>
+      <label class="cursor-pointer" for="<%= item %>">
+        <input
+          class="cursor-pointer checkbox-select-item"
+          type="checkbox"
+          id="<%= item %>"
+          value="<%= item %>"
+        />
+        <%= item %> </label
+      ><br />
+      <% }) %>
+      <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+      <div class="cursor-pointer checkbox-select-item"></div>
+    </div>
   </div>
   <button id="submit-btn">Submit</button>
 </section>

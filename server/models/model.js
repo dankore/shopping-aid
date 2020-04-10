@@ -20,4 +20,20 @@ Item.prototype.addItem = function () {
   });
 };
 
+Item.getAll = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let allItems = await itemsCollection
+        .find({}, {
+          projection: {
+             item: 1, categories: 1, _id: 0 
+          }
+        })
+        .toArray();
+      resolve(allItems);
+    } catch (error) {
+      reject();
+    }
+  });
+};
 module.exports = Item;

@@ -4,7 +4,7 @@ const sortItems = require("../helpers/sortItems").sortItems;
 exports.home = async (req, res) => {
   const items = await Item.getAll();
   const sorted = sortItems(items);
-
+  
   res.render("home", { fruits: sorted[0], veg: sorted[1] });
 };
 

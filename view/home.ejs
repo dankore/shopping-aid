@@ -1,71 +1,100 @@
 <%- include('includes/header') %>
-<section
-  id="main-wrapper"
-  class="flex justify-center flex-wrap text-2xl lg:text-xl px-5 lg:mx-auto lg:max-w-lg mt-10"
->
-  <div id="category-wrapper" class="w-full">
-    <h2
-      id="category-title"
-      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
-    >
-      FRUITS
-    </h2>
-    <div
-      class="p-4 rounded-br rounded-bl bg-white"
-      id="checkboxes-wrapper-fruits"
-      style="display: none;"
-    >
-      <% fruits.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-        <button id="delete-item" data-cat="Fruits" data-id="<%= item[0] %>" data-item="<%= item[1] %>" class="text-red-600">X</button>
+<main class="flex flex-wrap justify-center bg-red-300 w-4/5 mx-auto">
+  <section id="main-wrapper" class="w-full md:w-1/2 p-2">
+    <div class="md:w-1/2 md:float-right">
+      <div id="category-wrapper" class="w-full">
+        <h2
+          id="category-title"
+          class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
+        >
+          FRUITS
+        </h2>
+        <div
+          class="p-4 rounded-br rounded-bl bg-white"
+          id="checkboxes-wrapper-fruits"
+          style="display: none;"
+        >
+          <% fruits.forEach(item => { %>
+          <div class="flex justify-between">
+            <label class="cursor-pointer" for="<%= item[1] %>">
+              <input
+                class="cursor-pointer checkbox-select-item"
+                type="checkbox"
+                id="<%= item[1] %>"
+                value="<%= item[1] %>"
+              />
+              <%= item[1] %>
+            </label>
+            <button
+              id="delete-item"
+              data-cat="Fruits"
+              data-id="<%= item[0] %>"
+              data-item="<%= item[1] %>"
+              class="text-red-600"
+            >
+              X
+            </button>
+          </div>
+          <% }) %>
+          <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+          <div class="cursor-pointer checkbox-select-item"></div>
+        </div>
       </div>
-      <% }) %>
-      <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
-      <div class="cursor-pointer checkbox-select-item"></div>
-    </div>
-  </div>
-  <div id="category-wrapper" class="my-2 w-full">
-    <h2
-      id="category-title"
-      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
-    >
-      VEGETABLES
-    </h2>
-    <div
-      class="p-4 rounded-br rounded-bl bg-white"
-      id="checkboxes-wrapper-veg"
-      style="display: none;"
-    >
-      <% veg.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-         <button id="delete-item" data-cat="Vegetables" data-id="<%= item[0] %>" data-item="<%= item[1] %>" class="text-red-600">X</button>
+      <div id="category-wrapper" class="my-2 w-full">
+        <h2
+          id="category-title"
+          class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
+        >
+          VEGETABLES
+        </h2>
+        <div
+          class="p-4 rounded-br rounded-bl bg-white"
+          id="checkboxes-wrapper-veg"
+          style="display: none;"
+        >
+          <% veg.forEach(item => { %>
+          <div class="flex justify-between">
+            <label class="cursor-pointer" for="<%= item[1] %>">
+              <input
+                class="cursor-pointer checkbox-select-item"
+                type="checkbox"
+                id="<%= item[1] %>"
+                value="<%= item[1] %>"
+              />
+              <%= item[1] %>
+            </label>
+            <button
+              id="delete-item"
+              data-cat="Vegetables"
+              data-id="<%= item[0] %>"
+              data-item="<%= item[1] %>"
+              class="text-red-600"
+            >
+              X
+            </button>
+          </div>
+          <% }) %>
+          <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+          <div class="cursor-pointer checkbox-select-item"></div>
+        </div>
       </div>
-      <% }) %>
-      <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
-      <div class="cursor-pointer checkbox-select-item"></div>
     </div>
-  </div>
-  <button id="submit-btn">Submit</button>
-</section>
-<section class="mt-10">
-  <%- include("includes/newItem") %>
-</section>
+  </section>
+  <section class="w-full md:w-1/2 bg-yellow-300 p-2">
+    <div class="md:w-1/2 md:float-left">
+      <!-- VIEWER CONTAINER -->
+      <div id="viewer">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+        fermentum pretium velit convallis posuere. In ac elit ac lectus euismod
+        pharetra. Nulla porta interdum felis, non venenatis dui ullamcorper
+        quis. Fusce tempor lectus non lobortis pellentesque. Maecenas quis
+        ornare leo.
+      </div>
+      <button id="submit-btn" class="bg-green-400 float-right">Submit</button>
+    </div>
+  </section>
+</main>
+
+<%- include("includes/newItem") %>
+<!-- HIDDEN BY DEFAULT -->
 <%- include('includes/footer') %>

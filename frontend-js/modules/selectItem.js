@@ -3,8 +3,10 @@ const axios = require("axios");
 export default class SelectItem {
   constructor() {
     this.mainWrapper = document.querySelector("#main-wrapper");
+    this.viewerContainer = document.querySelector("#viewer");
     this.events();
     this.arr = [];
+    this.viewer();
   }
   // EVENTS
   events() {
@@ -48,14 +50,14 @@ export default class SelectItem {
 
     axios.post("/add-items", { items: this.arr });
   }
-
+  viewer() {}
   handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
       this.arr.push(e.target.value);
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    console.log(this.arr);
+    this.viewerContainer.innerHTML = `<strong>${this.arr}</strong>`;
   }
 
   // END CLASS

@@ -19,9 +19,6 @@ export default class SelectItem {
   }
   // METHODS
   handleDeleteItem(e) {
-    console.log(e.target.parentElement);
-    e.target.parentElement.remove();
-
     if (confirm("Are you sure?")) {
       axios
         .post("/delete-item", {

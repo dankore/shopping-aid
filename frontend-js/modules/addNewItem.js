@@ -100,7 +100,7 @@ export default class AddNewItem {
             />
             ${data.item} 
         </label>
-        <button id="delete-item" data-cat="Vegetables" data-id="${data._id}" data-item="${data.item}" class="text-red-600">Delete</button>
+        <button id="delete-item" data-cat="Vegetables" data-id="${data._id}" data-item="${data.item}" class="text-red-600">X</button>
       </div>
     `;
   }

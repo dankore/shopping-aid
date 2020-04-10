@@ -15,9 +15,17 @@
       id="checkboxes-wrapper-fruits"
       style="display: none;"
     >
-    <% all.forEach(item => { %>
-      <div><%= item %></div>
-    <% }) %>
+      <% fruits.forEach(item => { %>
+      <label class="cursor-pointer" for="<%= item %>">
+        <input
+          class="cursor-pointer checkbox-select-item"
+          type="checkbox"
+          id="<%= item %>"
+          value="<%= item %>"
+        />
+        <%= item %> </label
+      ><br />
+      <% }) %>
       <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
       <div class="cursor-pointer checkbox-select-item"></div>
     </div>
@@ -34,8 +42,8 @@
       id="checkboxes-wrapper-veg"
       style="display: none;"
     > -->
-      <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
-      <!-- <div class="cursor-pointer checkbox-select-item"></div>
+  <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+  <!-- <div class="cursor-pointer checkbox-select-item"></div>
     </div>
   </div> -->
   <button id="submit-btn">Submit</button>

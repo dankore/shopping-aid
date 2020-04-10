@@ -15,11 +15,14 @@
       id="checkboxes-wrapper-fruits"
       style="display: none;"
     >
+    <% all.forEach(item => { %>
+      <div><%= item %></div>
+    <% }) %>
       <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
       <div class="cursor-pointer checkbox-select-item"></div>
     </div>
   </div>
-  <div id="category-wrapper" class="m-2 w-full">
+  <!-- <div id="category-wrapper" class="m-2 w-full">
     <h2
       id="category-title"
       class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
@@ -30,11 +33,11 @@
       class="p-4 rounded-br rounded-bl bg-white"
       id="checkboxes-wrapper-veg"
       style="display: none;"
-    >
+    > -->
       <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
-      <div class="cursor-pointer checkbox-select-item"></div>
+      <!-- <div class="cursor-pointer checkbox-select-item"></div>
     </div>
-  </div>
+  </div> -->
   <button id="submit-btn">Submit</button>
 </section>
 <section class="mt-10">

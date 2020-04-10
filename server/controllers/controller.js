@@ -1,7 +1,11 @@
 const Item = require("../models/model");
+const sortItems = require("../helpers/sortItems").sortItems;
 
-exports.home = (req, res) => {
-  res.render("home");
+exports.home = async (req, res) => {
+  let items = await Item.getAll();
+  let sorted = sortItems(items);
+
+  res.render("home", { all: sorted[2] });
 };
 
 exports.addItem = (req, res) => {

@@ -5,7 +5,7 @@ exports.home = async (req, res) => {
   try {
     const items = await Item.getAll();
     const sorted = sortItems(items);
-
+    
     res.render("home", { fruits: sorted[0], veg: sorted[1] });
   } catch (error) {
     console.log(error);

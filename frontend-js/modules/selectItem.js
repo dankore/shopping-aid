@@ -56,7 +56,7 @@ export default class SelectItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    // RENDER THE ARRAY 
+    // RENDER THE ARRAY
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
       newArr += `<li>${this.arr[i]}</li>`;

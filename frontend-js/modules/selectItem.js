@@ -36,10 +36,10 @@ export default class SelectItem {
     }
   }
   handleOpenClose(e) {
-    if (e.target.nextElementSibling.style.display == "none") {
-      e.target.nextElementSibling.style.display = "block";
+    if (e.target.parentElement.children[1].style.display == "none") {
+      e.target.parentElement.children[1].style.display = "block";
     } else {
-      e.target.nextElementSibling.style.display = "none";
+      e.target.parentElement.children[1].style.display = "none";
     }
   }
 
@@ -56,7 +56,7 @@ export default class SelectItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    // RENDER THE ARRAY 
+    // RENDER THE ARRAY
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
       newArr += `<li>${this.arr[i]}</li>`;

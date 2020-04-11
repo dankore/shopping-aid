@@ -19,6 +19,7 @@ export default class AddNewItem {
     this.closeAddNewItemModal = document.querySelector(
       "#close-add-new-item-modal"
     );
+    this.noItemContainer = document.querySelector("#no-item-container");
     this.arr = [];
     this.events();
   }
@@ -27,7 +28,7 @@ export default class AddNewItem {
     Array.prototype.forEach.call(this.checkboxes, (checkbox) => {
       checkbox.addEventListener("click", (e) => this.handleCheckboxClick(e));
     });
-    this.addNewItemBtn.addEventListener("click", (_) => this.handleSubmit());
+    this.addNewItemBtn.addEventListener("click", (e) => this.handleSubmit(e));
     this.openAddNewItemModal.addEventListener("click", (_) =>
       this.handleOpenModal()
     );
@@ -54,10 +55,9 @@ export default class AddNewItem {
     }
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     // DIS-ALLOW EMPTY FIELDS
     if (!this.input.value || this.arr.length == 0) return;
-
     axios
       .post("/add-new-item", {
         item: this.input.value,

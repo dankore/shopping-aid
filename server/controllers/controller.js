@@ -2,10 +2,14 @@ const Item = require("../models/model");
 const { sortItems } = require("../helpers/sortItems");
 
 exports.home = async (req, res) => {
-  const items = await Item.getAll();
-  const sorted = sortItems(items);
+  try {
+    const items = await Item.getAll();
+    const sorted = sortItems(items);
 
-  res.render("home", { fruits: sorted[0], veg: sorted[1] });
+    res.render("home", { fruits: sorted[0], veg: sorted[1] });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.addItem = (req, res) => {

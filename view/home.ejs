@@ -36,10 +36,9 @@
             </button>
           </div>
           <% }) %>
-          <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
-          <div class="cursor-pointer checkbox-select-item"></div>
         </div>
       </div>
+      <!-- VEG -->
       <div id="category-wrapper" class="my-2 w-full">
         <h2
           id="category-title"
@@ -52,8 +51,8 @@
           id="checkboxes-wrapper-veg"
           style="display: none;"
         >
-          <% veg.forEach(item => { %>
           <div class="flex justify-between">
+            <% veg.forEach(item => { %>
             <label class="cursor-pointer" for="<%= item[1] %>">
               <input
                 class="cursor-pointer checkbox-select-item"
@@ -72,9 +71,9 @@
             >
               X
             </button>
+            <% }) %>
           </div>
-          <% }) %>
-          <!-- BUG: THIS DIV NEEDS BE HERE OTHERWISE CONTAINER WONT OPEN -->
+          <!-- BUG! -->
           <div class="cursor-pointer checkbox-select-item"></div>
         </div>
       </div>
@@ -83,8 +82,17 @@
   <section class="w-full lg:w-1/2 p-2">
     <div class="lg:w-1/2 lg:float-left">
       <!-- VIEWER CONTAINER -->
-      <ol id="viewer" class="list-decimal bg-white rounded px-6 py-2" style="min-height: 5rem;"></ol>
-      <button id="submit-btn" class="bg-green-600 hover:bg-green-800 rounded text-white px-2 mt-1 float-right">Save</button>
+      <ol
+        id="viewer"
+        class="list-decimal bg-white rounded px-6 py-2"
+        style="min-height: 5rem;"
+      ></ol>
+      <button
+        id="submit-btn"
+        class="bg-green-600 hover:bg-green-800 rounded text-white px-2 mt-1 float-right"
+      >
+        Save
+      </button>
     </div>
   </section>
 </main>

@@ -6,7 +6,6 @@ export default class SelectItem {
     this.viewerContainer = document.querySelector("#viewer");
     this.events();
     this.arr = [];
-    this.viewer();
   }
   // EVENTS
   events() {
@@ -50,7 +49,7 @@ export default class SelectItem {
 
     axios.post("/add-items", { items: this.arr });
   }
-  viewer() {}
+
   handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
       this.arr.push(e.target.value);

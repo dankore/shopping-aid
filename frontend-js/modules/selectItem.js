@@ -36,10 +36,10 @@ export default class SelectItem {
     }
   }
   handleOpenClose(e) {
-    if (e.target.nextElementSibling.style.display == "none") {
-      e.target.nextElementSibling.style.display = "block";
+    if (e.target.parentElement.children[1].style.display == "none") {
+      e.target.parentElement.children[1].style.display = "block";
     } else {
-      e.target.nextElementSibling.style.display = "none";
+      e.target.parentElement.children[1].style.display = "none";
     }
   }
 

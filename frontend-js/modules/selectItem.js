@@ -57,7 +57,10 @@ export default class SelectItem {
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    this.viewerContainer.innerHTML = `<strong>${this.arr}</strong>`;
+    // this.viewerContainer.innerHTML = `<strong>${this.arr}</strong>`;
+    this.viewerContainer.innerHTML = this.arr
+      .map((item) => `<li>${item}</li>`)
+      .join("");
   }
 
   // END CLASS

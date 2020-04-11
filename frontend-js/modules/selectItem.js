@@ -6,7 +6,6 @@ export default class SelectItem {
     this.viewerContainer = document.querySelector("#viewer");
     this.events();
     this.arr = [];
-    this.viewer();
   }
   // EVENTS
   events() {
@@ -50,17 +49,20 @@ export default class SelectItem {
 
     axios.post("/add-items", { items: this.arr });
   }
-  viewer() {}
+
   handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
       this.arr.push(e.target.value);
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }
-    // this.viewerContainer.innerHTML = `<strong>${this.arr}</strong>`;
-    this.viewerContainer.innerHTML = this.arr
-      .map((item) => `<li>${item}</li>`)
-      .join("");
+    // RENDER THE ARRAY 
+    let newArr = "";
+    for (let i = 0; i < this.arr.length; i++) {
+      newArr += `<li>${this.arr[i]}</li>`;
+    }
+
+    this.viewerContainer.innerHTML = newArr;
   }
 
   // END CLASS

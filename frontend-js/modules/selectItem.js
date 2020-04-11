@@ -59,11 +59,7 @@ export default class SelectItem {
     }
     // this.viewerContainer.innerHTML = `<strong>${this.arr}</strong>`;
     this.viewerContainer.innerHTML = this.arr
-      .map((item) => {
-        return `
-        <li>${item}</li>
-      `;
-      })
+      .map((item) => `<li>${item}</li>`)
       .join("");
   }
 

@@ -2,6 +2,7 @@
 <main id="main-wrapper" class="flex flex-wrap justify-center w-11/12 mx-auto">
   <section class="w-full lg:w-1/2 p-2">
     <div class="lg:w-1/2 lg:float-right">
+      <!-- FRUITS -->
       <div id="category-wrapper" class="w-full">
         <h2
           id="category-title"
@@ -39,7 +40,7 @@
         </div>
       </div>
       <!-- VEG -->
-      <div id="category-wrapper" class="my-2 w-full">
+     <div id="category-wrapper" class="w-full mt-2">
         <h2
           id="category-title"
           class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
@@ -48,11 +49,11 @@
         </h2>
         <div
           class="p-4 rounded-br rounded-bl bg-white"
-          id="checkboxes-wrapper-veg"
+          id="checkboxes-wrapper-vegetables"
           style="display: none;"
         >
+          <% veg.forEach(item => { %>
           <div class="flex justify-between">
-            <% veg.forEach(item => { %>
             <label class="cursor-pointer" for="<%= item[1] %>">
               <input
                 class="cursor-pointer checkbox-select-item"
@@ -64,17 +65,15 @@
             </label>
             <button
               id="delete-item"
-              data-cat="Vegetables"
+              data-cat="Fruits"
               data-id="<%= item[0] %>"
               data-item="<%= item[1] %>"
               class="text-red-600"
             >
               X
             </button>
-            <% }) %>
           </div>
-          <!-- BUG! -->
-          <div class="cursor-pointer checkbox-select-item"></div>
+          <% }) %>
         </div>
       </div>
     </div>

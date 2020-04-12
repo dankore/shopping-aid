@@ -1,5 +1,6 @@
 <%- include('includes/header') %>
-<main id="main-wrapper" class="flex flex-wrap justify-center w-11/12 mx-auto">
+<main >
+<div id="main-wrapper" class="bg-red-500 flex flex-wrap justify-center w-11/12 mx-auto">
   <section class="w-full lg:w-1/2 p-2">
     <%- include('includes/itemsSection') %>
   </section>
@@ -21,6 +22,11 @@
       </button>
     </div>
   </section>
+</div>
+<!-- SHOPPING LIST -->
+<section class="p-2">
+    <%- include('includes/shoppingList') %>
+</section>
 </main>
 
 <%- include("includes/newItem") %>

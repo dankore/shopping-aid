@@ -51,10 +51,22 @@ Item.saveSelectedItems = (data) => {
         await shoppingListCollection.insertOne(data).
         then(info =>{
             console.log(info.ops);
+            resolve(info.ops);
         })
         .catch(_=>{
             reject("Items were not added. Please try again.")
         })
     })
+}
+
+Item.fetchSelectedItems = () => {
+    return new Promise(async (resolve, reject) => {
+    try {
+      let allList = await shoppingListCollection.find({}).toArray();
+      resolve(allList);
+    } catch (error) {
+      reject();
+    }
+  });
 }
 module.exports = Item;

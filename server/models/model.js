@@ -1,5 +1,7 @@
 const itemsCollection = require("../../db").db().collection("items");
-const shoppingListCollection = require("../../db").db().collection("shoppingList");
+const shoppingListCollection = require("../../db")
+  .db()
+  .collection("shoppingList");
 const ObjectId = require("mongodb").ObjectID;
 let Item = class item {
   constructor(data) {
@@ -47,20 +49,21 @@ Item.delete = (data) => {
 };
 
 Item.saveSelectedItems = (data) => {
-    return new Promise(async (resolve, reject) => {
-        await shoppingListCollection.insertOne(data).
-        then(info =>{
-            console.log(info.ops);
-            resolve(info.ops);
-        })
-        .catch(_=>{
-            reject("Items were not added. Please try again.")
-        })
-    })
-}
+  return new Promise(async (resolve, reject) => {
+    await shoppingListCollection
+      .insertOne(data)
+      .then((info) => {
+        console.log(info.ops);
+        resolve(info.ops);
+      })
+      .catch((_) => {
+        reject("Items were not added. Please try again.");
+      });
+  });
+};
 
 Item.fetchSelectedItems = () => {
-    return new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       let allList = await shoppingListCollection.find({}).toArray();
       resolve(allList);
@@ -68,5 +71,16 @@ Item.fetchSelectedItems = () => {
       reject();
     }
   });
-}
+};
+
+Item.deleteList = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await shoppingListCollection.deleteOne({ _id: new ObjectId(id) });
+      resolve();
+    } catch (error) {
+      reject("List not deleted. Please try again.");
+    }
+  });
+};
 module.exports = Item;

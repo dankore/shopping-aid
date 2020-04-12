@@ -1,5 +1,6 @@
 const Item = require("../models/model");
 const { sortItems } = require("../helpers/sortItems");
+const { reverseIt } = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");
 
 exports.home = async (req, res) => {
@@ -7,8 +8,12 @@ exports.home = async (req, res) => {
     const items = await Item.getAll();
     const sorted = sortItems(items);
     const lists = await Item.fetchSelectedItems();
-    
-    res.render("home", { fruits: sorted[0], veg: sorted[1], lists });
+
+    res.render("home", {
+      fruits: sorted[0],
+      veg: sorted[1],
+      lists: reverseIt(lists),
+    });
   } catch (error) {
     console.log(error);
   }
@@ -16,8 +21,8 @@ exports.home = async (req, res) => {
 
 exports.addItem = (req, res) => {
   // PROVIDE UNIQ ID IF NONE IS PROVIDED BY A USER
-  if(!req.body.title){
-      req.body.title = uniqId();
+  if (!req.body.title) {
+    req.body.title = uniqId();
   }
   Item.saveSelectedItems(req.body);
 };
@@ -37,4 +42,13 @@ exports.deleteItem = (req, res) => {
     .catch((err) => {
       res.json(err);
     });
+};
+
+exports.deleteShoppingList = (req, res) => {
+  try {
+    Item.deleteList(req.body.id);
+    res.json("Success!");
+  } catch (error) {
+    console.log(error);
+  }
 };

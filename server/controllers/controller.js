@@ -13,7 +13,13 @@ exports.home = async (req, res) => {
 };
 
 exports.addItem = (req, res) => {
-  console.log(req.body.items);
+  console.log(req.body);
+  // PROVIDE UNIQ ID IF NONE IS PROVIDED BY A USER
+  if(!req.body.title){
+      req.body.title = uniqId();
+  }
+  
+  Items.saveSelectedItems(req.body);
 };
 
 exports.addNewItem = (req, res) => {

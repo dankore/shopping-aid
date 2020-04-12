@@ -4,6 +4,7 @@ export default class SelectItem {
   constructor() {
     this.mainWrapper = document.querySelector("#main-wrapper");
     this.viewerContainer = document.querySelector("#viewer");
+    this.titleBeforeSave = document.querySelector("#title-before-save");
     this.events();
     this.arr = [];
   }
@@ -45,9 +46,9 @@ export default class SelectItem {
 
   handleSubmit(e) {
     // DIS-ALLOW EMPTY FIELD
-    if (this.arr.length == 0) return;
+    if (this.arr.length == 0 ) return;
 
-    axios.post("/add-items", { items: this.arr });
+    axios.post("/add-items", { title: this.titleBeforeSave.value, items: this.arr });
   }
 
   handleCheckBoxClick(e) {

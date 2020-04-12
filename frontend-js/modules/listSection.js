@@ -16,7 +16,6 @@ export default class ShoppingList {
   }
   // METHODS
   handleDeleteShoppingList(e) {
-    console.log(e.target.parentElement.parentElement);
     if (confirm("Delete Shopping List?")) {
       axios.post("/delete-shopping-list", {
         id: e.target.getAttribute("data-id"),

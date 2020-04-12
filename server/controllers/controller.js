@@ -24,7 +24,14 @@ exports.addItem = (req, res) => {
   if (!req.body.title) {
     req.body.title = uniqId();
   }
-  Item.saveSelectedItems(req.body);
+  
+  Item.saveSelectedItems(req.body)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
 };
 
 exports.addNewItem = (req, res) => {

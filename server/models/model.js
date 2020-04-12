@@ -53,7 +53,6 @@ Item.saveSelectedItems = (data) => {
     await shoppingListCollection
       .insertOne(data)
       .then((info) => {
-        console.log(info.ops);
         resolve(info.ops);
       })
       .catch((_) => {

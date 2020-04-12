@@ -52,7 +52,7 @@ export default class SelectItem {
 
   handleCheckBoxClick(e) {
     if (e.srcElement.checked) {
-      this.arr.push(e.target.value);
+      !this.arr.includes(e.target.value) && this.arr.push(e.target.value)
     } else {
       this.arr.splice(this.arr.indexOf(e.target.value), 1);
     }

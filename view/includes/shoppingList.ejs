@@ -1,0 +1,30 @@
+<div
+  id="list-section"
+  class="w-full lg:max-w-sm mx-auto rounded"
+  style="min-height: 5rem;"
+>
+  <%if(lists.length > 0){%> <% lists.forEach( list => {%>
+  <div class="my-5 rounded">
+    <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase p-2">
+      <h2
+        id="list-title"
+      >
+        <%= list.title %>
+      </h2>
+      <button id="delete-list" data-id="<%= list._id %>" class="px-2">X</button>
+    </div>
+
+    <ul id="lists-wrapper" style="display: none;">
+      <% list.items.forEach( item => {%>
+      <div
+        class="flex justify-between border border-gray-200 bg-white px-2 py-1"
+      >
+        <li><%= item %></li>
+        <button class="text-red-600">Done</button>
+      </div>
+
+      <%})%>
+    </ul>
+  </div>
+  <%})%> <%}%>
+</div>

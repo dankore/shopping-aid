@@ -6,5 +6,6 @@ router.get("/", controller.home);
 router.post("/add-items", controller.addItem);
 router.post("/add-new-item", controller.addNewItem);
 router.post("/delete-item", controller.deleteItem);
+router.post("/delete-shopping-list", controller.deleteShoppingList);
 
 module.exports = router;

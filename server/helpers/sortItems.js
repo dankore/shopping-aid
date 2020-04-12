@@ -21,6 +21,14 @@ module.exports = {
 
     return [reverse(fruits), reverse(veg), reverse(cond), reverse(frozen)];
   },
+  reverseIt: function reverse(array) {
+    for (let i = 0; i < array.length / 2; i++) {
+      let temp = array[i];
+      array[i] = array[array.length - 1 - i];
+      array[array.length - 1 - i] = temp;
+    }
+    return array;
+  },
 };
 
 function reverse(array) {

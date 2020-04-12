@@ -1,5 +1,12 @@
-<div class="max-w-xl mx-auto bg-white rounded" style="min-height: 5rem;">
-    <%if(list.length > 0){%> 
-        
+<div class="max-w-xl mx-auto rounded" style="min-height: 5rem;">
+    <%if(lists.length > 0){%> 
+        <% lists.forEach( list => {%>
+            <div class="my-2 bg-white rounded">
+            <h2><%= list.title %></h2>
+            <% list.items.forEach( item => {%>
+                <h2><%= item %></h2>
+            <%})%>
+            </div>
+            <%})%>
     <%}%>
 </div>

@@ -7,7 +7,6 @@ exports.home = async (req, res) => {
     const items = await Item.getAll();
     const sorted = sortItems(items);
     const lists = await Item.fetchSelectedItems();
-    console.log(lists)
     
     res.render("home", { fruits: sorted[0], veg: sorted[1], lists });
   } catch (error) {

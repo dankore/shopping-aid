@@ -1,12 +1,12 @@
-<div class="max-w-xl mx-auto rounded" style="min-height: 5rem;">
-    <%if(lists.length > 0){%> 
-        <% lists.forEach( list => {%>
-            <div class="my-2 bg-white rounded">
-            <h2><%= list.title %></h2>
-            <% list.items.forEach( item => {%>
-                <h2><%= item %></h2>
-            <%})%>
-            </div>
-            <%})%>
-    <%}%>
+<div id="list-section" class="w-full lg:max-w-sm mx-auto rounded" style="min-height: 5rem;">
+  <%if(lists.length > 0){%> <% lists.forEach( list => {%>
+  <div class="my-5 rounded">
+    <h2 id="list-title" class="bg-gray-800 text-white cursor-pointer uppercase p-2"><%= list.title %></h2>
+    <ul id="lists-wrapper" style="display: none;">
+      <% list.items.forEach( item => {%>
+      <li class="border border-gray-200 bg-white px-2 py-1"><%= item %></li>
+      <%})%>
+    </ul>
+  </div>
+  <%})%> <%}%>
 </div>

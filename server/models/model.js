@@ -1,4 +1,5 @@
 const itemsCollection = require("../../db").db().collection("items");
+const shoppingListCollection = require("../../db").db().collection("shoppingList");
 const ObjectId = require("mongodb").ObjectID;
 let Item = class item {
   constructor(data) {
@@ -45,4 +46,15 @@ Item.delete = (data) => {
   });
 };
 
+Item.saveSelectedItems = (data) => {
+    return new Promise(async (resolve, reject) => {
+        await shoppingListCollection.insertOne(data).
+        then(info =>{
+            console.log(info.ops);
+        })
+        .catch(_=>{
+            reject("Items were not added. Please try again.")
+        })
+    })
+}
 module.exports = Item;

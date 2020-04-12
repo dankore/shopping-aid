@@ -17,26 +17,39 @@ let arr = [
 ];
 
 
-function sort(array){
-let fruits = [],
-  veg = [],
-  cond = [],
-  frozen = []
+let date = new Date();
+let y = date.getFullYear();
+let mo = date.getMonth();
+let d = date.getDate();
+let h = date.getUTCHours();
+let m = date.getMinutes();
+let s = date.getSeconds();
 
-for (let i = 0; i < array.length; i++) {
-  const element = array[i];
-  element.categories.indexOf("Fruits") != -1 &&
-    fruits.push([element._id, element.item]);
-//   element.categories.indexOf("Vegetables") != -1 && veg.push(element.item);
-//   element.categories.indexOf("Condiments") != -1 && cond.push(element.item);
-//   element.categories.indexOf("Frozen") != -1 && frozen.push(element.item);
-}
+let t = date.getTime();
 
-// console.log(fruits);
-// console.log(veg);
-// console.log(cond);
-// console.log(frozen);
-return fruits
-}
+console.log(t);
 
-console.log(sort(arr));
+
+// function sort(array){
+// let fruits = [],
+//   veg = [],
+//   cond = [],
+//   frozen = []
+
+// for (let i = 0; i < array.length; i++) {
+//   const element = array[i];
+//   element.categories.indexOf("Fruits") != -1 &&
+//     fruits.push([element._id, element.item]);
+// //   element.categories.indexOf("Vegetables") != -1 && veg.push(element.item);
+// //   element.categories.indexOf("Condiments") != -1 && cond.push(element.item);
+// //   element.categories.indexOf("Frozen") != -1 && frozen.push(element.item);
+// }
+
+// // console.log(fruits);
+// // console.log(veg);
+// // console.log(cond);
+// // console.log(frozen);
+// return fruits
+// }
+
+// console.log(sort(arr));

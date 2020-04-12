@@ -1,5 +1,6 @@
 const Item = require("../models/model");
 const { sortItems } = require("../helpers/sortItems");
+const uniqId = require("../helpers/uniqId");
 
 exports.home = async (req, res) => {
   try {
@@ -13,13 +14,13 @@ exports.home = async (req, res) => {
 };
 
 exports.addItem = (req, res) => {
-  console.log(req.body);
   // PROVIDE UNIQ ID IF NONE IS PROVIDED BY A USER
   if(!req.body.title){
       req.body.title = uniqId();
   }
+  console.log(req.body)
   
-  Items.saveSelectedItems(req.body);
+  Item.saveSelectedItems(req.body);
 };
 
 exports.addNewItem = (req, res) => {

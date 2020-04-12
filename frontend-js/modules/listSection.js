@@ -11,7 +11,6 @@ export default class ShoppingList {
   }
   // METHODS
   handleCloseOpen(e) {
-    console.log(e.target.parentElement.children[1]);
     if ((e.target.parentElement.children[1].style.display == "none")) {
       e.target.parentElement.children[1].style.display = "block";
     } else {

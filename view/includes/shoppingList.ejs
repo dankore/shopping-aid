@@ -1,19 +1,22 @@
-<div
-  id="list-section"
-  class="rounded"
-  style="min-height: 5rem;"
->
- <h2 id="list-section-sub-element" class="text-gray-800 text-sm py-2 font-medium leading-4 tracking-wider">C. Shop</h2>
+<h2 class="text-gray-800 text-sm py-2 font-medium leading-4 tracking-wider">
+  C. Shop
+</h2>
+<div id="list-section" class="rounded">
   <%if(lists.length > 0){%> <% lists.forEach( list => {%>
   <div class="mb-5 rounded">
-    <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase">
-      <h2
-        id="list-title"
-        class="w-full p-2"
-      >
+    <div
+      class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase"
+    >
+      <h2 id="list-title" class="w-full p-2">
         <%= list.title %>
       </h2>
-      <button id="delete-list" data-id="<%= list._id %>" class="px-4 rounded-full hover:bg-gray-500">X</button>
+      <button
+        id="delete-list"
+        data-id="<%= list._id %>"
+        class="px-4 rounded-full hover:bg-gray-500"
+      >
+        X
+      </button>
     </div>
 
     <ul id="lists-wrapper" style="display: none;">
@@ -24,7 +27,6 @@
         <li><%= item %></li>
         <button class="text-red-600">Done</button>
       </div>
-
       <%})%>
     </ul>
   </div>

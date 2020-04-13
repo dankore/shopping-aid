@@ -1,79 +1,39 @@
 <%- include('includes/header') %>
-<section
-  id="main-wrapper"
-  class="mx-4 mt-10 mx-auto max-w-md flex justify-center flex-wrap"
->
-  <div id="card" class="m-2 w-full">
-    <h2
-      id="category-title"
-      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800 text-lg"
-    >
-      FRUITS
-    </h2>
-    <div
-      class="p-4 rounded-br rounded-bl bg-white"
-      id="checkboxes-wrapper"
-      style="display: none;"
-    >
-      <label class="cursor-pointer" for="orange">
+<main id="main-wrapper" class="w-full sm:max-w-3xl text-2xl sm:text-base mx-auto mt-4 sm:mt-20 p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <section class="">
+      <%- include('includes/itemsSection') %>
+    </section>
+    <!-- VIEWER CONTAINER -->
+    <div class="grid grid-cols-1 gap-4">
+    <section class="">
+      <div class="rounded">
+      <h2 class="text-gray-800 text-sm py-2 font-medium leading-4 tracking-wider">B. View & Save</h2>
+        <ol
+          id="viewer"
+          class="list-decimal bg-white rounded-tr rounded-tl px-6 py-2"
+          style="min-height: 5rem;"
+        ></ol>
         <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="orange"
-          value="orange"
+          class="w-full bg-white mt-3 p-2 shadow-inner"
+          type="text"
+          id="title-before-save"
+          placeholder="Title...optional"
         />
-        Orange </label
-      ><br />
-      <label class="cursor-pointer" for="apple">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="apple"
-          value="Apple"
-        />
-        Apple </label
-      ><br />
-      <label class="cursor-pointer" for="pear">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="pear"
-          value="Pear"
-        />
-        Pear </label
-      ><br />
-      <label class="cursor-pointer" for="tangerine">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="tangerine"
-          value="Tangerine"
-        />
-        Tangerine </label
-      ><br />
-      <label class="cursor-pointer" for="lemon">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="lemon"
-          value="Lemon"
-        />
-        Lemon </label
-      ><br />
-      <label class="cursor-pointer" for="citrus">
-        <input
-          class="cursor-pointer checkbox-select-item"
-          type="checkbox"
-          id="citrus"
-          value="Citrus"
-        />
-        Citrus </label
-      ><br />
+        <button
+          id="submit-btn"
+          class="bg-green-600 w-full hover:bg-green-800 rounded-br rounded-bl text-white px-2 mt-1 "
+        >
+          Save
+        </button>
+      </div>
+    </section>
+    <!-- SHOPPING LIST -->
+    <section class="">
+    <%- include('includes/shoppingList') %>
+  </section>
     </div>
-    <button id="submit-btn">Submit</button>
-  </div>
-</section>
-<section class="mt-10">
-  <%- include("includes/newItem") %>
-</section>
+</main>
+
+<%- include("includes/newItem") %>
+<!-- HIDDEN BY DEFAULT -->
 <%- include('includes/footer') %>

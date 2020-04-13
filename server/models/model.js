@@ -1,18 +1,85 @@
 const itemsCollection = require("../../db").db().collection("items");
-
+const shoppingListCollection = require("../../db")
+  .db()
+  .collection("shoppingList");
+const ObjectId = require("mongodb").ObjectID;
 let Item = class item {
   constructor(data) {
     this.data = data;
   }
 };
 
-Item.prototype.addItem = function() {
+Item.prototype.addItem = function () {
   return new Promise(async (resolve, reject) => {
-    await itemsCollection.insertOne(this.data).then((info) => {
-      console.log(info.ops);
-      resolve();
-    });
+    await itemsCollection
+      .findOneAndUpdate(
+        { item: this.data.item },
+        { $set: { categories: this.data.categories } },
+        { upsert: true, returnOriginal: false }
+      )
+      .then((info) => {
+        resolve(info.value);
+      });
   });
 };
 
+Item.getAll = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let allItems = await itemsCollection.find({}).toArray();
+      resolve(allItems);
+    } catch (error) {
+      reject();
+    }
+  });
+};
+
+Item.delete = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await itemsCollection.findOneAndUpdate(
+        { _id: new ObjectId(data.id) },
+        { $pull: { categories: data.category } }
+      );
+      resolve();
+    } catch {
+      reject("Item not removed. Please try again.");
+    }
+  });
+};
+
+Item.saveSelectedItems = (data) => {
+  return new Promise(async (resolve, reject) => {
+    await shoppingListCollection
+      .insertOne(data)
+      .then((info) => {
+        resolve(info.ops);
+      })
+      .catch((_) => {
+        reject("Items were not added. Please try again.");
+      });
+  });
+};
+
+Item.fetchSelectedItems = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let allList = await shoppingListCollection.find({}).toArray();
+      resolve(allList);
+    } catch (error) {
+      reject();
+    }
+  });
+};
+
+Item.deleteList = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await shoppingListCollection.deleteOne({ _id: new ObjectId(id) });
+      resolve();
+    } catch (error) {
+      reject("List not deleted. Please try again.");
+    }
+  });
+};
 module.exports = Item;

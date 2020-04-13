@@ -1,0 +1,81 @@
+<div class="">
+    <div class="flex justify-between py-2 font-medium text-sm w-full">
+        <h2 class="text-gray-800 leading-4 tracking-wider">A. Select</h2>
+        <button class="bg-blue-600 hover:bg-blue-800 px-1 rounded text-white" id="open-add-modal">Add New Item</button>
+    </div>
+  <!-- FRUITS -->
+  <div id="category-wrapper" class="w-full">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      FRUITS
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white"
+      id="checkboxes-wrapper-fruits"
+      style="display: none;"
+    >
+      <%if(fruits.length > 0){%> <% fruits.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Fruits"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+      <span class="checkbox-select-item hidden"></span>
+    </div>
+  </div>
+  <!-- VEG -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      VEGETABLES
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white"
+      id="checkboxes-wrapper-veg"
+      style="display: none;"
+    >
+      <%if(veg.length > 0){%> <% veg.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Vegetables"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+    </div>
+  </div>
+</div>

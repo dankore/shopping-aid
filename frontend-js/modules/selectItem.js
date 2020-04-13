@@ -6,6 +6,7 @@ export default class SelectItem {
     this.viewerContainer = document.querySelector("#viewer");
     this.titleBeforeSave = document.querySelector("#title-before-save");
     this.listSectionWrapper = document.querySelector("#list-section");
+     this.listSectionImmediateChildElem = document.querySelector("#list-section-sub-element");
     this.events();
     this.arr = [];
   }
@@ -55,8 +56,8 @@ export default class SelectItem {
         items: this.arr,
       })
       .then((res) => {
-        this.listSectionWrapper.insertAdjacentHTML(
-          "afterbegin",
+        this.listSectionImmediateChildElem.insertAdjacentHTML(
+          "afterend",
           this.html(res.data)
         );
       })
@@ -66,7 +67,7 @@ export default class SelectItem {
   }
   html(data) {
     return (
-      `<div class="my-5 rounded">
+      `<div class="mb-5 rounded">
             <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase p-2">
               <h2
                 id="list-title"

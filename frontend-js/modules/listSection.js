@@ -25,6 +25,7 @@ export default class ShoppingList {
   }
 
   handleCloseOpen(e) {
+      console.log(e.target)
     if (
       e.target.parentElement.parentElement.children[1].style.display == "none"
     ) {

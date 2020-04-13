@@ -1,12 +1,13 @@
 <%- include('includes/header') %>
-<main>
-  <div id="main-wrapper" class="flex flex-wrap justify-center w-11/12 mx-auto">
-    <section class="w-full lg:w-1/2 p-2">
+<main class="mt-10">
+  <div id="main-wrapper" class="grid grid-cols-1 sm:grid-cols-2 w-full sm:max-w-3xl gap-4 mx-auto">
+    <section class="">
       <%- include('includes/itemsSection') %>
     </section>
     <!-- VIEWER CONTAINER -->
-    <section class="w-full lg:w-1/2 p-2">
-      <div class="lg:w-1/2 lg:float-left rounded">
+    <div class="grid grid-cols-1 gap-4">
+    <section class="">
+      <div class="rounded">
       <h2 class="text-gray-800 text-sm py-2 font-medium leading-4 tracking-wider">B. View & Save</h2>
         <ol
           id="viewer"
@@ -27,11 +28,12 @@
         </button>
       </div>
     </section>
-  </div>
-  <!-- SHOPPING LIST -->
-  <section class="p-8 lg:p-0">
+    <section class="">
     <%- include('includes/shoppingList') %>
   </section>
+    </div>
+  </div>
+  <!-- SHOPPING LIST -->
 </main>
 
 <%- include("includes/newItem") %>

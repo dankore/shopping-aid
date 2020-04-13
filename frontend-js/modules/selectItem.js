@@ -5,8 +5,7 @@ export default class SelectItem {
     this.mainWrapper = document.querySelector("#main-wrapper");
     this.viewerContainer = document.querySelector("#viewer");
     this.titleBeforeSave = document.querySelector("#title-before-save");
-    this.listSectionWrapper = document.querySelector("#list-section");
-     this.listSectionImmediateChildElem = document.querySelector("#list-section-sub-element");
+    this.listSectionImmediateChildElem = document.querySelector("#list-section-sub-element");
     this.events();
     this.arr = [];
   }

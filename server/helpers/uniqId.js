@@ -14,7 +14,7 @@ function random50(){
 
 function random10000(){
     // GENERATE A RANDOM NUM FROM 0 TO 10,000 BOTH EDGES INCLUDED
-    const min = 0, max = 10000;
+    const min = 0, max = 100;
     return Math.floor(Math.random() * (max-min))+min;
 }
 

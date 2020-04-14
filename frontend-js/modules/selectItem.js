@@ -83,7 +83,7 @@ export default class SelectItem {
                 class="w-full p-2"
               >
                 ${data[0].title}
-                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 text-sm bg-white z-10">${data[0].items.length}</span> items
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white z-10">${data[0].items.length}</span> items
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>

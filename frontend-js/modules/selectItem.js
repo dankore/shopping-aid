@@ -29,6 +29,7 @@ export default class SelectItem {
   handleCopyText() {
     this.copyTextArea.focus();
     this.copyTextArea.select();
+    this.copyTextArea.setSelectionRange(0, 99999); // for mobile devices
 
     try {
       let textCopied = document.execCommand("copy");
@@ -138,7 +139,7 @@ export default class SelectItem {
     for (let i = 0; i < this.arr.length; i++) {
       newArr += `<span>${this.arr[i]}, </span>`;
     }
-    
+
     this.viewerContainer.innerHTML = newArr;
     this.copyTextArea.innerText = this.arr; // STORES THE SAME TEXT AS THOSE DISPLAYED BELOW FOR COPY
   }

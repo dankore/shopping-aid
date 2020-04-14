@@ -74,6 +74,7 @@ export default class SelectItem {
                 class="w-full p-2"
               >
                 ${data[0].title}
+                <span class="inline-block ml-4 rounded-full px-2 text-gray-800 text-sm bg-white z-10">${data[0].items.length}</span> items
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
@@ -84,7 +85,7 @@ export default class SelectItem {
               class="flex justify-between border border-gray-200 bg-white px-2 py-1"
             >
               <li>${item}</li>
-              <button class="text-red-600">Done</button>
+              <button id="delete-a-shopping-lists-item"  data-id="${data[0]._id}" data-item="${item}" class="text-red-600">Done</button>
             </div>`;
         })
         .join("") +

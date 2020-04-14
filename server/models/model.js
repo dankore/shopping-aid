@@ -78,8 +78,24 @@ Item.deleteList = (id) => {
       await shoppingListCollection.deleteOne({ _id: new ObjectId(id) });
       resolve();
     } catch (error) {
-      reject("List not deleted. Please try again.");
+      reject("List was not deleted. Please try again.");
     }
   });
 };
+
+Item.deleteListItem = (data) =>{
+    return new Promise(async(resolve, reject) =>{
+        try {
+            await shoppingListCollection.findOneAndUpdate(
+                {_id: new ObjectId(data.id)},
+                {
+                    $pull: { items: data.listItem }
+                }
+            );
+            resolve();
+        } catch {
+            reject("Item from the list was not deleted. Please try again.")
+        }
+    })
+}
 module.exports = Item;

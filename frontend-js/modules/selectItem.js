@@ -6,6 +6,7 @@ export default class SelectItem {
     this.viewerContainer = document.querySelector("#viewer");
     this.titleBeforeSave = document.querySelector("#title-before-save");
     this.listSection = document.querySelector("#list-section");
+    this.copyTextArea = document.querySelector("#text-area-for-copy");
     this.events();
     this.arr = [];
   }
@@ -16,12 +17,28 @@ export default class SelectItem {
         e.target.classList.contains("checkbox-select-item") &&
         this.handleCheckBoxClick(e);
       e.target && e.target.id == "category-title" && this.handleOpenClose(e);
-      e.target && e.target.id == "items-counter" && this.handleOpenCloseForSpanElem(e);
+      e.target &&
+        e.target.id == "items-counter" &&
+        this.handleOpenCloseForSpanElem(e);
       e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
+      e.target && e.target.id == "copy-text-btn" && this.handleCopyText();
     });
   }
   // METHODS
+  handleCopyText() {
+    this.copyTextArea.focus();
+    this.copyTextArea.select();
+
+    try {
+      let textCopied = document.execCommand("copy");
+      let msg = textCopied ? "Copied" : "Text not copied";
+      alert(msg);
+    } catch (error) {
+      alert("Text was not copied".concat(err));
+    }
+  }
+
   handleDeleteItem(e) {
     if (confirm("Are you sure?")) {
       axios
@@ -46,11 +63,16 @@ export default class SelectItem {
     }
   }
 
- handleOpenCloseForSpanElem(e) {
-    if (e.target.parentElement.parentElement.parentElement.children[1].style.display == "none") {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display = "block";
+  handleOpenCloseForSpanElem(e) {
+    if (
+      e.target.parentElement.parentElement.parentElement.children[1].style
+        .display == "none"
+    ) {
+      e.target.parentElement.parentElement.parentElement.children[1].style.display =
+        "block";
     } else {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display = "none";
+      e.target.parentElement.parentElement.parentElement.children[1].style.display =
+        "none";
     }
   }
 
@@ -116,8 +138,9 @@ export default class SelectItem {
     for (let i = 0; i < this.arr.length; i++) {
       newArr += `<span>${this.arr[i]}, </span>`;
     }
-
+    
     this.viewerContainer.innerHTML = newArr;
+    this.copyTextArea.innerText = this.arr; // STORES THE SAME TEXT AS THOSE DISPLAYED BELOW FOR COPY
   }
 
   // END CLASS

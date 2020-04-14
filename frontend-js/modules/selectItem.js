@@ -16,7 +16,8 @@ export default class SelectItem {
         e.target.classList.contains("checkbox-select-item") &&
         this.handleCheckBoxClick(e);
       e.target && e.target.id == "category-title" && this.handleOpenClose(e);
-      e.target && e.target.id == "submit-btn" && this.handleSubmit(e);
+      e.target && e.target.id == "items-counter" && this.handleOpenCloseForSpanElem(e);
+      e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
     });
   }
@@ -45,7 +46,15 @@ export default class SelectItem {
     }
   }
 
-  handleSubmit(e) {
+ handleOpenCloseForSpanElem(e) {
+    if (e.target.parentElement.parentElement.parentElement.children[1].style.display == "none") {
+      e.target.parentElement.parentElement.parentElement.children[1].style.display = "block";
+    } else {
+      e.target.parentElement.parentElement.parentElement.children[1].style.display = "none";
+    }
+  }
+
+  handleSubmit() {
     // DIS-ALLOW EMPTY FIELD
     if (this.arr.length == 0) return;
 
@@ -74,7 +83,7 @@ export default class SelectItem {
                 class="w-full p-2"
               >
                 ${data[0].title}
-                <span class="inline-block ml-4 rounded-full px-2 text-gray-800 text-sm bg-white z-10">${data[0].items.length}</span> items
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 text-sm bg-white z-10">${data[0].items.length}</span> items
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>

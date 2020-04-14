@@ -16,7 +16,8 @@ export default class SelectItem {
         e.target.classList.contains("checkbox-select-item") &&
         this.handleCheckBoxClick(e);
       e.target && e.target.id == "category-title" && this.handleOpenClose(e);
-      e.target && e.target.id == "submit-btn" && this.handleSubmit(e);
+      e.target && e.target.id == "items-counter" && this.handleOpenCloseForSpanElem(e);
+      e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
     });
   }
@@ -45,7 +46,15 @@ export default class SelectItem {
     }
   }
 
-  handleSubmit(e) {
+ handleOpenCloseForSpanElem(e) {
+    if (e.target.parentElement.parentElement.parentElement.children[1].style.display == "none") {
+      e.target.parentElement.parentElement.parentElement.children[1].style.display = "block";
+    } else {
+      e.target.parentElement.parentElement.parentElement.children[1].style.display = "none";
+    }
+  }
+
+  handleSubmit() {
     // DIS-ALLOW EMPTY FIELD
     if (this.arr.length == 0) return;
 
@@ -68,12 +77,13 @@ export default class SelectItem {
   html(data) {
     return (
       `<div class="mb-5 rounded">
-            <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase">
+            <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
               <h2
                 id="list-title"
                 class="w-full p-2"
               >
                 ${data[0].title}
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white z-10">${data[0].items.length}</span> items
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
@@ -84,7 +94,7 @@ export default class SelectItem {
               class="flex justify-between border border-gray-200 bg-white px-2 py-1"
             >
               <li>${item}</li>
-              <button class="text-red-600">Done</button>
+              <button id="delete-a-shopping-lists-item"  data-id="${data[0]._id}" data-item="${item}" class="text-red-600">Done</button>
             </div>`;
         })
         .join("") +

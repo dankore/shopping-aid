@@ -59,3 +59,12 @@ exports.deleteShoppingList = (req, res) => {
     console.log(error);
   }
 };
+
+exports.deleteShoppingListItem = (req, res) =>{
+    try {
+        Item.deleteListItem(req.body)
+        res.json("Success!");
+    } catch (error) {
+        console.log(error);
+    }
+}

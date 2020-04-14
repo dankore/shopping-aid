@@ -1,6 +1,6 @@
 import SelectItem from "./modules/selectItem";
 import AddNewItem from "./modules/addNewItem";
-import ShoppingList from "./modules/listSection";
+import ShoppingList from "./modules/shoppingListSection";
 
 if (document.querySelector(".checkbox-select-item")) {
   new SelectItem();

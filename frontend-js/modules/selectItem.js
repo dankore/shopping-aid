@@ -77,7 +77,7 @@ export default class SelectItem {
   html(data) {
     return (
       `<div class="mb-5 rounded">
-            <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white cursor-pointer uppercase">
+            <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white text-xl cursor-pointer uppercase">
               <h2
                 id="list-title"
                 class="w-full p-2"

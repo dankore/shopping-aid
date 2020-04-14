@@ -1,31 +1,113 @@
-function range(array){
-    let start = 0;
-    let end = 0;
-    let store = [];
+// const data = [
+// "absolutely",
+// "adorable",
+// "accepted",
+// "acclaimed",
+// 'accomplish',
+// 'accomplishment',
+// 'achievement',
+// 'action',
+// "active",
+// "admire",
+// "adventure",
+// "affirmative",
+// "affluent",
+// "agree",
+// "agreeable",
+// "amazing",
+// "angelic",
+// "appealing",
+// "approve",
+// "aptitude",
+// "attractive",
+// "awesome",
+// 'beaming',
+// 'beautiful',
+// 'believe',
+// 'beneficial',
+// 'bliss',
+// 'bountiful',
+// 'bounty',
+// 'brave',
+// 'bravo',
+// 'brilliant',
+// 'bubbly',
+// 'calm',
+// 'celebrated',
+// 'certain',
+// 'champ',
+// 'champion',
+// 'charming',
+// 'cheery',
+// 'choice',
+// 'classic',
+// 'classical',
+// 'clean',
+// 'commend',
+// 'composed',
+// 'congratulation',
+// 'constant',
+// 'cool',
+// 'courageous'
+// ]
+// function uniqId(){
+//     const idx = random50();
+//     const num = random10000();
 
-    for (let i = 1; i < array.length; i++) {
+//     return data[idx].concat(num).concat("-list")
+// }
+
+
+// function random50(){
+//     // GENERATE A RANDOM NUM FROM 0 TO 50 BOTH EDGES INCLUDED
+//     const min = 0, max = 51;
+//     return Math.floor(Math.random() * (max-min))+min;
+// }
+
+// function random10000(){
+//     // GENERATE A RANDOM NUM FROM 0 TO 10,000 BOTH EDGES INCLUDED
+//     const min = 0, max = 10000;
+//     return Math.floor(Math.random() * (max-min))+min;
+// }
+// console.log(uniqId())
+
+
+
+
+
+
+
+
+
+
+// function range(array){
+//     let start = 0;
+//     let end = 0;
+//     let store = [];
+
+//     for (let i = 1; i < array.length; i++) {
         
-       if(array[i] - array[end] == 1){
-           end++;
-       }else{
-        addRange(array, store, start, end);
-        start = i;
-        end = i;
-       }
-    }
-    addRange(array, store, start, end);
-    return store;
-}
+//        if(array[i] - array[end] == 1){
+//            end++;
+//        }else{
+//         addRange(array, store, start, end);
+//         start = i;
+//         end = i;
+//        }
+//     }
+//     addRange(array, store, start, end);
+//     return store;
+// }
 
-function addRange(arr, strArr, start, end){
-    if(start != end){
-        strArr.push(arr[start] + "=>" + arr[end])
-    } else {
-        strArr.push(""+arr[start])
-    }
-}
-console.log(range([-1,0,1,2,6,7,9]))
-console.log(range([-5,3,4,5,20,21,22]))
+// function addRange(arr, strArr, start, end){
+//     if(start != end){
+//         strArr.push(arr[start] + "=>" + arr[end])
+//     } else {
+//         strArr.push(""+arr[start])
+//     }
+// }
+// console.log(range([-1,0,1,2,6,7,9]))
+// console.log(range([-5,3,4,5,20,21,22]))
 
 
 

@@ -27,7 +27,6 @@ export default class SelectItem {
   }
   // METHODS
   handleCopyText() {    
-    // document.body.appendChild(this.copyTextArea);
     this.copyTextArea.focus();
     this.copyTextArea.select();
     this.copyTextArea.setSelectionRange(0, 99999); // for mobile devices
@@ -105,6 +104,7 @@ export default class SelectItem {
               <h2
                 id="list-title"
                 class="w-full p-2"
+                style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}
                 <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white z-10">${data[0].items.length}</span> items

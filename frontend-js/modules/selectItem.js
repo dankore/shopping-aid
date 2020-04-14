@@ -27,13 +27,26 @@ export default class SelectItem {
   }
   // METHODS
   handleCopyText() {
+    this.copyTextArea.style.position = "absolute";
+    this.copyTextArea.style.top = 0;
+    this.copyTextArea.style.left = 0;
+
+    this.copyTextArea.style.width = "2rem";
+    this.copyTextArea.style.height = "2rem";
+
+    this.copyTextArea.style.padding = 0;
+    this.copyTextArea.style.background = "transparent";
+
+    this.copyTextArea.value = this.arr;
+    
+    document.body.appendChild(this.copyTextArea);
     this.copyTextArea.focus();
     this.copyTextArea.select();
     this.copyTextArea.setSelectionRange(0, 99999); // for mobile devices
 
     try {
       let textCopied = document.execCommand("copy");
-      let msg = textCopied ? "Copied" : "Text not copied";
+      let msg = textCopied ? "Copied" : "Nothing to copy";
       alert(msg);
     } catch (error) {
       alert("Text was not copied".concat(err));

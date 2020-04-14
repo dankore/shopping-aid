@@ -1,4 +1,4 @@
-module.exports = {
+const helperObject = {
   sortItems: (array) => {
     const fruits = [],
       veg = [],
@@ -19,9 +19,10 @@ module.exports = {
         frozen.push([array[i]._id, array[i].item]);
     }
 
-    return [reverse(fruits), reverse(veg), reverse(cond), reverse(frozen)];
+    return [helperObject.reverse(fruits), helperObject.reverse(veg), helperObject.reverse(cond), helperObject.reverse(frozen)];
   },
-  reverseIt: function reverse(array) {
+
+  reverse: (array) => {
     for (let i = 0; i < array.length / 2; i++) {
       let temp = array[i];
       array[i] = array[array.length - 1 - i];
@@ -31,11 +32,4 @@ module.exports = {
   },
 };
 
-function reverse(array) {
-  for (let i = 0; i < array.length / 2; i++) {
-    let temp = array[i];
-    array[i] = array[array.length - 1 - i];
-    array[array.length - 1 - i] = temp;
-  }
-  return array;
-}
+module.exports = helperObject;

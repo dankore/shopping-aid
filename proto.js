@@ -1,3 +1,18 @@
+let obj = {
+    add: () =>{
+        return obj.sayHi();
+    },
+    sayHi: () => {
+        return "Hi!"
+    }
+}
+
+console.log(obj.add())
+
+
+
+
+
 // const data = [
 // "absolutely",
 // "adorable",

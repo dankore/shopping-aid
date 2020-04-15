@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export default class SelectItem {
+export default class CategorySection {
   constructor() {
     this.mainWrapper = document.querySelector("#main-wrapper");
     this.viewerContainer = document.querySelector("#viewer");

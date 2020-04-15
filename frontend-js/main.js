@@ -1,13 +1,13 @@
-import SelectItem from "./modules/selectItem";
-import AddNewItem from "./modules/addNewItem";
-import ShoppingList from "./modules/shoppingListSection";
+import CategorySection from "./modules/categorySection-FE";
+import AddNewItem from "./modules/addNewItem-FE";
+import shoppingListSection from "./modules/shoppingListSection-FE";
 
 if (document.querySelector(".checkbox-select-item")) {
-  new SelectItem();
+  new CategorySection();
 }
 if (document.querySelector(".checkbox-new-item")) {
   new AddNewItem();
 }
 if (document.querySelector("#list-section")) {
-  new ShoppingList();
+  new shoppingListSection();
 }

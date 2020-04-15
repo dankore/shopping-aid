@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export default class ShoppingList {
+export default class shoppingListSection {
   constructor() {
     this.listSectionWrapper = document.querySelector("#list-section");
     this.events();

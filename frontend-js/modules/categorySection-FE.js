@@ -130,10 +130,15 @@ export default class CategorySection {
   }
 
   handleCheckBoxClick(e) {
+      // ATTACH CATEGORY TO VALUE
+      const value = e.target.getAttribute("data-cat") ? 
+        e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")") 
+            : e.target.value;
+
     if (e.srcElement.checked) {
-      !this.arr.includes(e.target.value) && this.arr.push(e.target.value);
+      !this.arr.includes(e.target.value) && this.arr.push(value);
     } else {
-      this.arr.splice(this.arr.indexOf(e.target.value), 1);
+      this.arr.splice(this.arr.indexOf(value), 1);
     }
     // RENDER THE ARRAY
     let newArr = "";

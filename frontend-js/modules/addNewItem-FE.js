@@ -13,6 +13,18 @@ export default class AddNewItem {
     this.checkboxesWrapperVeg = document.querySelector(
       "#checkboxes-wrapper-veg"
     );
+    this.checkboxesWrapperCond = document.querySelector(
+      "#checkboxes-wrapper-cond"
+    );
+    this.checkboxesWrapperMeat = document.querySelector(
+      "#checkboxes-wrapper-meat"
+    );
+    this.checkboxesWrapperFresh = document.querySelector(
+      "#checkboxes-wrapper-fresh"
+    );
+    this.checkboxesWrapperFrozen = document.querySelector(
+      "#checkboxes-wrapper-frozen"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -28,7 +40,7 @@ export default class AddNewItem {
     Array.prototype.forEach.call(this.checkboxes, (checkbox) => {
       checkbox.addEventListener("click", (e) => this.handleCheckboxClick(e));
     });
-    this.addNewItemBtn.addEventListener("click", (e) => this.handleSubmit(e));
+    this.addNewItemBtn.addEventListener("click", () => this.handleSubmit());
     this.openAddNewItemModal.addEventListener("click", (_) =>
       this.handleOpenModal()
     );
@@ -55,7 +67,7 @@ export default class AddNewItem {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     // DIS-ALLOW EMPTY FIELDS
     if (!this.input.value || this.arr.length == 0) return;
     axios
@@ -69,22 +81,47 @@ export default class AddNewItem {
     this.input.value = "";
     this.input.focus();
   }
+
   yellowFifa(data) {
     for (let i = 0; i < data.categories.length; i++) {
       const elem = data.categories[i].toLowerCase();
       switch (elem) {
         case "fruits":
-          this.checkboxesWrapperFruits.insertAdjacentHTML(
-            "afterbegin",
-            this.html(data)
-          );
-          break;
+            this.checkboxesWrapperFruits.insertAdjacentHTML(
+                "afterbegin",
+                this.html(data)
+            );
+        break;
         case "vegetables":
-          this.checkboxesWrapperVeg.insertAdjacentHTML(
+            this.checkboxesWrapperVeg.insertAdjacentHTML(
+                "afterbegin",
+                this.html(data)
+            );
+        break;
+        case "condiments":
+        this.checkboxesWrapperCond.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
-          );
-          break;
+        );
+        break;
+        case "meat":
+            this.checkboxesWrapperMeat.insertAdjacentHTML(
+                "afterbegin",
+                this.html(data)
+            );
+        break;
+        case "fresh":
+            this.checkboxesWrapperFresh.insertAdjacentHTML(
+                "afterbegin",
+                this.html(data)
+            );
+        break;
+        case "frozen": 
+        this.checkboxesWrapperFrozen.insertAdjacentHTML(
+                "afterbegin",
+                this.html(data)
+            );
+        break;
       }
     }
   }

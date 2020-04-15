@@ -88,6 +88,7 @@ export default class AddNewItem {
   yellowFifa(data) {
     for (let i = 0; i < data.categories.length; i++) {
       const elem = data.categories[i].toLowerCase();
+      console.log(elem)
       switch (elem) {
         case "fruits":
             this.checkboxesWrapperFruits.insertAdjacentHTML(
@@ -120,6 +121,7 @@ export default class AddNewItem {
             );
         break;
         case "frozen": 
+        data.cat = "frozen";
         this.checkboxesWrapperFrozen.insertAdjacentHTML(
                 "afterbegin",
                 this.html(data)
@@ -137,6 +139,7 @@ export default class AddNewItem {
               type="checkbox"
               id="${data.item}"
               value="${data.item}"
+              data-cat="${data.cat != undefined ? data.cat : ""}"
             />
             ${data.item} 
         </label>

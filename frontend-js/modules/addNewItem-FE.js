@@ -77,7 +77,10 @@ export default class AddNewItem {
       })
       .then((res) => {
         this.yellowFifa(res.data);
-      });
+      })
+      .catch(err =>{
+          alert(err)
+      })
     this.input.value = "";
     this.input.focus();
   }

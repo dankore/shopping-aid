@@ -51,8 +51,8 @@ export default class CategorySection {
         .then(() => {
           e.target.parentElement.remove();
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          alert("Only admins are allowed to delete items. Message me at .... to get the username and password.");
         });
     }
   }

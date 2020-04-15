@@ -78,9 +78,9 @@ export default class AddNewItem {
       .then((res) => {
         this.yellowFifa(res.data);
       })
-      .catch(err =>{
-          alert(err)
-      })
+      .catch((err) => {
+        alert(err);
+      });
     this.input.value = "";
     this.input.focus();
   }
@@ -88,45 +88,46 @@ export default class AddNewItem {
   yellowFifa(data) {
     for (let i = 0; i < data.categories.length; i++) {
       const elem = data.categories[i].toLowerCase();
-      console.log(elem)
+      console.log(elem);
       switch (elem) {
         case "fruits":
-            this.checkboxesWrapperFruits.insertAdjacentHTML(
-                "afterbegin",
-                this.html(data)
-            );
-        break;
-        case "vegetables":
-            this.checkboxesWrapperVeg.insertAdjacentHTML(
-                "afterbegin",
-                this.html(data)
-            );
-        break;
-        case "condiments":
-        this.checkboxesWrapperCond.insertAdjacentHTML(
+          this.checkboxesWrapperFruits.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
-        );
-        break;
+          );
+          break;
+        case "vegetables":
+          this.checkboxesWrapperVeg.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "condiments":
+          this.checkboxesWrapperCond.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
         case "meat":
-            this.checkboxesWrapperMeat.insertAdjacentHTML(
-                "afterbegin",
-                this.html(data)
-            );
-        break;
+          this.checkboxesWrapperMeat.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
         case "fresh":
-            this.checkboxesWrapperFresh.insertAdjacentHTML(
-                "afterbegin",
-                this.html(data)
-            );
-        break;
-        case "frozen": 
-        data.cat = "frozen";
-        this.checkboxesWrapperFrozen.insertAdjacentHTML(
-                "afterbegin",
-                this.html(data)
-            );
-        break;
+          data.cat = "fresh";
+          this.checkboxesWrapperFresh.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "frozen":
+          data.cat = "frozen";
+          this.checkboxesWrapperFrozen.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
       }
     }
   }
@@ -143,7 +144,9 @@ export default class AddNewItem {
             />
             ${data.item} 
         </label>
-        <button id="delete-item" data-cat="Vegetables" data-id="${data._id}" data-item="${data.item}" class="text-red-600">X</button>
+        <button id="delete-item" data-cat="Vegetables" data-id="${
+          data._id
+        }" data-item="${data.item}" class="text-red-600">X</button>
       </div>
     `;
   }

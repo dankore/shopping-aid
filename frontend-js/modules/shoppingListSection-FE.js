@@ -12,27 +12,30 @@ export default class shoppingListSection {
       e.target &&
         e.target.id == "delete-list" &&
         this.handleDeleteShoppingList(e);
-        e.target && e.target.id == "delete-a-shopping-lists-item" && this.handleDeleteShoppingListItem(e);
+      e.target &&
+        e.target.id == "delete-a-shopping-lists-item" &&
+        this.handleDeleteShoppingListItem(e);
     });
   }
   // METHODS
-  handleDeleteShoppingListItem(e){
-      let spanElem = e.target.parentElement.parentElement.parentElement.children[0].children[0].children[0]
-      if(confirm("Are you sure?")){
-          axios.post(
-              "/delete-a-shopping-list-item", 
-              { 
-              id: e.target.getAttribute("data-id"), 
-              listItem: e.target.getAttribute("data-item")
-            })
-      .then(()=>{
+  handleDeleteShoppingListItem(e) {
+    let spanElem =
+      e.target.parentElement.parentElement.parentElement.children[0].children[0]
+        .children[0];
+    if (confirm("Are you sure?")) {
+      axios
+        .post("/delete-a-shopping-list-item", {
+          id: e.target.getAttribute("data-id"),
+          listItem: e.target.getAttribute("data-item"),
+        })
+        .then(() => {
           e.target.parentElement.remove();
-         spanElem.innerHTML = +spanElem.innerHTML - 1
-      })
-      .catch((error)=>{
+          spanElem.innerHTML = +spanElem.innerHTML - 1;
+        })
+        .catch((error) => {
           alert(error);
-      })
-      }
+        });
+    }
   }
 
   handleDeleteShoppingList(e) {

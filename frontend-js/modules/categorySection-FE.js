@@ -26,7 +26,7 @@ export default class CategorySection {
     });
   }
   // METHODS
-  handleCopyText() {    
+  handleCopyText() {
     this.copyTextArea.focus();
     this.copyTextArea.select();
     this.copyTextArea.setSelectionRange(0, 99999); // for mobile devices
@@ -52,7 +52,9 @@ export default class CategorySection {
           e.target.parentElement.remove();
         })
         .catch(() => {
-          alert("Only admins are allowed to delete items. Message me at .... to get the username and password.");
+          alert(
+            "Only admins are allowed to delete items. Message me at .... to get the username and password."
+          );
         });
     }
   }
@@ -130,10 +132,10 @@ export default class CategorySection {
   }
 
   handleCheckBoxClick(e) {
-      // ATTACH CATEGORY TO VALUE
-      const value = e.target.getAttribute("data-cat") ? 
-        e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")") 
-            : e.target.value;
+    // ATTACH CATEGORY TO VALUE
+    const value = e.target.getAttribute("data-cat")
+      ? e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")")
+      : e.target.value;
 
     if (e.srcElement.checked) {
       !this.arr.includes(e.target.value) && this.arr.push(value);

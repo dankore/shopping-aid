@@ -1,19 +1,25 @@
 const assert = require("chai").assert;
 const uniqId = require("../server/helpers/uniqId");
 const helper = require("../server/helpers/sortItems");
-// const controller = require("../server/controllers/controller");
 
 
 describe("uniqId", function () {
-  it("uniqId() should return a string", function () {
-    const uniq = uniqId();
-    assert.typeOf(uniq, "string");
+  it("Should return a string", function () {
+    const result = uniqId();
+    assert.typeOf(result, "string");
   });
 });
 
-describe("sort", function () {
-  it("sort() should reverse an array and return the first element", function () {
-    const reverse = helper.reverse([1, 2, 3])[0];
-    assert.equal(reverse, 3);
+describe("reverse", function () {
+  it("Should reverse an array and return the first element", function () {
+    const result = helper.reverse([1, 2, 3])[0];
+    assert.equal(result, 3);
+  });
+});
+// TO COMPLETE
+describe("sortString", function () {
+  it("Should sort all elements in ascending order and return the first element", function () {
+    const result = helper.sortStrings(["b", "c", "a", "h"])[0];
+    assert.equal(result, "a");
   });
 });

@@ -36,16 +36,18 @@ const helperObject = {
         fresh: helperObject.sortCategory(fresh)
     }
   },
+
   sortCategory: (array) => {
-      
     return array.sort((a,b)=> (a[1].toLowerCase() > b[1].toLowerCase() && 1) || (a[1].toLowerCase() == b[1].toLowerCase() ? 0 : -1))
   },
+
    sortStrings: (array) => {
     for (let i = 0; i < array.length; i++) {
         array[i].items.sort((a,b)=> (a.toLowerCase() > b.toLowerCase() && 1) || (a.toLowerCase() == b.toLowerCase() ? 0 : -1))
     }
     return array;
   },
+  
   reverse: (array) => {
     for (let i = 0; i < array.length / 2; i++) {
       let temp = array[i];

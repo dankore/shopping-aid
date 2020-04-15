@@ -3,12 +3,14 @@ const helperObject = {
     const fruits = [],
       veg = [],
       cond = [],
-      frozen = [];
+      frozen = [],
+      meat = [],
+      fresh = [];
 
     for (let i = 0; i < array.length; i++) {
       array[i].categories.indexOf("Fruits") != -1 &&
         fruits.push([array[i]._id, array[i].item]);
-
+        
       array[i].categories.indexOf("Vegetables") != -1 &&
         veg.push([array[i]._id, array[i].item]);
 
@@ -17,11 +19,33 @@ const helperObject = {
 
       array[i].categories.indexOf("Frozen") != -1 &&
         frozen.push([array[i]._id, array[i].item]);
+      
+      array[i].categories.indexOf("Meat") != -1 &&
+        meat.push([array[i]._id, array[i].item]);
+
+      array[i].categories.indexOf("Fresh") != -1 &&
+        fresh.push([array[i]._id, array[i].item]);
     }
 
-    return [helperObject.reverse(fruits), helperObject.reverse(veg), helperObject.reverse(cond), helperObject.reverse(frozen)];
+   return {
+        fruits: helperObject.sortCategory(fruits), 
+        veg: helperObject.sortCategory(veg), 
+        cond: helperObject.sortCategory(cond), 
+        frozen: helperObject.sortCategory(frozen),
+        meat: helperObject.sortCategory(meat), 
+        fresh: helperObject.sortCategory(fresh)
+    }
   },
-
+  sortCategory: (array) => {
+      
+    return array.sort((a,b)=> (a[1].toLowerCase() > b[1].toLowerCase() && 1) || (a[1].toLowerCase() == b[1].toLowerCase() ? 0 : -1))
+  },
+   sortStrings: (array) => {
+    for (let i = 0; i < array.length; i++) {
+        array[i].items.sort((a,b)=> (a.toLowerCase() > b.toLowerCase() && 1) || (a.toLowerCase() == b.toLowerCase() ? 0 : -1))
+    }
+    return array;
+  },
   reverse: (array) => {
     for (let i = 0; i < array.length / 2; i++) {
       let temp = array[i];

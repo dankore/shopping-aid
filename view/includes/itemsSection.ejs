@@ -78,4 +78,152 @@
       <% }) %> <%}%>
     </div>
   </div>
+  <!-- CONDIMENTS -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      CONDIMENTS
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-veg"
+      style="display: none;"
+    >
+      <%if(cond.length > 0){%> <% cond.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Vegetables"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+    </div>
+  </div>
+  <!-- FROZEN -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      FROZEN
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-veg"
+      style="display: none;"
+    >
+      <%if(frozen.length > 0){%> <% frozen.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Vegetables"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+    </div>
+  </div>
+  <!-- MEAT -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      MEAT
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-veg"
+      style="display: none;"
+    >
+      <%if(meat.length > 0){%> <% meat.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Vegetables"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+    </div>
+  </div>
+  <!-- FRESH -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-gray-800"
+    >
+      FRESH
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-veg"
+      style="display: none;"
+    >
+      <%if(fresh.length > 0){%> <% fresh.forEach(item => { %>
+      <div class="flex justify-between">
+        <label class="cursor-pointer" for="<%= item[1] %>">
+          <input
+            class="cursor-pointer checkbox-select-item"
+            type="checkbox"
+            id="<%= item[1] %>"
+            value="<%= item[1] %>"
+          />
+          <%= item[1] %>
+        </label>
+        <button
+          id="delete-item"
+          data-cat="Vegetables"
+          data-id="<%= item[0] %>"
+          data-item="<%= item[1] %>"
+          class="text-red-600"
+        >
+          X
+        </button>
+      </div>
+      <% }) %> <%}%>
+    </div>
+  </div>
 </div>

@@ -6,13 +6,17 @@ const uniqId = require("../helpers/uniqId");
 exports.home = async (req, res) => {
   try {
     const items = await Item.getAll();
-    const sorted = helper.sortItems(items);
+    const categorized = helper.sortItems(items);
     const lists = await Item.fetchSelectedItems();
-
+    
     res.render("home", {
-      fruits: sorted[0],
-      veg: sorted[1],
-      lists: helper.reverse(lists),
+      lists: helper.reverse(helper.sortStrings(lists)),
+      fruits: categorized.fruits,
+      veg: categorized.veg,
+      cond: categorized.cond,
+      frozen: categorized.frozen,
+      meat: categorized.meat,
+      fresh: categorized.fresh,
     });
   } catch (error) {
     console.log(error);

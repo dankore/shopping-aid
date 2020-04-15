@@ -145,7 +145,12 @@ export default class CategorySection {
     // RENDER THE ARRAY
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += `<span>${this.arr[i]}, </span>`;
+      if(newArr.length == 0){
+        newArr += `<span>${this.arr[i]} </span>`;
+      }else{
+        newArr += `<span>, ${this.arr[i]}</span>`;
+      }
+      
     }
 
     this.viewerContainer.innerHTML = newArr;

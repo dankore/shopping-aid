@@ -132,11 +132,14 @@ export default class CategorySection {
   }
 
   handleCheckBoxClick(e) {
-    // ATTACH CATEGORY TO VALUE
+    // ATTACH CATEGORY/COUNTER TO VALUE
+    const numOfItems = e.target.parentElement.parentElement.children[1].value
     const value = e.target.getAttribute("data-cat")
-      ? e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")")
-      : e.target.value;
-
+      ? e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")" + "-" + numOfItems)
+      : e.target.value.concat("-" + numOfItems);
+    
+    
+      
     if (e.srcElement.checked) {
       !this.arr.includes(e.target.value) && this.arr.push(value);
     } else {
@@ -147,8 +150,8 @@ export default class CategorySection {
     for (let i = 0; i < this.arr.length; i++) {
       newArr +=
         newArr.length == 0
-          ? `<span>${this.arr[i]} </span>`
-          : `<span>, ${this.arr[i]}</span>`;
+          ? `${this.arr[i]}`
+          : `, ${this.arr[i]}`;
     }
 
     this.viewerContainer.innerHTML = newArr;

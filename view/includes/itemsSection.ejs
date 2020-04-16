@@ -17,7 +17,7 @@
       style="display: none;"
     >
       <%if(fruits.length > 0){%> <% fruits.forEach(item => { %>
-      <div class="flex justify-between">
+      <div class="flex justify-between my-1">
         <label class="cursor-pointer" for="<%= item[1] %>">
           <input
             class="cursor-pointer checkbox-select-item"
@@ -27,6 +27,7 @@
           />
           <%= item[1] %>
         </label>
+        <input id="counter" type="number" value="1" min="0" class="rounded bg-gray-300 px-2" style="max-width: 50px;">
         <button
           id="delete-item"
           data-cat="Fruits"

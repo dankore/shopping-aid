@@ -132,14 +132,14 @@ export default class AddNewItem {
   }
   html(data) {
     return `
-      <div class="flex justify-between">
+      <div class="flex justify-between my-1">
         <div class="flex">
-          <div class="flex">
-            <button id="decrement-btn" data-dec="-1" class="bg-gray-300 px-1">
+          <div id="counter-container" class="flex">
+            <button id="decrement-btn" data-dec="-1" class="value-button">
               -
             </button>
-            <span id="counter" class="inline-block px-1" contenteditable="true">1</span>
-            <button id="increment-btn" data-inc="1" class="bg-green-600 px-1">
+            <div id="counter" contenteditable="true">1</div>
+            <button id="increment-btn" data-inc="1" class="value-button">
               +
             </button>
             </div>

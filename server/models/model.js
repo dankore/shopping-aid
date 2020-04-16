@@ -1,16 +1,38 @@
+"use strict";
 const itemsCollection = require("../../db").db().collection("items");
 const shoppingListCollection = require("../../db")
   .db()
   .collection("shoppingList");
 const ObjectId = require("mongodb").ObjectID;
+
+// CLASS BEGINS
 let Item = class item {
   constructor(data) {
     this.data = data;
   }
 };
+// CLASS ENDS
+
+Item.prototype.cleanUp = function () {
+  /***
+   * Remove spaces in the item value
+   * @param this.data { item: 'XXXX', categories: [ 'XXXX', 'YYYYYY' ] }
+   */
+  let str = "";
+  for (let i = 0; i < this.data.item.length; i++) {
+    if (this.data.item[i] != " ") {
+      str += this.data.item[i];
+    }
+  }
+  this.data.item = str;
+  return this.data;
+};
 
 Item.prototype.addItem = function () {
   return new Promise(async (resolve, reject) => {
+    // clean up
+    this.cleanUp();
+
     await itemsCollection
       .findOneAndUpdate(
         { item: this.data.item },
@@ -83,19 +105,19 @@ Item.deleteList = (id) => {
   });
 };
 
-Item.deleteListItem = (data) =>{
-    return new Promise(async(resolve, reject) =>{
-        try {
-            await shoppingListCollection.findOneAndUpdate(
-                {_id: new ObjectId(data.id)},
-                {
-                    $pull: { items: data.listItem }
-                }
-            );
-            resolve();
-        } catch {
-            reject("Item from the list was not deleted. Please try again.")
+Item.deleteListItem = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await shoppingListCollection.findOneAndUpdate(
+        { _id: new ObjectId(data.id) },
+        {
+          $pull: { items: data.listItem },
         }
-    })
-}
+      );
+      resolve();
+    } catch {
+      reject("Item from the list was not deleted. Please try again.");
+    }
+  });
+};
 module.exports = Item;

@@ -134,7 +134,7 @@ export default class CategorySection {
   }
 
   handleCounterIncreaseDecrease(e){
-      if(e.target.parentElement.children[1].innerText == "" || typeof(e.target.parentElement.children[1].innerText) == "string"){
+      if(e.target.parentElement.children[1].innerText == "" ||  isNaN(+e.target.parentElement.children[1].innerText)){
           e.target.parentElement.children[1].innerText = 1;
       }
       if(+e.target.parentElement.children[1].innerText >= 1 ){

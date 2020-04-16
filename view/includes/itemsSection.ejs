@@ -1,8 +1,13 @@
 <div class="">
-    <div class="flex justify-between py-2 font-medium text-sm w-full">
-        <h2 class="text-gray-800 leading-4 tracking-wider">A. Select</h2>
-        <button class="bg-blue-600 hover:bg-blue-800 px-1 rounded text-white" id="open-add-modal">Add New Item</button>
-    </div>
+  <div class="flex justify-between py-2 font-medium text-sm w-full">
+    <h2 class="text-gray-800 leading-4 tracking-wider">A. Select</h2>
+    <button
+      class="bg-blue-600 hover:bg-blue-800 px-1 rounded text-white"
+      id="open-add-modal"
+    >
+      Add New Item
+    </button>
+  </div>
   <!-- FRUITS -->
   <div id="category-wrapper" class="w-full">
     <h2
@@ -16,35 +21,8 @@
       id="checkboxes-wrapper-fruits"
       style="display: none;"
     >
-      <%if(fruits.length > 0){%> <% fruits.forEach(item => { %>
-      <div class="flex justify-between my-1">
-        <div class="flex">
-            <div class="flex">
-                <button id="decrement-btn" data-dec="-1" class="bg-gray-300 px-1">-</button>
-                <span id="counter" contenteditable="true">1</span>
-                <button id="increment-btn" data-inc="1" class="bg-green-600 px-1">+</button>
-            </div>
-            <label class="cursor-pointer ml-2" for="<%= item[1] %>">
-            <input
-                class="cursor-pointer checkbox-select-item"
-                type="checkbox"
-                id="<%= item[1] %>"
-                value="<%= item[1] %>"
-            />
-            <%= item[1] %>
-            </label>
-        </div>
-        <button
-          id="delete-item"
-          data-cat="Fruits"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(fruits.length > 0){%> <% fruits.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
       <span class="checkbox-select-item hidden"></span>
     </div>
   </div>
@@ -61,28 +39,8 @@
       id="checkboxes-wrapper-veg"
       style="display: none;"
     >
-      <%if(veg.length > 0){%> <% veg.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-        <button
-          id="delete-item"
-          data-cat="Vegetables"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(veg.length > 0){%> <% veg.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
   <!-- CONDIMENTS -->
@@ -98,28 +56,8 @@
       id="checkboxes-wrapper-cond"
       style="display: none;"
     >
-      <%if(cond.length > 0){%> <% cond.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-        <button
-          id="delete-item"
-          data-cat="Condiments"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(cond.length > 0){%> <% cond.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
   <!-- FROZEN -->
@@ -135,29 +73,8 @@
       id="checkboxes-wrapper-frozen"
       style="display: none;"
     >
-      <%if(frozen.length > 0){%> <% frozen.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-            data-cat="frozen"
-          />
-          <%= item[1] %>
-        </label>
-        <button
-          id="delete-item"
-          data-cat="Frozen"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(frozen.length > 0){%> <% frozen.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
   <!-- MEAT -->
@@ -173,28 +90,8 @@
       id="checkboxes-wrapper-meat"
       style="display: none;"
     >
-      <%if(meat.length > 0){%> <% meat.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-        <button
-          id="delete-item"
-          data-cat="Meat"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(meat.length > 0){%> <% meat.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
   <!-- FRESH -->
@@ -210,29 +107,8 @@
       id="checkboxes-wrapper-fresh"
       style="display: none;"
     >
-      <%if(fresh.length > 0){%> <% fresh.forEach(item => { %>
-      <div class="flex justify-between">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-            data-cat="fresh"
-          />
-          <%= item[1] %>
-        </label>
-        <button
-          id="delete-item"
-          data-cat="Fresh"
-          data-id="<%= item[0] %>"
-          data-item="<%= item[1] %>"
-          class="text-red-600"
-        >
-          X
-        </button>
-      </div>
-      <% }) %> <%}%>
+      <%if(fresh.length > 0){%> <% fresh.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
 </div>

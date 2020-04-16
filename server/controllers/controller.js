@@ -1,6 +1,5 @@
 const Item = require("../models/model");
-
-const helper = require("../helpers/sortItems")
+const helper = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");
 
 exports.home = async (req, res) => {
@@ -8,7 +7,7 @@ exports.home = async (req, res) => {
     const items = await Item.getAll();
     const categorized = helper.sortItems(items);
     const lists = await Item.fetchSelectedItems();
-    
+
     res.render("home", {
       lists: helper.reverse(helper.sortStrings(lists)),
       fruits: categorized.fruits,
@@ -28,7 +27,7 @@ exports.addItem = (req, res) => {
   if (!req.body.title) {
     req.body.title = uniqId();
   }
-  
+
   Item.saveSelectedItems(req.body)
     .then((response) => {
       res.json(response);
@@ -64,11 +63,11 @@ exports.deleteShoppingList = (req, res) => {
   }
 };
 
-exports.deleteShoppingListItem = (req, res) =>{
-    try {
-        Item.deleteListItem(req.body)
-        res.json("Success!");
-    } catch (error) {
-        console.log(error);
-    }
-}
+exports.deleteShoppingListItem = (req, res) => {
+  try {
+    Item.deleteListItem(req.body);
+    res.json("Success!");
+  } catch (error) {
+    console.log(error);
+  }
+};

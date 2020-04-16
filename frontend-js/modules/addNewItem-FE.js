@@ -88,7 +88,6 @@ export default class AddNewItem {
   yellowFifa(data) {
     for (let i = 0; i < data.categories.length; i++) {
       const elem = data.categories[i].toLowerCase();
-      console.log(elem);
       switch (elem) {
         case "fruits":
           this.checkboxesWrapperFruits.insertAdjacentHTML(
@@ -134,7 +133,17 @@ export default class AddNewItem {
   html(data) {
     return `
       <div class="flex justify-between">
-        <label class="cursor-pointer" for="${data.item}">
+        <div class="flex">
+          <div class="flex">
+            <button id="decrement-btn" data-dec="-1" class="bg-gray-300 px-1">
+              -
+            </button>
+            <span id="counter" class="inline-block px-1" contenteditable="true">1</span>
+            <button id="increment-btn" data-inc="1" class="bg-green-600 px-1">
+              +
+            </button>
+            </div>
+            <label class="cursor-pointer ml-2" for="${data.item}">
             <input
               class="cursor-pointer checkbox-select-item"
               type="checkbox"
@@ -143,10 +152,11 @@ export default class AddNewItem {
               data-cat="${data.cat != undefined ? data.cat : ""}"
             />
             ${data.item} 
-        </label>
-        <button id="delete-item" data-cat="Vegetables" data-id="${
-          data._id
-        }" data-item="${data.item}" class="text-red-600">X</button>
+          </label>
+        </div>
+      <button id="delete-item" data-cat="Vegetables" data-id="${
+        data._id
+      }" data-item="${data.item}" class="text-red-600">X</button>
       </div>
     `;
   }

@@ -1,0 +1,31 @@
+<div class="flex justify-between my-1">
+  <div class="flex">
+    <div class="flex">
+      <button id="decrement-btn" data-dec="-1" class="bg-gray-300 px-1">
+        -
+      </button>
+      <span id="counter" class="inline-block px-1" contenteditable="true">1</span>
+      <button id="increment-btn" data-inc="1" class="bg-green-600 px-1">
+        +
+      </button>
+    </div>
+    <label class="cursor-pointer ml-2" for="<%= item[1] %>">
+      <input
+        class="cursor-pointer checkbox-select-item"
+        type="checkbox"
+        id="<%= item[1] %>"
+        value="<%= item[1] %>"
+      />
+      <%= item[1] %>
+    </label>
+  </div>
+  <button
+    id="delete-item"
+    data-cat="<%= item[2] %>"
+    data-id="<%= item[0] %>"
+    data-item="<%= item[1] %>"
+    class="text-red-600"
+  >
+    X
+  </button>
+</div>

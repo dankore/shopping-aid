@@ -1,3 +1,4 @@
+"use strict";
 const axios = require("axios");
 
 export default class CategorySection {
@@ -23,6 +24,12 @@ export default class CategorySection {
       e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
       e.target && e.target.id == "copy-text-btn" && this.handleCopyText();
+      e.target &&
+        e.target.id == "increment-btn" &&
+        this.handleCounterIncreaseDecrease(e);
+      e.target &&
+        e.target.id == "decrement-btn" &&
+        this.handleCounterIncreaseDecrease(e);
     });
   }
   // METHODS
@@ -131,15 +138,45 @@ export default class CategorySection {
     );
   }
 
+  handleCounterIncreaseDecrease(e) {
+    // CHECK
+    if (
+      e.target.parentElement.children[1].innerText == "" ||
+      isNaN(+e.target.parentElement.children[1].innerText)
+    ) {
+      e.target.parentElement.children[1].innerText = 1;
+    }
+
+    // MATH
+    if (+e.target.parentElement.children[1].innerText >= 1) {
+      e.target.parentElement.children[1].innerText =
+        +e.target.parentElement.children[1].innerText +
+        +e.target.getAttribute("data-inc");
+    }
+    if (+e.target.parentElement.children[1].innerText >= 2) {
+      e.target.parentElement.children[1].innerText =
+        +e.target.parentElement.children[1].innerText +
+        +e.target.getAttribute("data-dec");
+    }
+  }
+
   handleCheckBoxClick(e) {
-    // ATTACH CATEGORY/COUNTER TO VALUE
-    const numOfItems = e.target.parentElement.parentElement.children[1].value
+    // ATTACH CATEGORY/COUNTER VALUE TO EACH CHECKED ELEM
     const value = e.target.getAttribute("data-cat")
-      ? e.target.value.concat("(" + e.target.getAttribute("data-cat") + ")" + "-" + numOfItems)
-      : e.target.value.concat("-" + numOfItems);
-    
-    
-      
+      ? e.target.value.concat(
+          "(" +
+            e.target.getAttribute("data-cat") +
+            ")" +
+            "-" +
+            e.target.parentElement.parentElement.children[0].children[1]
+              .innerText
+        )
+      : e.target.value.concat(
+          "-" +
+            e.target.parentElement.parentElement.children[0].children[1]
+              .innerText
+        );
+
     if (e.srcElement.checked) {
       !this.arr.includes(e.target.value) && this.arr.push(value);
     } else {
@@ -148,10 +185,7 @@ export default class CategorySection {
     // RENDER THE ARRAY
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr +=
-        newArr.length == 0
-          ? `${this.arr[i]}`
-          : `, ${this.arr[i]}`;
+      newArr += newArr.length == 0 ? `${this.arr[i]}` : `, ${this.arr[i]}`;
     }
 
     this.viewerContainer.innerHTML = newArr;

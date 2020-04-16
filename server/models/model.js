@@ -14,17 +14,7 @@ let Item = class item {
 // CLASS ENDS
 
 Item.prototype.cleanUp = function () {
-  /***
-   * Remove spaces in the item value
-   * @param this.data { item: 'XXXX', categories: [ 'XXXX', 'YYYYYY' ] }
-   */
-  let str = "";
-  for (let i = 0; i < this.data.item.length; i++) {
-    if (this.data.item[i] != " ") {
-      str += this.data.item[i];
-    }
-  }
-  this.data.item = str;
+  this.data.item = this.data.item.trim();
   return this.data;
 };
 

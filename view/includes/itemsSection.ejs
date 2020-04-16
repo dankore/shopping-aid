@@ -18,16 +18,22 @@
     >
       <%if(fruits.length > 0){%> <% fruits.forEach(item => { %>
       <div class="flex justify-between my-1">
-        <label class="cursor-pointer" for="<%= item[1] %>">
-          <input
-            class="cursor-pointer checkbox-select-item"
-            type="checkbox"
-            id="<%= item[1] %>"
-            value="<%= item[1] %>"
-          />
-          <%= item[1] %>
-        </label>
-        <input id="counter" type="number" value="1" min="0" class="rounded bg-gray-300 px-2" style="max-width: 50px;">
+        <div class="flex">
+            <div class="flex">
+                <button id="increment-btn" data-num="1" class="bg-gray-300 px-1">-</button>
+                <span id="counter">1</span>
+                <button id="decrement-btn" data-num="-1" class="bg-green-600 px-1">+</button>
+            </div>
+            <label class="cursor-pointer ml-2" for="<%= item[1] %>">
+            <input
+                class="cursor-pointer checkbox-select-item"
+                type="checkbox"
+                id="<%= item[1] %>"
+                value="<%= item[1] %>"
+            />
+            <%= item[1] %>
+            </label>
+        </div>
         <button
           id="delete-item"
           data-cat="Fruits"

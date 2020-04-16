@@ -23,6 +23,8 @@ export default class CategorySection {
       e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
       e.target && e.target.id == "copy-text-btn" && this.handleCopyText();
+      e.target && e.target.id == "increment-btn" && this.handleCounterDecrementIncrement(e);
+      e.target && e.target.id == "decrement-btn" && this.handleCounterDecrementIncrement(e);
     });
   }
   // METHODS
@@ -129,6 +131,10 @@ export default class CategorySection {
         </div>
     `
     );
+  }
+
+  handleCounterDecrementIncrement(e){
+    console.log(e.target.getAttribute("data-num"))
   }
 
   handleCheckBoxClick(e) {

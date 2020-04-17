@@ -109,7 +109,7 @@ export default class CategorySection {
   html(data) {
     return (
       `<div class="mb-5 rounded">
-            <div class="flex justify-between bg-gray-800 rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
+            <div class="flex justify-between bg-black rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
               <h2
                 id="list-title"
                 class="w-full p-2"

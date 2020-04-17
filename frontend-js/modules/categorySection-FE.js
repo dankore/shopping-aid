@@ -167,14 +167,16 @@ export default class CategorySection {
           "(" +
             e.target.getAttribute("data-cat") +
             ")" +
-            " =>" +
+            " [" +
             e.target.parentElement.parentElement.children[0].children[1]
-              .innerText
+              .innerText +
+              "]"
         )
       : e.target.value.concat(
-          " =>" +
+          " [" +
             e.target.parentElement.parentElement.children[0].children[1]
-              .innerText
+              .innerText +
+            "]"
         );
 
     if (e.srcElement.checked) {

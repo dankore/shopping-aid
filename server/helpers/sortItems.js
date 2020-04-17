@@ -5,7 +5,9 @@ const helperObject = {
       cond = [],
       frozen = [],
       meat = [],
-      fresh = [];
+      fresh = [],
+      kids = [],
+      others = [];
 
     for (let i = 0; i < array.length; i++) {
       array[i].categories.indexOf("Fruits") != -1 &&
@@ -25,6 +27,12 @@ const helperObject = {
 
       array[i].categories.indexOf("Fresh") != -1 &&
         fresh.push([array[i]._id, array[i].item, "Fresh"]);
+      
+      array[i].categories.indexOf("Kids") != -1 &&
+        kids.push([array[i]._id, array[i].item, "Kids"]);
+      
+      array[i].categories.indexOf("Others") != -1 &&
+        others.push([array[i]._id, array[i].item, "Others"]);
     }
 
     return {
@@ -34,6 +42,8 @@ const helperObject = {
       frozen: helperObject.sortCategory(frozen),
       meat: helperObject.sortCategory(meat),
       fresh: helperObject.sortCategory(fresh),
+      kids: helperObject.sortCategory(kids),
+      others: helperObject.sortCategory(others),
     };
   },
 

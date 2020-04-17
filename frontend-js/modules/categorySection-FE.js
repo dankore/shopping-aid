@@ -170,7 +170,7 @@ export default class CategorySection {
             " [" +
             e.target.parentElement.parentElement.children[0].children[1]
               .innerText +
-              "]"
+            "]"
         )
       : e.target.value.concat(
           " [" +

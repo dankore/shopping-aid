@@ -16,6 +16,8 @@ exports.home = async (req, res) => {
       frozen: categorized.frozen,
       meat: categorized.meat,
       fresh: categorized.fresh,
+      kids: categorized.kids,
+      others: categorized.others,
     });
   } catch (error) {
     console.log(error);

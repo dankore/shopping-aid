@@ -25,6 +25,12 @@ export default class AddNewItem {
     this.checkboxesWrapperFrozen = document.querySelector(
       "#checkboxes-wrapper-frozen"
     );
+    this.checkboxesWrapperKids = document.querySelector(
+      "#checkboxes-wrapper-kids"
+    );
+    this.checkboxesWrapperOthers = document.querySelector(
+      "#checkboxes-wrapper-others"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -79,7 +85,7 @@ export default class AddNewItem {
         this.yellowFifa(res.data);
       })
       .catch((err) => {
-        alert(err);
+        alert("Oops! Please try again.");
       });
     this.input.value = "";
     this.input.focus();
@@ -123,6 +129,18 @@ export default class AddNewItem {
         case "frozen":
           data.cat = "frozen";
           this.checkboxesWrapperFrozen.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "kids":
+          this.checkboxesWrapperKids.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "others":
+          this.checkboxesWrapperOthers.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );

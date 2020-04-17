@@ -161,7 +161,7 @@ export default class CategorySection {
   }
 
   handleCheckBoxClick(e) {
-    // ATTACH CATEGORY/COUNTER VALUE TO EACH CHECKED ELEM
+    // ATTACH CATEGORY AND COUNTER VALUES TO EACH CHECKED ELEM
     const value = e.target.getAttribute("data-cat")
       ? e.target.value.concat(
           "(" +

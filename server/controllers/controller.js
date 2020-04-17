@@ -30,7 +30,7 @@ exports.addItem = (req, res) => {
   if (!req.body.title) {
     req.body.title = uniqId();
   }
-
+  
   Item.saveSelectedItems(req.body)
     .then((response) => {
       res.json(response);
@@ -42,6 +42,7 @@ exports.addItem = (req, res) => {
 
 exports.addNewItem = (req, res) => {
   const item = new Item(req.body);
+
   item.addItem().then((response) => {
     res.json(response);
   });

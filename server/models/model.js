@@ -14,7 +14,7 @@ let Item = class item {
 // CLASS ENDS
 
 Item.prototype.cleanUp = function () {
-  this.data.item = this.data.item.trim();
+  this.data.item = this.data.item.replace(/^\s\s*/, "").replace(/\s\s*$/, "");
   return this.data;
 };
 

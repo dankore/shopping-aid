@@ -145,4 +145,21 @@
       include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
+  <!-- HEALTH -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white bg-black"
+    >
+      HEALTH
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-health"
+      style="display: none;"
+    >
+      <%if(health.length > 0){%> <% health.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
+    </div>
+  </div>
 </div>

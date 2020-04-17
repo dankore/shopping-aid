@@ -31,6 +31,9 @@ export default class AddNewItem {
     this.checkboxesWrapperOthers = document.querySelector(
       "#checkboxes-wrapper-others"
     );
+    this.checkboxesWrapperHealth = document.querySelector(
+      "#checkboxes-wrapper-health"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -141,6 +144,12 @@ export default class AddNewItem {
           break;
         case "others":
           this.checkboxesWrapperOthers.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "health":
+          this.checkboxesWrapperHealth.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );

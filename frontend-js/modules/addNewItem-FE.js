@@ -167,7 +167,7 @@ export default class AddNewItem {
               type="checkbox"
               id="${data.item}"
               value="${data.item}"
-              data-cat="${data.cat != undefined ? data.cat : ""}"
+              data-cat="${data.cat == "Frozen" || data.cat == "Fresh" ? data.cat : ""}"
             />
             ${data.item} 
           </label>

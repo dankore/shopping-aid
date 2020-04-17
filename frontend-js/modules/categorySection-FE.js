@@ -161,20 +161,25 @@ export default class CategorySection {
   }
 
   handleCheckBoxClick(e) {
+    console.log(
+      e.target.parentElement.parentElement.children[1].children[1].innerText
+    );
     // ATTACH CATEGORY/COUNTER VALUE TO EACH CHECKED ELEM
     const value = e.target.getAttribute("data-cat")
       ? e.target.value.concat(
           "(" +
             e.target.getAttribute("data-cat") +
             ")" +
-            " =>" +
-            e.target.parentElement.parentElement.children[0].children[1]
-              .innerText
+            " [" +
+            e.target.parentElement.parentElement.children[1].children[1]
+              .innerText +
+            "]"
         )
       : e.target.value.concat(
-          " =>" +
-            e.target.parentElement.parentElement.children[0].children[1]
-              .innerText
+          " [" +
+            e.target.parentElement.parentElement.children[1].children[1]
+              .innerText +
+            "]"
         );
 
     if (e.srcElement.checked) {

@@ -120,14 +120,14 @@ export default class AddNewItem {
           );
           break;
         case "fresh":
-          data.cat = "fresh";
+          data.cat = "Fresh";
           this.checkboxesWrapperFresh.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "frozen":
-          data.cat = "frozen";
+          data.cat = "Frozen";
           this.checkboxesWrapperFrozen.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
@@ -152,7 +152,19 @@ export default class AddNewItem {
     return `
       <div class="flex justify-between my-1">
         <div class="flex">
-          <div id="counter-container" class="flex">
+            <label class="cursor-pointer" for="${data.item}">
+            <input
+              class="cursor-pointer checkbox-select-item"
+              type="checkbox"
+              id="${data.item}"
+              value="${data.item}"
+              data-cat="${
+                data.cat == "Frozen" || data.cat == "Fresh" ? data.cat : ""
+              }"
+            />
+            ${data.item} 
+          </label>
+          <div id="counter-container" class="flex ml-2">
             <button id="decrement-btn" data-dec="-1" class="value-button">
               -
             </button>
@@ -161,16 +173,6 @@ export default class AddNewItem {
               +
             </button>
             </div>
-            <label class="cursor-pointer ml-2" for="${data.item}">
-            <input
-              class="cursor-pointer checkbox-select-item"
-              type="checkbox"
-              id="${data.item}"
-              value="${data.item}"
-              data-cat="${data.cat == "Frozen" || data.cat == "Fresh" ? data.cat : ""}"
-            />
-            ${data.item} 
-          </label>
         </div>
       <button id="delete-item" data-cat="Vegetables" data-id="${
         data._id

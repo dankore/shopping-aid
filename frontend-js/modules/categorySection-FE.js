@@ -8,6 +8,9 @@ export default class CategorySection {
     this.titleBeforeSave = document.querySelector("#title-before-save");
     this.listSection = document.querySelector("#list-section");
     this.copyTextArea = document.querySelector("#text-area-for-copy");
+    this.statsNumShoppingListCreatedSofar = document.querySelector(
+      "#num-shopping-list-created"
+    );
     this.events();
     this.arr = [];
   }
@@ -100,12 +103,19 @@ export default class CategorySection {
         this.titleBeforeSave.value = "";
         this.viewerContainer.innerHTML = "";
         this.titleBeforeSave.focus();
+        this.handleStatNumShopListCreated();
         this.arr = [];
       })
       .catch((err) => {
         alert(err);
       });
   }
+
+  handleStatNumShopListCreated(){
+    this.statsNumShoppingListCreatedSofar.innerText = +this
+      .statsNumShoppingListCreatedSofar.innerText + 1
+  }
+
   html(data) {
     return (
       `<div class="mb-5 rounded">

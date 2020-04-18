@@ -2,13 +2,17 @@ const Item = require("../models/model");
 const helper = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");
 
+
 exports.home = async (req, res) => {
   try {
     const items = await Item.getAll();
     const categorized = helper.sortItems(items);
     const lists = await Item.fetchSelectedItems();
+    const stats = await Item.getStats();
+    
 
     res.render("home", {
+      stats: stats[0].numShoppingListCreated,
       lists: helper.reverse(helper.sortStrings(lists)),
       fruits: categorized.fruits,
       veg: categorized.veg,
@@ -18,7 +22,7 @@ exports.home = async (req, res) => {
       fresh: categorized.fresh,
       kids: categorized.kids,
       others: categorized.others,
-      health: categorized.health
+      health: categorized.health,
     });
   } catch (error) {
     console.log(error);

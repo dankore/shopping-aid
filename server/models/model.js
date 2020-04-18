@@ -3,6 +3,7 @@ const itemsCollection = require("../../db").db().collection("items");
 const shoppingListCollection = require("../../db")
   .db()
   .collection("shoppingList");
+const statsCollection = require("../../db").db().collection("stats");
 const ObjectId = require("mongodb").ObjectID;
 
 // CLASS BEGINS
@@ -66,10 +67,39 @@ Item.saveSelectedItems = (data) => {
       .insertOne(data)
       .then((info) => {
         resolve(info.ops);
+        Item.stats();
       })
       .catch((_) => {
         reject("Items were not added. Please try again.");
       });
+  });
+};
+
+Item.stats = () => {
+  return new Promise(async (resolve, reject) => {
+    await statsCollection
+      .findOneAndUpdate(
+        {},
+        { $inc: { numShoppingListCreated: 1 } },
+        { upsert: true, returnOriginal: false }
+      )
+      .then((info) => {
+        resolve(info.value);
+      })
+      .catch(() => {
+        reject("Number shopping list created was not saved. Please try again.");
+      });
+  });
+};
+
+Item.getStats = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const stats = await statsCollection.find({}).toArray();
+      resolve(stats);
+    } catch {
+      reject();
+    }
   });
 };
 

@@ -1,3 +1,10 @@
+/* THIS BODY CSS HELPS WITH POSITIONING THE FOOTER AT THE BOTTOM, BUT NOT FIXED */
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 8rem;
+  min-height: 100%;
+}
 .modal-overlay {
   background-color: silver;
   position: fixed;
@@ -147,3 +154,4 @@
   margin: 0px;
   width: 35px;
 }
+

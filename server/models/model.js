@@ -18,7 +18,7 @@ Item.prototype.cleanUp = function () {
   return this.data;
 };
 
-Item.prototype.addItem = function () {
+Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
     // clean up
     this.cleanUp();
@@ -46,7 +46,7 @@ Item.getAll = () => {
   });
 };
 
-Item.delete = (data) => {
+Item.removeItemFromACategory = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       await itemsCollection.findOneAndUpdate(

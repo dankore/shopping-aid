@@ -1,17 +1,23 @@
-let obj = {
-    add: () =>{
-        return obj.sayHi();
-    },
-    sayHi: () => {
-        return "Hi!"
+function replace(str, t){
+    let res = "";
+    let reg = /^\s\s*/g
+    for (let i = 0; i < str.length; i++) {
+        const element = str[i];
+        
+        
     }
 }
 
-console.log(obj.add())
+// let obj = {
+//     add: () =>{
+//         return obj.sayHi();
+//     },
+//     sayHi: () => {
+//         return "Hi!"
+//     }
+// }
 
-
-
-
+// console.log(obj.add())
 
 // const data = [
 // "absolutely",

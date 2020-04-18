@@ -25,7 +25,7 @@ exports.home = async (req, res) => {
   }
 };
 
-exports.addItem = (req, res) => {
+exports.saveShoppingList = (req, res) => {
   // PROVIDE UNIQ ID IF NONE IS PROVIDED BY A USER
   if (!req.body.title) {
     req.body.title = uniqId();
@@ -40,16 +40,16 @@ exports.addItem = (req, res) => {
     });
 };
 
-exports.addNewItem = (req, res) => {
+exports.addEachItemToCategory = (req, res) => {
   const item = new Item(req.body);
 
-  item.addItem().then((response) => {
+  item.saveAnItemToEachCategory().then((response) => {
     res.json(response);
   });
 };
 
-exports.deleteItem = (req, res) => {
-  Item.delete(req.body)
+exports.deleteItemFromCategory = (req, res) => {
+  Item.removeItemFromACategory(req.body)
     .then(() => {
       res.json("Success");
     })
@@ -58,7 +58,7 @@ exports.deleteItem = (req, res) => {
     });
 };
 
-exports.deleteShoppingList = (req, res) => {
+exports.deleteEntireShoppingList = (req, res) => {
   try {
     Item.deleteList(req.body.id);
     res.json("Success!");

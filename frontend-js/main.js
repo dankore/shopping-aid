@@ -1,3 +1,5 @@
+"use strict";
+
 import CategorySection from "./modules/categorySection-FE";
 import AddNewItem from "./modules/addNewItem-FE";
 import shoppingListSection from "./modules/shoppingListSection-FE";

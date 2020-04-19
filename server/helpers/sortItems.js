@@ -9,7 +9,8 @@ const helperObject = {
       kids = [],
       others = [],
       health = [],
-      electronics = [];
+      electronics = [],
+      grains = [];
 
     for (let i = 0; i < array.length; i++) {
       array[i].categories.indexOf("Fruits") != -1 &&
@@ -39,8 +40,11 @@ const helperObject = {
       array[i].categories.indexOf("Health") != -1 &&
         health.push([array[i]._id, array[i].item, "Health"]);
       
-        array[i].categories.indexOf("Electronics") != -1 &&
+      array[i].categories.indexOf("Electronics") != -1 &&
         electronics.push([array[i]._id, array[i].item, "Electronics"]);
+
+      array[i].categories.indexOf("Grains") != -1 &&
+        grains.push([array[i]._id, array[i].item, "Grains"]);
     }
 
     return {
@@ -54,6 +58,7 @@ const helperObject = {
       others: helperObject.sortCategory(others),
       health: helperObject.sortCategory(health),
       electronics: helperObject.sortCategory(electronics),
+      grains: helperObject.sortCategory(grains),
     };
   },
 

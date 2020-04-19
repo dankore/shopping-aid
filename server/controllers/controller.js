@@ -22,6 +22,7 @@ exports.home = async (req, res) => {
       others: categorized.others,
       health: categorized.health,
       electronics: categorized.electronics,
+      grains: categorized.grains,
     });
   } catch (error) {
     console.log(error);

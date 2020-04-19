@@ -37,6 +37,9 @@ export default class AddNewItem {
     this.checkboxesWrapperElectronics = document.querySelector(
       "#checkboxes-wrapper-electronics"
     );
+    this.checkboxesWrapperGrains = document.querySelector(
+      "#checkboxes-wrapper-grains"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -159,6 +162,12 @@ export default class AddNewItem {
           break;
         case "electronics":
           this.checkboxesWrapperElectronics.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "grains":
+          this.checkboxesWrapperGrains.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );

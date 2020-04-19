@@ -51,7 +51,7 @@ Item.removeItemFromACategory = (data) => {
     try {
       await itemsCollection.findOneAndUpdate(
         { _id: new ObjectId(data.id) },
-        { $pull: { categories: data.category } }
+        { $pull: { categories: data.category } } // REMOVES ALL OCCURENCES OF THE ARRAY ELEM. AWESOME!
       );
       resolve();
     } catch {

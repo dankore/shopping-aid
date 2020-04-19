@@ -170,13 +170,20 @@ export default class AddNewItem {
               +
             </button>
             </div>
-            <label class="cursor-pointer ml-2" for="${data.item}">
+            <label class="cursor-pointer ml-2" for="${data.item}${
+                data.cat == "Frozen" || data.cat == "Fresh" ? "-" + data.cat : ""
+              }"
+            >
             <input
               class="cursor-pointer checkbox-select-item"
               type="checkbox"
-              id="${data.item}"
+              id="${data.item}${
+                  data.cat == "Frozen" || data.cat == "Fresh" ? "-" + data.cat : ""
+                }"
               value="${data.item}"
-              data-cat="${data.cat == 'Frozen' || data.cat == 'Fresh' ? data.cat : ""}"
+              data-cat="${
+                data.cat == "Frozen" || data.cat == "Fresh" ? data.cat : ""
+              }"
             />
             ${data.item} 
           </label>

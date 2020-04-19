@@ -1,19 +1,17 @@
 const Item = require("../models/model");
-const helper = require("../helpers/sortItems");
+const { sortItems, reverse, sortStrings } = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");
-
 
 exports.home = async (req, res) => {
   try {
     const items = await Item.getAll();
-    const categorized = helper.sortItems(items);
+    const categorized = sortItems(items);
     const lists = await Item.fetchSelectedItems();
     const stats = await Item.getStats();
-    
 
     res.render("home", {
       stats: stats[0].numShoppingListCreated,
-      lists: helper.reverse(helper.sortStrings(lists)),
+      lists: reverse(sortStrings(lists)),
       fruits: categorized.fruits,
       veg: categorized.veg,
       cond: categorized.cond,
@@ -34,7 +32,7 @@ exports.saveShoppingList = (req, res) => {
   if (!req.body.title) {
     req.body.title = uniqId();
   }
-  
+
   Item.saveSelectedItems(req.body)
     .then((response) => {
       res.json(response);
@@ -46,7 +44,7 @@ exports.saveShoppingList = (req, res) => {
 
 exports.addEachItemToCategory = (req, res) => {
   const item = new Item(req.body);
-  
+
   item.saveAnItemToEachCategory().then((response) => {
     res.json(response);
   });

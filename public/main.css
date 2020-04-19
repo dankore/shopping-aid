@@ -1,8 +1,7 @@
 /* THIS BODY CSS HELPS WITH POSITIONING THE FOOTER AT THE BOTTOM, BUT NOT FIXED */
 body {
   position: relative;
-  margin: 0;
-  padding-bottom: 8rem;
+  padding-bottom: 12.3rem;
   min-height: 100%;
 }
 .modal-overlay {

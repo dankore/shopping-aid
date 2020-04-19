@@ -19,6 +19,23 @@ Item.prototype.cleanUp = function () {
   return this.data;
 };
 
+Item.prototype.capitalize = () => {
+  const array = this.data.item.split(" ");
+  s = s.split(" ");
+  let str = "";
+  for (let i = 0; i < s.length; i++) {
+    for (let j = 0; j < s[i].length; j++) {
+      if (j == 0) {
+        str += s[i][j].toUpperCase();
+      } else if (j > 0) {
+        str += s[i][j].toLowerCase();
+      }
+    }
+    str += " ";
+  }
+  return str;.l;;,,,, 
+}
+
 Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
     // clean up

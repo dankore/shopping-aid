@@ -1,12 +1,33 @@
-function replace(str, t){
-    let res = "";
-    let reg = /^\s\s*/g
-    for (let i = 0; i < str.length; i++) {
-        const element = str[i];
-        
-        
+let obj = {
+  item: "apple banana",
+  categories: [],
+};
+function c() {
+  obj.item = obj.item.split(" ");
+  let str = "";
+  for (let i = 0; i < obj.item.length; i++) {
+    for (let j = 0; j < obj.item[i].length; j++) {
+      if (j == 0) {
+        str += obj.item[i][j].toUpperCase();
+      } else if (j > 0) {
+        str += obj.item[i][j].toLowerCase();
+      }
     }
+    // if (obj.item[obj.item.length - ) str += " ";
+  }
+  obj.item = str;
+  return obj;
 }
+console.log(c());
+
+// function replace(str, t){
+//     let res = "";
+//     let reg = /^\s\s*/g
+//     for (let i = 0; i < str.length; i++) {
+//         const element = str[i];
+
+//     }
+// }
 
 // let obj = {
 //     add: () =>{
@@ -78,7 +99,6 @@ function replace(str, t){
 //     return data[idx].concat(num).concat("-list")
 // }
 
-
 // function random50(){
 //     // GENERATE A RANDOM NUM FROM 0 TO 50 BOTH EDGES INCLUDED
 //     const min = 0, max = 51;
@@ -92,22 +112,13 @@ function replace(str, t){
 // }
 // console.log(uniqId())
 
-
-
-
-
-
-
-
-
-
 // function range(array){
 //     let start = 0;
 //     let end = 0;
 //     let store = [];
 
 //     for (let i = 1; i < array.length; i++) {
-        
+
 //        if(array[i] - array[end] == 1){
 //            end++;
 //        }else{
@@ -130,10 +141,7 @@ function replace(str, t){
 // console.log(range([-1,0,1,2,6,7,9]))
 // console.log(range([-5,3,4,5,20,21,22]))
 
-
-
-
-// let arr = [    
+// let arr = [
 //   { _id: "5e8f13ae5db21d3b2dbcd71f",
 //     item: 'appl',
 //     categories: [ 'Vegetables', 'Fruits' ] },
@@ -151,7 +159,6 @@ function replace(str, t){
 //     categories: [ 'Fruits', 'Vegetables' ] }
 // ];
 
-
 // let date = new Date();
 // let y = date.getFullYear();
 // let mo = date.getMonth();
@@ -163,7 +170,6 @@ function replace(str, t){
 // let t = date.getTime();
 
 // console.log(t);
-
 
 // function sort(array){
 // let fruits = [],

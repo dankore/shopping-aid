@@ -162,4 +162,21 @@
       include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
+  <!-- ELECTRONICS -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white background-color"
+    >
+      ELECTRONICS
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-electronics"
+      style="display: none;"
+    >
+      <%if(electronics.length > 0){%> <% electronics.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
+    </div>
+  </div>
 </div>

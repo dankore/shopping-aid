@@ -46,7 +46,7 @@ exports.saveShoppingList = (req, res) => {
 
 exports.addEachItemToCategory = (req, res) => {
   const item = new Item(req.body);
-
+  
   item.saveAnItemToEachCategory().then((response) => {
     res.json(response);
   });

@@ -5,11 +5,11 @@
       <div id="counter">1</div>
       <button id="increment-btn" data-inc="1" class="value-button">+</button>
     </div>
-    <label class="cursor-pointer ml-2" for="<%= item[1] %>">
+    <label class="cursor-pointer ml-2" for="<%= item[1] %><%- item[2] == 'Frozen' || item[2] == 'Fresh' ? '-'+item[2] : '' %>">
       <input
         class="cursor-pointer checkbox-select-item"
         type="checkbox"
-        id="<%= item[1] %>"
+        id="<%= item[1] %><%- item[2] == 'Frozen' || item[2] == 'Fresh' ? '-'+item[2] : '' %>"
         value="<%= item[1] %>"
         data-cat="<%- item[2] == 'Frozen' || item[2] == 'Fresh' ? item[2] : '' %>"
       />

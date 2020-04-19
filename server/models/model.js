@@ -23,11 +23,10 @@ Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
     // clean up
     this.cleanUp();
-
     await itemsCollection
       .findOneAndUpdate(
         { item: this.data.item },
-        { $set: { categories: this.data.categories } },
+        { $push: { categories: { $each: this.data.categories }} },
         { upsert: true, returnOriginal: false }
       )
       .then((info) => {

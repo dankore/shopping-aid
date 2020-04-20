@@ -7,6 +7,7 @@ const statsCollection = require("../../db").db().collection("stats");
 const ObjectId = require("mongodb").ObjectID;
 
 // CLASS BEGINS
+// USE THE 'FUNCTION' KEYWORD WITH PROTOTYPES
 let Item = class item {
   constructor(data) {
     this.data = data;
@@ -19,31 +20,35 @@ Item.prototype.cleanUp = function () {
   return this.data;
 };
 
-Item.prototype.capitalize = () => {
-  const array = this.data.item.split(" ");
-  s = s.split(" ");
+Item.prototype.capitalizeEachWord = function () {
+  if (typeof this.data.item != "string") return this.data;
+  this.data.item = this.data.item.split(" ");
   let str = "";
-  for (let i = 0; i < s.length; i++) {
-    for (let j = 0; j < s[i].length; j++) {
-      if (j == 0) {
-        str += s[i][j].toUpperCase();
-      } else if (j > 0) {
-        str += s[i][j].toLowerCase();
-      }
+
+  for (let i = 0; i < this.data.item.length; i++) {
+    for (let j = 0; j < this.data.item[i].length; j++) {
+      j == 0 && (str += this.data.item[i][j].toUpperCase());
+      j > 0 && (str += this.data.item[i][j].toLowerCase());
     }
-    str += " ";
+    // ADD A SPACE AFTER A WORD BUT DONT AT END OF THE WORDS ARRAY
+    this.data.item[i] != this.data.item[this.data.item.length - 1] &&
+      (str += " ");
   }
-  return str;.l;;,,,, 
-}
+
+  this.data.item = str;
+  return this.data;
+};
 
 Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
     // clean up
     this.cleanUp();
+    this.capitalizeEachWord();
+
     await itemsCollection
       .findOneAndUpdate(
         { item: this.data.item },
-        { $push: { categories: { $each: this.data.categories }} },
+        { $push: { categories: { $each: this.data.categories } } },
         { upsert: true, returnOriginal: false }
       )
       .then((info) => {

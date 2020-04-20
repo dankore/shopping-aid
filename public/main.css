@@ -1,7 +1,7 @@
 /* THIS BODY CSS HELPS WITH POSITIONING THE FOOTER AT THE BOTTOM, BUT NOT FIXED */
 body {
   position: relative;
-  padding-bottom: 12.3rem;
+  padding-bottom: 5.5rem;
   min-height: 100%;
 }
 .background-color {
@@ -155,5 +155,8 @@ body {
   border-bottom: 1px solid #ddd;
   margin: 0px;
   width: 35px;
+}
+.preventAutoZoom {
+   touch-action: none;
 }
 

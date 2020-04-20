@@ -71,7 +71,7 @@ export default class CategorySection {
   handleOpenClose(e) {
     if (e.target.parentElement.children[1].style.display == "none") {
       e.target.parentElement.children[1].style.display = "block";
-      e.target.children[0].innerHTML =  "&#8897;"
+      e.target.children[0].innerHTML = "&#8897;";
     } else {
       e.target.parentElement.children[1].style.display = "none";
       e.target.children[0].innerHTML = "&#65310;";

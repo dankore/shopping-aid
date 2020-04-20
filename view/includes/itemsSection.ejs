@@ -196,4 +196,22 @@
       include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
     </div>
   </div>
+  <!-- DAIRY -->
+  <div id="category-wrapper" class="w-full mt-3">
+    <h2
+      id="category-title"
+      class="p-2 cursor-pointer rounded-tr rounded-tl shadow-2xl text-white background-color"
+    >
+      DAIRY
+    </h2>
+    <div
+      class="p-4 rounded-br rounded-bl bg-white swing-in-top-fwd"
+      id="checkboxes-wrapper-dairy"
+      style="display: none;"
+    >
+      <%if(dairy.length > 0){%> <% dairy.forEach(item => { %> <%-
+      include("checkboxAndCounter", { item : item } )%> <% }) %> <%}%>
+    </div>
+  </div>
+  <!-- END OF WRAPPER -->
 </div>

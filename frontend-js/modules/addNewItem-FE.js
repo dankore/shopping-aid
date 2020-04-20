@@ -40,6 +40,9 @@ export default class AddNewItem {
     this.checkboxesWrapperGrains = document.querySelector(
       "#checkboxes-wrapper-grains"
     );
+    this.checkboxesWrapperDairy = document.querySelector(
+      "#checkboxes-wrapper-dairy"
+    );
     this.addNewItemModal = document.querySelector(
       "#new-item-container-wrapper"
     );
@@ -178,6 +181,13 @@ export default class AddNewItem {
         case "grains":
           data.cat = "Grains";
           this.checkboxesWrapperGrains.insertAdjacentHTML(
+            "afterbegin",
+            this.html(data)
+          );
+          break;
+        case "dairy":
+          data.cat = "Dairy";
+          this.checkboxesWrapperDairy.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );

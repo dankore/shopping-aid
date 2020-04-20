@@ -1,7 +1,32 @@
-let [arr1] = [
-  { id: "id", title: "Title of shopping list", items: ["c", "b", "a"] },
-];
-console.log(arr1.items[0])
+let array = [2, 1, 6, 1, 2];
+let object = {}
+
+function rd(){
+  let obj = {};
+  let arr = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (!(obj[array[i]] == undefined)) {
+      obj[array[i]] = i;
+    }
+  }
+  return obj;
+}
+
+console.log(object[7] === undefined)
+console.log(rd());
+
+// function removeDuplicates() {
+//   let map = new Map();
+
+//   for (let i = 0; i < array.length; i++) {
+//     if (!map.has(array[i])) {
+//       map.set(array[i], i);
+//     }
+//   }
+//   return [...map.keys()];
+// }
+// console.log(removeDuplicates());
 
 // let obj = {
 //   item: "apple",
@@ -10,7 +35,7 @@ console.log(arr1.items[0])
 // function c() {
 //   if (typeof obj.item != "string") return obj;
 //   obj.item = obj.item.split(" ");
- 
+
 //   let str = "";
 //   for (let i = 0; i < obj.item.length; i++) {
 //     for (let j = 0; j < obj.item[i].length; j++) {

@@ -34,6 +34,8 @@ Item.prototype.saveAnItemToEachCategory = function () {
         { upsert: true, returnOriginal: false }
       )
       .then((info) => {
+        // TODO: IMPLEMENT REMOVE DUPS
+        info.value.categories = [...new Set(info.value.categories)];
         resolve(info.value);
       });
   });

@@ -7,6 +7,7 @@ const {
 } = require("../server/helpers/sortItems");
 const capitalize = require("../server/helpers/capitalize");
 const removeSpaces = require("../server/helpers/removeSpaces");
+const removeDuplicates = require("../server/helpers/removeDuplicates");
 
 describe("uniqId", function () {
   it("Should return a string", function () {
@@ -60,5 +61,12 @@ describe("removeSpaces", function () {
       categories: [],
     });
     assert.deepEqual(item, "Title of shopping list");
+  });
+});
+
+describe("Remove Duplicates", function () {
+  it("Should return an array with the duplicates removed", function () {
+    const result = removeDuplicates(["a", "b", "a"]);
+    assert.lengthOf(result, 2);
   });
 });

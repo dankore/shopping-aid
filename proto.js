@@ -1,32 +1,16 @@
-let array = [2, 1, 6, 1, 2];
-let object = {}
+let array = [6, 9, 6];
 
-function rd(){
-  let obj = {};
-  let arr = [];
+function removeDuplicates() {
+  let map = new Map();
 
   for (let i = 0; i < array.length; i++) {
-    if (!(obj[array[i]] == undefined)) {
-      obj[array[i]] = i;
+    if (!map.has(array[i])) {
+      map.set(array[i], i);
     }
   }
-  return obj;
+  return [...map.keys()];
 }
-
-console.log(object[7] === undefined)
-console.log(rd());
-
-// function removeDuplicates() {
-//   let map = new Map();
-
-//   for (let i = 0; i < array.length; i++) {
-//     if (!map.has(array[i])) {
-//       map.set(array[i], i);
-//     }
-//   }
-//   return [...map.keys()];
-// }
-// console.log(removeDuplicates());
+console.log(removeDuplicates());
 
 // let obj = {
 //   item: "apple",

@@ -7,6 +7,7 @@ const statsCollection = require("../../db").db().collection("stats");
 const ObjectId = require("mongodb").ObjectID;
 const removeSpaces = require("../helpers/removeSpaces");
 const capitalizeEachWord = require("../helpers/capitalize");
+const removeDuplicates = require("../helpers/removeDuplicates");  
 
 
 // CLASS BEGINS
@@ -34,8 +35,7 @@ Item.prototype.saveAnItemToEachCategory = function () {
         { upsert: true, returnOriginal: false }
       )
       .then((info) => {
-        // TODO: IMPLEMENT REMOVE DUPS
-        info.value.categories = [...new Set(info.value.categories)];
+        info.value.categories = removeDuplicates(info.value.categories);
         resolve(info.value);
       });
   });

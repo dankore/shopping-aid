@@ -1,24 +1,29 @@
-let obj = {
-  item: "apple",
-  categories: [],
-};
-function c() {
-  if (typeof obj.item != "string") return obj;
-  obj.item = obj.item.split(" ");
- 
-  let str = "";
-  for (let i = 0; i < obj.item.length; i++) {
-    for (let j = 0; j < obj.item[i].length; j++) {
-      j == 0 && (str += obj.item[i][j].toUpperCase());
-      j > 0 && (str += obj.item[i][j].toLowerCase());
-    }
+let [arr1] = [
+  { id: "id", title: "Title of shopping list", items: ["c", "b", "a"] },
+];
+console.log(arr1.items[0])
 
-    obj.item[i] != obj.item[obj.item.length - 1] && (str += " ");
-  }
-  obj.item = str;
-  return obj;
-}
-console.log(c());
+// let obj = {
+//   item: "apple",
+//   categories: [],
+// };
+// function c() {
+//   if (typeof obj.item != "string") return obj;
+//   obj.item = obj.item.split(" ");
+ 
+//   let str = "";
+//   for (let i = 0; i < obj.item.length; i++) {
+//     for (let j = 0; j < obj.item[i].length; j++) {
+//       j == 0 && (str += obj.item[i][j].toUpperCase());
+//       j > 0 && (str += obj.item[i][j].toLowerCase());
+//     }
+
+//     obj.item[i] != obj.item[obj.item.length - 1] && (str += " ");
+//   }
+//   obj.item = str;
+//   return obj;
+// }
+// console.log(c());
 
 // function replace(str, t){
 //     let res = "";

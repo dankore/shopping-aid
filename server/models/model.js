@@ -5,6 +5,9 @@ const shoppingListCollection = require("../../db")
   .collection("shoppingList");
 const statsCollection = require("../../db").db().collection("stats");
 const ObjectId = require("mongodb").ObjectID;
+const removeSpaces = require("../helpers/removeSpaces");
+const capitalizeEachWord = require("../helpers/capitalize");
+
 
 // CLASS BEGINS
 // USE THE 'FUNCTION' KEYWORD WITH PROTOTYPES
@@ -15,35 +18,14 @@ let Item = class item {
 };
 // CLASS ENDS
 
-Item.prototype.cleanUp = function () {
-  this.data.item = this.data.item.replace(/^\s\s*/, "").replace(/\s\s*$/, "");
-  return this.data;
-};
 
-Item.prototype.capitalizeEachWord = function () {
-  if (typeof this.data.item != "string") return this.data;
-  this.data.item = this.data.item.split(" ");
-  let str = "";
 
-  for (let i = 0; i < this.data.item.length; i++) {
-    for (let j = 0; j < this.data.item[i].length; j++) {
-      j == 0 && (str += this.data.item[i][j].toUpperCase());
-      j > 0 && (str += this.data.item[i][j].toLowerCase());
-    }
-    // ADD A SPACE AFTER A WORD BUT DONT AT END OF THE WORDS ARRAY
-    this.data.item[i] != this.data.item[this.data.item.length - 1] &&
-      (str += " ");
-  }
-
-  this.data.item = str;
-  return this.data;
-};
 
 Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
-    // clean up
-    this.cleanUp();
-    this.capitalizeEachWord();
+    // CLEAN UP
+    removeSpaces(this.data);
+    capitalizeEachWord(this.data);
 
     await itemsCollection
       .findOneAndUpdate(

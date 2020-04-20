@@ -1,3 +1,4 @@
+"use strict"
 const Item = require("../models/model");
 const { sortItems, reverse, sortStrings } = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");

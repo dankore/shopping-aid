@@ -101,28 +101,33 @@ export default class AddNewItem {
   }
 
   yellowFifa(data) {
+    // DATA.CAT IS FOR DELETION PURPOSES
     for (let i = 0; i < data.categories.length; i++) {
-      const elem = data.categories[i].toLowerCase();
-      switch (elem) {
+      const category = data.categories[i].toLowerCase();
+      switch (category) {
         case "fruits":
+          data.cat = "Fruits";
           this.checkboxesWrapperFruits.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "vegetables":
+          data.cat = "Vegetables";
           this.checkboxesWrapperVeg.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "condiments":
+          data.cat = "Condiments";
           this.checkboxesWrapperCond.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "meat":
+          data.cat = "Meat";
           this.checkboxesWrapperMeat.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
@@ -143,30 +148,35 @@ export default class AddNewItem {
           );
           break;
         case "kids":
+          data.cat = "Kids";
           this.checkboxesWrapperKids.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "others":
+          data.cat = "Others";
           this.checkboxesWrapperOthers.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "health":
+          data.cat = "Health";
           this.checkboxesWrapperHealth.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "electronics":
+          data.cat = "Electronics";
           this.checkboxesWrapperElectronics.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
           );
           break;
         case "grains":
+          data.cat = "Grains";
           this.checkboxesWrapperGrains.insertAdjacentHTML(
             "afterbegin",
             this.html(data)
@@ -206,7 +216,7 @@ export default class AddNewItem {
             ${data.item} 
           </label>
         </div>
-      <button id="delete-item" data-cat="Vegetables" data-id="${
+      <button id="delete-item" data-cat="${data.cat}" data-id="${
         data._id
       }" data-item="${data.item}" class="text-red-600">X</button>
       </div>

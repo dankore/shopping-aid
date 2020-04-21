@@ -166,16 +166,8 @@ body {
 
 #if-no-shopping-list-items {
     background-image: url("static/cart.svg");
-    height: 200px;
+    /* height: 200px; */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    position: relative;
 }
-/* #if-no-shopping-list-items > span {
-    position: absolute;
-    color: red;
-    top: 50%;
-    left: 0;
-    padding: 10px;
-} */

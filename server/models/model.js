@@ -7,8 +7,7 @@ const statsCollection = require("../../db").db().collection("stats");
 const ObjectId = require("mongodb").ObjectID;
 const removeSpaces = require("../helpers/removeSpaces");
 const capitalizeEachWord = require("../helpers/capitalize");
-const removeDuplicates = require("../helpers/removeDuplicates");  
-
+const removeDuplicates = require("../helpers/removeDuplicates");
 
 // CLASS BEGINS
 // USE THE 'FUNCTION' KEYWORD WITH PROTOTYPES
@@ -18,9 +17,6 @@ let Item = class item {
   }
 };
 // CLASS ENDS
-
-
-
 
 Item.prototype.saveAnItemToEachCategory = function () {
   return new Promise(async (resolve, reject) => {
@@ -121,14 +117,15 @@ Item.fetchSelectedItems = () => {
 
 Item.deleteList = (id) => {
   return new Promise(async (resolve, reject) => {
-      shoppingListCollection.deleteOne({ _id: new ObjectId(id) })
+    shoppingListCollection
+      .deleteOne({ _id: new ObjectId(id) })
       .then(async () => {
-         const allList = await Item.fetchSelectedItems();
-         resolve(allList);
+        const allList = await Item.fetchSelectedItems();
+        resolve(allList);
       })
-     .catch(()=>{
-          reject("List was not deleted. Please try again.");
-     })
+      .catch(() => {
+        reject("List was not deleted. Please try again.");
+      });
   });
 };
 

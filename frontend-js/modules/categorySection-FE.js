@@ -11,7 +11,9 @@ export default class CategorySection {
     this.statsNumShoppingListCreatedSofar = document.querySelector(
       "#num-shopping-list-created"
     );
-    this.noShoppingListItemsContainer = document.querySelector("#if-no-shopping-list-items");
+    this.noShoppingListItemsContainer = document.querySelector(
+      "#if-no-shopping-list-items"
+    );
     this.events();
     this.arr = [];
   }
@@ -102,7 +104,8 @@ export default class CategorySection {
         items: this.arr,
       })
       .then((res) => {
-        this.noShoppingListItemsContainer && (this.noShoppingListItemsContainer.style.display = "none");
+        this.noShoppingListItemsContainer &&
+          (this.noShoppingListItemsContainer.style.display = "none");
         this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
         this.titleBeforeSave.value = "";
         this.viewerContainer.innerHTML = "";

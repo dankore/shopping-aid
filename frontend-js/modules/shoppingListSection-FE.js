@@ -40,16 +40,17 @@ export default class shoppingListSection {
 
   handleDeleteShoppingList(e) {
     if (confirm("Delete Shopping List?")) {
-      axios.post("/delete-shopping-list", {
-        id: e.target.getAttribute("data-id"),
-      })
-      .then(res => {
-        e.target.parentElement.parentElement.remove();
-        res.data.length == 0 && location.reload();
-      })
-      .catch((err)=>{
-          alert(err)
-      })
+      axios
+        .post("/delete-shopping-list", {
+          id: e.target.getAttribute("data-id"),
+        })
+        .then((res) => {
+          e.target.parentElement.parentElement.remove();
+          res.data.length == 0 && location.reload();
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
   }
 

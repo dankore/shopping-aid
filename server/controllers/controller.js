@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 const Item = require("../models/model");
 const { sortItems, reverse, sortStrings } = require("../helpers/sortItems");
 const uniqId = require("../helpers/uniqId");
@@ -65,13 +65,13 @@ exports.deleteItemFromCategory = (req, res) => {
 };
 
 exports.deleteEntireShoppingList = (req, res) => {
-    Item.deleteList(req.body.id)
-    .then(response =>{
-        res.json(response);
+  Item.deleteList(req.body.id)
+    .then((response) => {
+      res.json(response);
     })
-    .catch((err)=>{
-        console.log(err)
-    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.deleteShoppingListItem = (req, res) => {

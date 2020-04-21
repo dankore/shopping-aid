@@ -159,3 +159,6 @@ body {
    touch-action: none;
 }
 
+.goThruThisElemForEvents {
+    pointer-events: none;
+}

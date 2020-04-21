@@ -121,12 +121,13 @@ Item.fetchSelectedItems = () => {
 
 Item.deleteList = (id) => {
   return new Promise(async (resolve, reject) => {
-    try {
-      await shoppingListCollection.deleteOne({ _id: new ObjectId(id) });
-      resolve();
-    } catch (error) {
-      reject("List was not deleted. Please try again.");
-    }
+      shoppingListCollection.deleteOne({ _id: new ObjectId(id) })
+      .then(info => {
+         resolve();
+      })
+     .catch(()=>{
+          reject("List was not deleted. Please try again.");
+     })
   });
 };
 

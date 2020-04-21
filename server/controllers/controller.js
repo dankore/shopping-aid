@@ -65,12 +65,13 @@ exports.deleteItemFromCategory = (req, res) => {
 };
 
 exports.deleteEntireShoppingList = (req, res) => {
-  try {
-    Item.deleteList(req.body.id);
-    res.json("Success!");
-  } catch (error) {
-    console.log(error);
-  }
+    Item.deleteList(req.body.id)
+    .then(response =>{
+        res.json(response);
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 };
 
 exports.deleteShoppingListItem = (req, res) => {

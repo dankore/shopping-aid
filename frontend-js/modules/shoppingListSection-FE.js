@@ -42,8 +42,15 @@ export default class shoppingListSection {
     if (confirm("Delete Shopping List?")) {
       axios.post("/delete-shopping-list", {
         id: e.target.getAttribute("data-id"),
-      });
-      e.target.parentElement.parentElement.remove();
+      })
+      .then(res => {
+        e.target.parentElement.parentElement.remove();
+        res.data.length == 0 && location.reload();
+      })
+      .catch((err)=>{
+          alert(err)
+      })
+      
     }
   }
 

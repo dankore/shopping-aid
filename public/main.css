@@ -1,8 +1,7 @@
 /* THIS BODY CSS HELPS WITH POSITIONING THE FOOTER AT THE BOTTOM, BUT NOT FIXED */
 body {
   position: relative;
-  padding-bottom: 10rem;
-  min-height: 100%;
+  min-height: 100vh;
 }
 .background-color {
   background-color: #232F3E;

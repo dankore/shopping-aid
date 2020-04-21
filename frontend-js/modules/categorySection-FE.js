@@ -102,7 +102,7 @@ export default class CategorySection {
         items: this.arr,
       })
       .then((res) => {
-        this.noShoppingListItemsContainer.style.display = "none";
+        this.noShoppingListItemsContainer && (this.noShoppingListItemsContainer.style.display = "none");
         this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
         this.titleBeforeSave.value = "";
         this.viewerContainer.innerHTML = "";

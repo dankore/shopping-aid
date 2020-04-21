@@ -195,11 +195,11 @@ export default class CategorySection {
               .innerText +
             "]"
         );
-
+    // CHECK FOR CHECKBOX CHECK
     if (e.srcElement.checked) {
-      !this.arr.includes(e.target.value) && this.arr.push(value);
+      this.arr.push(value);
     } else {
-      this.arr.splice(this.arr.indexOf(value), 1);
+      this.arr.includes(value) && this.arr.splice(this.arr.indexOf(value), 1);
     }
     // RENDER THE ARRAY
     let newArr = "";

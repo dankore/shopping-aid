@@ -166,7 +166,6 @@ body {
 
 #if-no-shopping-list-items {
     background-image: url("static/cart.svg");
-    /* height: 200px; */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

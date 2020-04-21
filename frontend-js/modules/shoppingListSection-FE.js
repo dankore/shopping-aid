@@ -50,7 +50,6 @@ export default class shoppingListSection {
       .catch((err)=>{
           alert(err)
       })
-      
     }
   }
 

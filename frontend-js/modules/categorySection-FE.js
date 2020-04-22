@@ -184,16 +184,16 @@ export default class CategorySection {
           "(" +
             e.target.getAttribute("data-cat") +
             ")" +
-            "[" +
+            "<span class='inline-block ml-1' style='color: crimson'>" +
             e.target.parentElement.parentElement.children[0].children[1]
               .innerText +
-            "]"
+            "</span>"
         )
       : e.target.value.concat(
-          "[" +
+          "<span class='inline-block ml-1' style='color: crimson'>" +
             e.target.parentElement.parentElement.children[0].children[1]
               .innerText +
-            "]"
+            "</span>"
         );
     // CHECK FOR CHECKBOX CHECK
     if (e.srcElement.checked) {
@@ -204,7 +204,7 @@ export default class CategorySection {
     // RENDER THE ARRAY
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += newArr.length == 0 ? `${this.arr[i]}` : `, ${this.arr[i]}`;
+      newArr += `<li class="tag">${this.arr[i]}</li>`;
     }
 
     newArr.length > 0 ? this.viewerContainer.innerHTML = newArr 

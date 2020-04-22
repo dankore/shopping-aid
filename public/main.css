@@ -4,9 +4,11 @@ body {
   padding-bottom: 10rem;
   min-height: 100vh;
 }
+
 .background-color {
   background-color: #232F3E;
 }
+
 .modal-overlay {
   background-color: silver;
   position: fixed;
@@ -156,24 +158,25 @@ body {
   margin: 0px;
   width: 35px;
 }
+
 .preventAutoZoom {
-   touch-action: none;
+  touch-action: none;
 }
 
 .goThruThisElemForEvents {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 #if-no-shopping-list-items {
-    background-image: url("static/cart.svg");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+  background-image: url("static/cart.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .tag {
   background: #eee;
-  border-radius:3px;
+  border-radius: 3px;
   color: black;
   display: inline-block;
   height: 26px;
@@ -203,5 +206,5 @@ body {
 }
 
 .tag:hover::before {
-   border-left-color: crimson; 
+  border-left-color: crimson;
 }

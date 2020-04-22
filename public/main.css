@@ -175,9 +175,9 @@ body {
 }
 
 .tag {
-  background: #eee;
+  background: rgb(158, 110, 110);
   border-radius: 3px;
-  color: black;
+  color: rgb(255, 255, 255);
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -201,10 +201,10 @@ body {
 }
 
 .tag:hover {
-  background-color: crimson;
+  background-color: rgb(138, 94, 94);
   color: white;
 }
 
 .tag:hover::before {
-  border-left-color: crimson;
+  border-left-color: rgb(158, 110, 110);
 }

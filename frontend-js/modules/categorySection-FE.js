@@ -184,16 +184,16 @@ export default class CategorySection {
           "(" +
             e.target.getAttribute("data-cat") +
             ")" +
-            "<span class='inline-block ml-1' style='color: crimson'>" +
+            "[" +
             e.target.parentElement.parentElement.children[0].children[1]
               .innerText +
-            "</span>"
+            "]"
         )
       : e.target.value.concat(
-          "<span class='inline-block ml-1' style='color: crimson'>" +
+          "[" +
             e.target.parentElement.parentElement.children[0].children[1]
               .innerText +
-            "</span>"
+            "]"
         );
     // CHECK FOR CHECKBOX CHECK
     if (e.srcElement.checked) {

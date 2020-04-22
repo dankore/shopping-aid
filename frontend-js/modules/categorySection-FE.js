@@ -207,7 +207,8 @@ export default class CategorySection {
       newArr += newArr.length == 0 ? `${this.arr[i]}` : `, ${this.arr[i]}`;
     }
 
-    this.viewerContainer.innerHTML = newArr;
+    newArr.length > 0 ? this.viewerContainer.innerHTML = newArr 
+        : this.viewerContainer.innerHTML = `<span class="text-gray-600">This area displays the items you selected</span>`;
     this.copyTextArea.innerText = this.arr; // STORES THE SAME TEXT AS THOSE DISPLAYED BELOW FOR COPY
   }
 

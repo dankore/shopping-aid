@@ -3,7 +3,7 @@
 </h2>
 <div id="list-section" class="rounded">
   <%if(lists.length > 0){%> <% lists.forEach( list => {%>
-  <div class="mb-5 rounded">
+  <div class="border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl rounded">
     <div
       class="flex justify-between background-color rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase"
     >
@@ -29,7 +29,7 @@
       </button>
     </div>
 
-    <ul id="lists-wrapper" class="swing-in-top-fwd" style="display: none;">
+    <ul id="lists-wrapper" class="swing-in-top-fwd mb-3" style="display: none;">
       <% list.items.forEach( item => {%>
       <div
         class="flex justify-between border border-gray-200 bg-white px-2 py-1"

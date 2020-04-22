@@ -125,8 +125,8 @@ export default class CategorySection {
 
   html(data) {
     return (
-      `<div class="mb-5 rounded">
-            <div class="flex justify-between background-color rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
+      `<div class="rounded">
+            <div class="flex justify-between background-color border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
               <h2
                 id="list-title"
                 class="w-full p-2"
@@ -137,7 +137,7 @@ export default class CategorySection {
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
-            <ul id="lists-wrapper" style="display: none;">` +
+            <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
       data[0].items
         .map((item) => {
           return `<div

@@ -108,7 +108,7 @@ export default class CategorySection {
           (this.noShoppingListItemsContainer.style.display = "none");
         this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
         this.titleBeforeSave.value = "";
-        this.viewerContainer.innerHTML =`<span class="text-gray-600">This area displays the items you selected</span>`;
+        this.viewerContainer.innerHTML =` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appears here</div></div>`;
         this.titleBeforeSave.focus();
         this.handleStatNumShopListCreated();
         this.arr = [];

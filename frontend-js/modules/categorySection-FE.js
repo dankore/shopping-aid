@@ -108,7 +108,7 @@ export default class CategorySection {
           (this.noShoppingListItemsContainer.style.display = "none");
         this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
         this.titleBeforeSave.value = "";
-        this.viewerContainer.innerHTML = "";
+        this.viewerContainer.innerHTML =`<span class="text-gray-600">This area displays the items you selected</span>`;
         this.titleBeforeSave.focus();
         this.handleStatNumShopListCreated();
         this.arr = [];
@@ -207,7 +207,8 @@ export default class CategorySection {
       newArr += newArr.length == 0 ? `${this.arr[i]}` : `, ${this.arr[i]}`;
     }
 
-    this.viewerContainer.innerHTML = newArr;
+    newArr.length > 0 ? this.viewerContainer.innerHTML = newArr 
+        : this.viewerContainer.innerHTML = `<span class="text-gray-600">This area displays the items you selected</span>`;
     this.copyTextArea.innerText = this.arr; // STORES THE SAME TEXT AS THOSE DISPLAYED BELOW FOR COPY
   }
 

@@ -1,16 +1,53 @@
-let array = [6, 9, 6];
+let str = "Diaper Size 2[15]"; // <span>Banana</span><span>1</span>
 
-function removeDuplicates() {
-  let map = new Map();
-
-  for (let i = 0; i < array.length; i++) {
-    if (!map.has(array[i])) {
-      map.set(array[i], i);
-    }
-  }
-  return [...map.keys()];
+function d(){
+  return str.replace("]", "").split("[")
+ 
 }
-console.log(removeDuplicates());
+ console.log(d())
+
+
+// function htmlize() {
+//   let s = {
+//     word: "",
+//     num: "",
+//   };
+//   for (let i = 0; i < str.length; i++) {
+   
+//     str.charCodeAt(i) == 32 && (s.word += "&nbsp;");
+//     !(
+//       str.charCodeAt(i) == 91 ||
+//       str.charCodeAt(i) == 93 ||
+//       str[i] == 1 ||
+//       str[i] == 2 ||
+//       str[i] == 3 ||
+//       str[i] == 4 ||
+//       str[i] == 5 ||
+//       str[i] == 6 ||
+//       str[i] == 7 ||
+//       str[i] == 8 ||
+//       str[i] == 9 ||
+//       str[i] == 0
+//     ) && (s.word += str[i]);
+//     (str[i] == 1 ||
+//       str[i] == 2 ||
+//       str[i] == 3 ||
+//       str[i] == 4 ||
+//       str[i] == 5 ||
+//       str[i] == 6 ||
+//       str[i] == 7 ||
+//       str[i] == 8 ||
+//       str[i] == 9 ||
+//       str[i] == 0) &&
+//       (s.num += str[i]);
+
+    
+//   }
+//   console.log(s.num)
+//   console.log(s.num.trimLeft());
+//   return `${s.word}<span>${s.num.trimLeft()}</span>`;
+// }
+// console.log(htmlize());
 
 // let obj = {
 //   item: "apple",

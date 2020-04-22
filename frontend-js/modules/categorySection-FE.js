@@ -108,7 +108,7 @@ export default class CategorySection {
           (this.noShoppingListItemsContainer.style.display = "none");
         this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
         this.titleBeforeSave.value = "";
-        this.viewerContainer.innerHTML =` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
+        this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
         this.titleBeforeSave.focus();
         this.handleStatNumShopListCreated();
         this.arr = [];
@@ -195,22 +195,35 @@ export default class CategorySection {
               .innerText +
             "]"
         );
+
     // CHECK FOR CHECKBOX CHECK
     if (e.srcElement.checked) {
       this.arr.push(value);
     } else {
       this.arr.includes(value) && this.arr.splice(this.arr.indexOf(value), 1);
     }
-    // RENDER THE ARRAY
+    // RENDER ARRAY INTO DOM
+    this.renderArray();
+  }
+
+  renderArray() {
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += `<li class="tag">${this.arr[i]}</li>`;
+      newArr += `<li class="tag font-mono">${this.htmlize(this.arr[i])}</li>`;
     }
 
-    newArr.length > 0 ? this.viewerContainer.innerHTML = newArr 
-        : this.viewerContainer.innerHTML = `<div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
+    newArr.length > 0
+      ? (this.viewerContainer.innerHTML = newArr)
+      : (this.viewerContainer.innerHTML = `<div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`);
     this.copyTextArea.innerText = this.arr; // STORES THE SAME TEXT AS THOSE DISPLAYED BELOW FOR COPY
   }
 
+  htmlize(str) {
+    str = str.replace("]", "").split("[");
+
+    return `<span>${
+      str[0]
+    }</span><span class="ml-2 italic" style="color:crimson">${str[1]}</span>`;
+  }
   // END CLASS
 }

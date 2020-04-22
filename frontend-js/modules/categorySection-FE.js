@@ -209,7 +209,7 @@ export default class CategorySection {
   renderArray() {
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += `<li class="tag font-mono">${this.htmlize(this.arr[i])}</li>`;
+      newArr += `<li class="tag shadow-2xl font-mono">${this.htmlize(this.arr[i])}</li>`;
     }
 
     newArr.length > 0

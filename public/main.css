@@ -173,7 +173,7 @@ body {
 
 .tag {
   background: #eee;
-  border-radius: 3px 0 0 3px;
+  border-radius: 10px;
   color: black;
   display: inline-block;
   height: 26px;

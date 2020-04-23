@@ -54,6 +54,7 @@ export default class ProtectWithPassword {
       })
       .then((res) => {
         e.target.parentElement.parentElement.remove();
+        this.modalOverlay.classList.remove("active");
       })
       .catch((err) => {
         alert(err);

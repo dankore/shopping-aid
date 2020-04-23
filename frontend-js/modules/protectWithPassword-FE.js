@@ -12,10 +12,16 @@ export default class ProtectWithPassword {
     }
     // EVENTS
     events(){
-        this.BtnModalProtectWithPassword.addEventListener("click", (e)=> this.handleOpenModalProtectWithPassword());
+        this.BtnModalProtectWithPassword.addEventListener("click", ()=> this.handleOpenModalProtectWithPassword());
+        this.modalOverlay.addEventListener("click", ()=> this.handleModalProtectWithPassword());
     }
     // METHODS
-      handleOpenModalProtectWithPassword(e){
+    handleModalProtectWithPassword(){
+        this.modalProtectWithPassword.style.display = "none";
+        this.modalOverlay.classList.remove("active");
+    }
+
+    handleOpenModalProtectWithPassword(){
       if (this.modalProtectWithPassword.style.display == "none") {
       this.modalProtectWithPassword.style.display = "block";
 

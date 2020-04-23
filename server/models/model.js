@@ -64,6 +64,12 @@ Item.removeItemFromACategory = (data) => {
 
 Item.saveSelectedItems = (data) => {
   return new Promise(async (resolve, reject) => {
+      // CHECK
+    if(data.items.length == 0) {
+        reject();
+        return;
+    };
+
     await shoppingListCollection
       .insertOne(data)
       .then((info) => {

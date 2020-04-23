@@ -109,14 +109,18 @@ handleSubmitPassword(){
         password: this.inputProtectWithPassword.value
     })
     .then(res => {
-        this.modalProtectWithPassword.style.display = "none";
-        this.modalOverlay.classList.remove("active");
+        this.handleCloseModalProtectWithPassword();
         this.callBackAfterSubmission(res.data);
     })
     .catch((err)=>{
         alert(err)
     })
 }
+
+ handleCloseModalProtectWithPassword(){
+    this.modalProtectWithPassword.style.display = "none";
+    this.modalOverlay.classList.remove("active");
+ }
 
   handleSubmit() {
     // DIS-ALLOW EMPTY FIELD

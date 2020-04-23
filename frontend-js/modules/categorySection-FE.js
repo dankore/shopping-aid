@@ -99,14 +99,16 @@ export default class CategorySection {
   }
 
 handleSubmitPassword(){
+    // DIS-ALLOW EMPTY FIELD
+    if (this.arr.length == 0) return;
+    if (this.inputProtectWithPassword.value == "") return;
+
     axios.post("/protect-with-password", {
         title: this.titleBeforeSave.value,
         items: this.arr,
         password: this.inputProtectWithPassword.value
     })
     .then(res => {
-        // DIS-ALLOW EMPTY FIELD
-        if (this.arr.length == 0) return;
         this.modalProtectWithPassword.style.display = "none";
         this.modalOverlay.classList.remove("active");
         this.callBackAfterSubmission(res.data);

@@ -28,7 +28,6 @@ export default class ProtectWithPassword {
 
       this.modalOverlay.classList.add("active");
       this.modalProtectWithPassword.classList.add("active");
-      this.input.focus();
     }
   }
 

@@ -2,7 +2,7 @@ module.exports = function uniqId(){
     const idx = random50();
     const num = random10000();
 
-    return data[idx].concat(num).concat("-list")
+    return data[idx] + (""+num) + "-list";
 }
 
 

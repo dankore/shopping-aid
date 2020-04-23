@@ -38,10 +38,10 @@
         />
         <div class="flex justify-between">
             <button
-            id="submit-btn-with-password"
+            id="submit-btn-with-password-open-modal"
             class="flex justify-between bg-purple-600 preventAutoZoom hover:bg-purple-800  px-3 rounded-br rounded-bl text-white py-2"
             >
-                <img src="/static/lock.svg" >
+                <img class="goThruThisElemForEvents" src="/static/lock.svg" >
                 <span class="inline-block ml-2">Save with Password</span>
             </button>
             <button
@@ -60,6 +60,8 @@
   </div>
 </main>
 
+<!-- HIDDEN BY DEFAULT -->
 <%- include("includes/categoriesChoiceDuringAdd") %>
+<%- include("includes/saveWithPasswordModal") %>
 <!-- HIDDEN BY DEFAULT -->
 <%- include('includes/footer') %>

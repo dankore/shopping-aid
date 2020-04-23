@@ -65,10 +65,6 @@ body {
   display: block;
 }
 
-#title-before-save::placeholder {
-  font-style: italic;
-}
-
 #text-area-for-copy {
   resize: none;
   background: transparent;

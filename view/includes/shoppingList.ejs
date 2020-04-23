@@ -21,7 +21,7 @@
         items
       </h2>
       <button
-        id="delete-list"
+        id="<%= list.password ? 'delete-list-password-protected' :  'delete-list' %>"
         data-id="<%= list._id %>"
         class="px-4 rounded-full hover:bg-gray-500"
       >

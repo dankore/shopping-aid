@@ -64,11 +64,11 @@ Item.removeItemFromACategory = (data) => {
 
 Item.saveSelectedItems = (data) => {
   return new Promise(async (resolve, reject) => {
-      // CHECK
-    if(data.items.length == 0) {
-        reject();
-        return;
-    };
+    // CHECK
+    if (data.items.length == 0) {
+      reject();
+      return;
+    }
 
     await shoppingListCollection
       .insertOne(data)
@@ -151,5 +151,21 @@ Item.deleteListItem = (data) => {
   });
 };
 
+Item.verifyLoginOnProtectedList = (data) => {
+  return new Promise(async (resolve, reject) => {
+    await shoppingListCollection
+      .findOne({ _id: new ObjectId(data.id) })
+      .then((shoppingList) => {
+        if (shoppingList.password == data.password) {
+          resolve({ verify: true, id: shoppingList._id });
+        } else {
+          resolve({ verify: false });
+        }
+      })
+      .catch(() => {
+        reject({ verify: false });
+      });
+  });
+};
 
 module.exports = Item;

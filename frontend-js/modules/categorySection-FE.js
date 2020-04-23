@@ -130,7 +130,7 @@ export default class CategorySection {
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}
-                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white">${data[0].items.length}</span> items
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${data[0].items.length}</span> items
               </h2>
               <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>

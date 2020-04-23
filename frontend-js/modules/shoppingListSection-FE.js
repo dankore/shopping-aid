@@ -46,7 +46,7 @@ export default class shoppingListSection {
         })
         .then((res) => {
           e.target.parentElement.parentElement.remove();
-          res.data.length == 0 && location.reload();
+          res.data.array.length == 0 && location.reload();
         })
         .catch((err) => {
           alert(err);

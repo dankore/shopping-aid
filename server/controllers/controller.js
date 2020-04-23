@@ -65,10 +65,10 @@ exports.deleteItemFromCategory = (req, res) => {
 };
 
 exports.deleteEntireShoppingList = (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   Item.deleteList(req.body.id)
     .then((response) => {
-      res.json(response);
+      res.json({ array: response, owner: true });
     })
     .catch((err) => {
       console.log(err);
@@ -92,7 +92,7 @@ exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
         console.log("password correct");
         next();
       } else {
-        res.json("Controller: Wrong password.");
+        res.json({ owner: false, message: "Controller: Wrong password." });
         console.log("password incorrect");
       }
     })

@@ -53,8 +53,16 @@ export default class ProtectWithPassword {
         ),
       })
       .then((res) => {
-        e.target.parentElement.parentElement.remove();
-        this.modalOverlay.classList.remove("active");
+        if (res.data.owner) {
+          e.target.parentElement.parentElement.remove();
+          this.modalOverlay.classList.remove("active");
+        }
+        if (!res.data.owner) {
+          alert("Wrong Password. Please try again.");
+        }
+        if (res.data.array.length == 0) {
+          location.reload();
+        }
       })
       .catch((err) => {
         alert(err);

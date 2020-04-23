@@ -4,7 +4,12 @@ export default class ProtectWithPassword {
   constructor() {
     this.listSectionWrapper = document.querySelector("#list-section");
     this.modalOverlay = document.querySelector(".modal-overlay");
-
+    this.btnOpenModalNewPassword = document.querySelector(
+      "#open-protect-with-password-modal"
+    );
+    this.modalCreatePassword = document.querySelector(
+      "#modal-protect-with-password"
+    );
     this.events();
   }
   // EVENTS
@@ -28,6 +33,9 @@ export default class ProtectWithPassword {
         e.target.id == "submit-btn-protect-with-password-enter-password" &&
         this.handleSubmitPasswordProtectedShoppingList(e);
     });
+    this.btnOpenModalNewPassword.addEventListener("click", () =>
+      this.handleOpenModalCreatePassword()
+    );
   }
   // METHODS
   handleSubmitPasswordProtectedShoppingList(e) {
@@ -62,13 +70,13 @@ export default class ProtectWithPassword {
     this.modalOverlay.classList.remove("active");
   }
 
-  // handleOpenModalProtectWithPassword() {
-  //   if (this.modalProtectWithPassword.style.display == "none") {
-  //     this.modalProtectWithPassword.style.display = "block";
-  //     this.modalOverlay.classList.add("active");
-  //     this.modalProtectWithPassword.classList.add("active");
-  //   }
-  // }
+  handleOpenModalCreatePassword() {
+    if (this.modalCreatePassword.style.display == "none") {
+      this.modalCreatePassword.style.display = "block";
+      this.modalOverlay.classList.add("active");
+      this.modalCreatePassword.classList.add("active");
+    }
+  }
 
   // END CLASS
 }

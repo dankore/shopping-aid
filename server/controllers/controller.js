@@ -64,8 +64,27 @@ exports.deleteItemFromCategory = (req, res) => {
     });
 };
 
+exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
+  if (!req.body.password) {
+    next();
+  } else {
+    Item.verifyLoginOnProtectedList(req.body)
+      .then((response) => {
+        if (response.verify) {
+          console.log("password correct");
+          next();
+        } else {
+          res.json({ owner: false, message: "Controller: Wrong password." });
+          console.log("password incorrect");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+};
+
 exports.deleteEntireShoppingList = (req, res) => {
-  console.log(req.body);
   Item.deleteList(req.body.id)
     .then((response) => {
       res.json({ array: response, owner: true });
@@ -82,21 +101,4 @@ exports.deleteShoppingListItem = (req, res) => {
   } catch (error) {
     console.log(error);
   }
-};
-
-exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
-  console.log(req.body);
-  Item.verifyLoginOnProtectedList(req.body)
-    .then((response) => {
-      if (response.verify) {
-        console.log("password correct");
-        next();
-      } else {
-        res.json({ owner: false, message: "Controller: Wrong password." });
-        console.log("password incorrect");
-      }
-    })
-    .catch((err) => {
-      res.render("home");
-    });
 };

@@ -45,6 +45,7 @@ export default class shoppingListSection {
           id: e.target.getAttribute("data-id"),
         })
         .then((res) => {
+          console.log(res.data);
           e.target.parentElement.parentElement.remove();
           res.data.array.length == 0 && location.reload();
         })

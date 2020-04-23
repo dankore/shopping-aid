@@ -36,12 +36,21 @@
           id="title-before-save"
           placeholder="Title...optional"
         />
-        <button
-          id="submit-btn"
-          class="bg-green-600 w-full preventAutoZoom hover:bg-green-800 rounded-br rounded-bl text-white py-2"
-        >
-          Save
-        </button>
+        <div class="flex justify-between">
+            <button
+            id="submit-btn-with-password"
+            class="flex justify-between bg-purple-600 preventAutoZoom hover:bg-purple-800  px-3 rounded-br rounded-bl text-white py-2"
+            >
+                <img src="/static/lock.svg" >
+                <span class="inline-block ml-2">Save with Password</span>
+            </button>
+            <button
+            id="submit-btn"
+            class="bg-green-600 preventAutoZoom hover:bg-green-800 px-6 rounded-br rounded-bl text-white py-2"
+            >
+            Save
+            </button>
+        </div>
       </div>
     </section>
     <!-- SHOPPING LIST -->

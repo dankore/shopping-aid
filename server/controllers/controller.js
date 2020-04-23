@@ -82,7 +82,3 @@ exports.deleteShoppingListItem = (req, res) => {
     console.log(error);
   }
 };
-
-exports.savePasswordShoppingList = (req, res) => {
-    console.log(req.body)
-}

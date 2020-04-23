@@ -14,11 +14,18 @@ export default class CategorySection {
     this.noShoppingListItemsContainer = document.querySelector(
       "#if-no-shopping-list-items"
     );
+    this.inputProtectWithPassword = document.querySelector("#input-protect-with-password");
+    this.submitBtnProtectWithPassword = document.querySelector("#submit-btn-protect-with-password");
+    this.modalOverlay = document.querySelector(".modal-overlay");
+    this.modalProtectWithPassword = document.querySelector(
+        "#modal-protect-with-password"
+        );
     this.events();
     this.arr = [];
   }
   // EVENTS
   events() {
+    this.submitBtnProtectWithPassword.addEventListener("click", ()=> this.handleSubmitPassword());
     this.mainWrapper.addEventListener("click", (e) => {
       e.target &&
         e.target.classList.contains("checkbox-select-item") &&
@@ -91,6 +98,24 @@ export default class CategorySection {
     }
   }
 
+handleSubmitPassword(){
+    axios.post("/protect-with-password", {
+        title: this.titleBeforeSave.value,
+        items: this.arr,
+        password: this.inputProtectWithPassword.value
+    })
+    .then(res => {
+        // DIS-ALLOW EMPTY FIELD
+        if (this.arr.length == 0) return;
+        this.modalProtectWithPassword.style.display = "none";
+        this.modalOverlay.classList.remove("active");
+        this.callBackAfterSubmission(res.data);
+    })
+    .catch((err)=>{
+        alert(err)
+    })
+}
+
   handleSubmit() {
     // DIS-ALLOW EMPTY FIELD
     if (this.arr.length == 0) return;
@@ -101,18 +126,22 @@ export default class CategorySection {
         items: this.arr,
       })
       .then((res) => {
-        this.noShoppingListItemsContainer &&
-          (this.noShoppingListItemsContainer.style.display = "none");
-        this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
-        this.titleBeforeSave.value = "";
-        this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
-        this.titleBeforeSave.focus();
-        this.handleStatNumShopListCreated();
-        this.arr = [];
+        this.callBackAfterSubmission(res.data);
       })
       .catch((err) => {
         alert(err);
       });
+  }
+
+  callBackAfterSubmission(data){
+    this.noShoppingListItemsContainer &&
+          (this.noShoppingListItemsContainer.style.display = "none");
+    this.listSection.insertAdjacentHTML("afterbegin", this.html(data));
+    this.titleBeforeSave.value = "";
+    this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
+    this.titleBeforeSave.focus();
+    this.handleStatNumShopListCreated();
+    this.arr = [];
   }
 
   handleStatNumShopListCreated() {

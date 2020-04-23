@@ -14,18 +14,24 @@ export default class CategorySection {
     this.noShoppingListItemsContainer = document.querySelector(
       "#if-no-shopping-list-items"
     );
-    this.inputProtectWithPassword = document.querySelector("#input-protect-with-password");
-    this.submitBtnProtectWithPassword = document.querySelector("#submit-btn-protect-with-password");
+    this.inputProtectWithPassword = document.querySelector(
+      "#input-protect-with-password"
+    );
+    this.submitBtnProtectWithPassword = document.querySelector(
+      "#submit-btn-protect-with-password"
+    );
     this.modalOverlay = document.querySelector(".modal-overlay");
     this.modalProtectWithPassword = document.querySelector(
-        "#modal-protect-with-password"
-        );
+      "#modal-protect-with-password"
+    );
     this.events();
     this.arr = [];
   }
   // EVENTS
   events() {
-    this.submitBtnProtectWithPassword.addEventListener("click", ()=> this.handleSubmitPassword());
+    this.submitBtnProtectWithPassword.addEventListener("click", () =>
+      this.handleSubmitPassword()
+    );
     this.mainWrapper.addEventListener("click", (e) => {
       e.target &&
         e.target.classList.contains("checkbox-select-item") &&
@@ -85,42 +91,30 @@ export default class CategorySection {
     }
   }
 
-  handleOpenCloseForSpanElem(e) {
-    if (
-      e.target.parentElement.parentElement.parentElement.children[1].style
-        .display == "none"
-    ) {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display =
-        "block";
-    } else {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display =
-        "none";
-    }
-  }
-
-handleSubmitPassword(){
+  handleSubmitPassword() {
     // DIS-ALLOW EMPTY FIELD
-    if (this.arr.length == 0) return;
-    if (this.inputProtectWithPassword.value == "") return;
+    if (this.arr.length == 0 || this.inputProtectWithPassword.value == "")
+      return;
 
-    axios.post("/protect-with-password", {
+    axios
+      .post("/protect-with-password", {
         title: this.titleBeforeSave.value,
         items: this.arr,
-        password: this.inputProtectWithPassword.value
-    })
-    .then(res => {
+        password: this.inputProtectWithPassword.value,
+      })
+      .then((res) => {
         this.handleCloseModalProtectWithPassword();
         this.callBackAfterSubmission(res.data);
-    })
-    .catch((err)=>{
-        alert(err)
-    })
-}
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
 
- handleCloseModalProtectWithPassword(){
+  handleCloseModalProtectWithPassword() {
     this.modalProtectWithPassword.style.display = "none";
     this.modalOverlay.classList.remove("active");
- }
+  }
 
   handleSubmit() {
     // DIS-ALLOW EMPTY FIELD
@@ -139,9 +133,9 @@ handleSubmitPassword(){
       });
   }
 
-  callBackAfterSubmission(data){
+  callBackAfterSubmission(data) {
     this.noShoppingListItemsContainer &&
-          (this.noShoppingListItemsContainer.style.display = "none");
+      (this.noShoppingListItemsContainer.style.display = "none");
     this.listSection.insertAdjacentHTML("afterbegin", this.html(data));
     this.titleBeforeSave.value = "";
     this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
@@ -241,7 +235,9 @@ handleSubmitPassword(){
   renderArray() {
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += `<li class="tag shadow-2xl font-mono">${this.htmlize(this.arr[i])}</li>`;
+      newArr += `<li class="tag shadow-2xl font-mono">${this.htmlize(
+        this.arr[i]
+      )}</li>`;
     }
 
     newArr.length > 0
@@ -253,9 +249,7 @@ handleSubmitPassword(){
   htmlize(str) {
     str = str.replace("]", "").split("[");
 
-    return `<span>${
-      str[0]
-    }</span><span class="ml-2 italic" style="color:crimson">${str[1]}</span>`;
+    return `<span>${str[0]}</span><span class="ml-2 italic" style="color:crimson">${str[1]}</span>`;
   }
   // END CLASS
 }

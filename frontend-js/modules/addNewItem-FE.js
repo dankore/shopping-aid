@@ -65,6 +65,9 @@ export default class AddNewItem {
     this.closeAddNewItemModal.addEventListener("click", (_) =>
       this.handleCloseModal()
     );
+    this.modalOverlay.addEventListener("click", (_) =>
+      this.handleCloseModal()
+    );
   }
 
   // METHODS

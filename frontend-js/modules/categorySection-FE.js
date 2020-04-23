@@ -24,9 +24,6 @@ export default class CategorySection {
         e.target.classList.contains("checkbox-select-item") &&
         this.handleCheckBoxClick(e);
       e.target && e.target.id == "category-title" && this.handleOpenClose(e);
-      e.target &&
-        e.target.id == "items-counter" &&
-        this.handleOpenCloseForSpanElem(e);
       e.target && e.target.id == "submit-btn" && this.handleSubmit();
       e.target && e.target.id == "delete-item" && this.handleDeleteItem(e);
       e.target && e.target.id == "copy-text-btn" && this.handleCopyText();

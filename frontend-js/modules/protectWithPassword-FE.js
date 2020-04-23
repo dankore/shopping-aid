@@ -7,15 +7,17 @@ export default class ProtectWithPassword {
     this.btnOpenModalNewPassword = document.querySelector(
       "#open-protect-with-password-modal"
     );
-    this.modalCreatePassword = document.querySelector(
+    this.modalCreateNewPassword = document.querySelector(
       "#modal-protect-with-password"
+    );
+    this.btnCancelModalCreateNewPassword = document.querySelector(
+      "#cancel-btn-protect-with-password"
     );
     this.events();
   }
   // EVENTS
   events() {
     this.listSectionWrapper.addEventListener("click", (e) => {
-      e.target && e.target.id == "overlay-modal" && this.handleCloseModals(e);
       e.target &&
         e.target.id == "delete-list-password-protected" &&
         this.handleOpenModalEnterPassword(e);
@@ -35,6 +37,9 @@ export default class ProtectWithPassword {
     });
     this.btnOpenModalNewPassword.addEventListener("click", () =>
       this.handleOpenModalCreatePassword()
+    );
+    this.btnCancelModalCreateNewPassword.addEventListener("click", (e) =>
+      this.handleCloseModals(e)
     );
   }
   // METHODS
@@ -71,10 +76,10 @@ export default class ProtectWithPassword {
   }
 
   handleOpenModalCreatePassword() {
-    if (this.modalCreatePassword.style.display == "none") {
-      this.modalCreatePassword.style.display = "block";
+    if (this.modalCreateNewPassword.style.display == "none") {
+      this.modalCreateNewPassword.style.display = "block";
       this.modalOverlay.classList.add("active");
-      this.modalCreatePassword.classList.add("active");
+      this.modalCreateNewPassword.classList.add("active");
     }
   }
 

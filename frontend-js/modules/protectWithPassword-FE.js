@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 export default class ProtectWithPassword {
     constructor(){
         this.BtnModalProtectWithPassword = document.querySelector(
@@ -8,14 +10,28 @@ export default class ProtectWithPassword {
         );
         this.modalOverlay = document.querySelector(".modal-overlay");
         this.input = document.querySelector("#input-protect-with-password");
+        this.submitBtn = document.querySelector("#submit-btn-protect-with-password");
+        
         this.events();
     }
     // EVENTS
     events(){
         this.BtnModalProtectWithPassword.addEventListener("click", ()=> this.handleOpenModalProtectWithPassword());
         this.modalOverlay.addEventListener("click", ()=> this.handleModalProtectWithPassword());
+        this.submitBtn.addEventListener("click", ()=> this.handleSubmit());
     }
     // METHODS
+    handleSubmit(){
+        console.log()
+        axios.post("/protect-with-password", {password: this.input.value})
+        .then(res =>{
+            //
+            this.input.value = "";
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+    }
     handleModalProtectWithPassword(){
         this.modalProtectWithPassword.style.display = "none";
         this.modalOverlay.classList.remove("active");
@@ -30,4 +46,6 @@ export default class ProtectWithPassword {
       this.input.focus();
     }
   }
+
+  // END CLASS
 }

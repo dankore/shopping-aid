@@ -62,9 +62,15 @@ body {
   content: "Add New Item";
   margin-top: 5px;
   margin-bottom: 10px;
+  display: block; 
+ }
+
+#modal-protect-with-password::before {
+  content: "Enter Password";
+  margin-top: 5px;
+  margin-bottom: 10px;
   display: block;
 }
-
 #text-area-for-copy {
   resize: none;
   background: transparent;

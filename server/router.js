@@ -9,6 +9,7 @@ router.post("/add-items", controller.saveShoppingList);
 router.post("/add-new-item", controller.addEachItemToCategory);
 router.post("/delete-item", controller.deleteItemFromCategory);
 router.post("/delete-shopping-list", controller.deleteEntireShoppingList);
-router.post("/delete-a-shopping-list-item", controller.deleteShoppingListItem)
+router.post("/delete-a-shopping-list-item", controller.deleteShoppingListItem);
+router.post("/protect-with-password", controller.savePasswordShoppingList);
 
 module.exports = router;

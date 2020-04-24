@@ -2,10 +2,13 @@ let str = "Diaper Size 2[15]"; // <span>Banana</span><span>1</span>
 
 function d(){
   return str.replace("]", "").split("[")
- 
+  
 }
- console.log(d())
 
+console.log(d())
+
+// ALT SHIFT ARROW UP DOWN
+// ALT ARROW UP DOWN
 
 // function htmlize() {
 //   let s = {

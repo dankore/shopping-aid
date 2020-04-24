@@ -195,7 +195,8 @@ export default class CategorySection {
       >
         <input
           id="input-protect-with-password-enter-password"
-          type="text"
+          type="password"
+          maxlength="32"
           placeholder="Enter Password"
           class="w-full bg-gray-200 rounded-tr rounded-tl shadow-inner focus:outline-0 border border-transparent py-2 pr-4 pl-10 block appearance-none leading-normal"
         />

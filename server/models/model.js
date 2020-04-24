@@ -162,8 +162,8 @@ Item.verifyLoginOnProtectedList = (data) => {
           resolve({ verify: false });
         }
       })
-      .catch(() => {
-        reject({ verify: false });
+      .catch((err) => {
+        reject(err);
       });
   });
 };

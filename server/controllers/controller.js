@@ -73,11 +73,11 @@ exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
         if (response.verify) {
           next();
         } else {
-          res.json({ owner: false, message: "Controller: Wrong Password." });
+          res.json({ owner: false, message: "Wrong Password." });
         }
       })
       .catch((err) => {
-        console.log(err);
+        res.json(err);
       });
   }
 };
@@ -88,7 +88,7 @@ exports.deleteEntireShoppingList = (req, res) => {
       res.json({ array: response, owner: true });
     })
     .catch((err) => {
-      console.log(err);
+      res.json(err);
     });
 };
 
@@ -97,6 +97,6 @@ exports.deleteShoppingListItem = (req, res) => {
     Item.deleteListItem(req.body);
     res.json("Success!");
   } catch (error) {
-    console.log(error);
+    res.json(error);
   }
 };

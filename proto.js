@@ -1,12 +1,18 @@
-let str = "Diaper Size 2[15]"; // <span>Banana</span><span>1</span>
+let s =
+  "dffdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddf";
 
-function d(){
-  return str.replace("]", "").split("[")
-  
+function g() {
+  console.log(s.length)
+  console.log(s.length < 1 || s.length > 32);
+  if (s.length < 1 || s.length > 32) {
+    console.log("hello from pass check");
+    return;
+  } 
+
+  console.log("jjiejje")
 }
 
-console.log(d())
-
+console.log(g());
 // ALT SHIFT ARROW UP DOWN
 // ALT ARROW UP DOWN
 
@@ -16,7 +22,7 @@ console.log(d())
 //     num: "",
 //   };
 //   for (let i = 0; i < str.length; i++) {
-   
+
 //     str.charCodeAt(i) == 32 && (s.word += "&nbsp;");
 //     !(
 //       str.charCodeAt(i) == 91 ||
@@ -44,7 +50,6 @@ console.log(d())
 //       str[i] == 0) &&
 //       (s.num += str[i]);
 
-    
 //   }
 //   console.log(s.num)
 //   console.log(s.num.trimLeft());

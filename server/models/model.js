@@ -64,9 +64,14 @@ Item.removeItemFromACategory = (data) => {
 
 Item.saveSelectedItems = (data) => {
   return new Promise(async (resolve, reject) => {
-    // CHECK
+    // CHECKS
+
+    if (data.password.length < 1 || data.password.length > 32) {
+      reject("Password must be between 1 and 32 characters.");
+      return;
+    }
     if (data.items.length == 0) {
-      reject();
+      reject("No items select.");
       return;
     }
 

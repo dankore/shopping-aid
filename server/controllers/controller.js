@@ -71,11 +71,9 @@ exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
     Item.verifyLoginOnProtectedList(req.body)
       .then((response) => {
         if (response.verify) {
-          console.log("password correct");
           next();
         } else {
-          res.json({ owner: false, message: "Controller: Wrong password." });
-          console.log("password incorrect");
+          res.json({ owner: false, message: "Controller: Wrong Password." });
         }
       })
       .catch((err) => {

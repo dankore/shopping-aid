@@ -159,9 +159,17 @@ export default class CategorySection {
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}
-                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${data[0].items.length}</span> items
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${
+                  data[0].items.length
+                }</span> items
               </h2>
-              <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
+              <button id="${
+                data[0].password
+                  ? "delete-list-password-protected"
+                  : "delete-list"
+              }" data-id="${
+        data[0]._id
+      }" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
             <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
       data[0].items
@@ -175,8 +183,33 @@ export default class CategorySection {
         })
         .join("") +
       `
-            </ul>
-        </div>
+      </ul>
+      <div
+        id="modal-protect-with-password-enter-password"
+        class="relative modal shadow-2xl bg-white p-2 max-w-md mx-auto"
+        style="display: none;"
+      >
+        <input
+          id="input-protect-with-password-enter-password"
+          type="text"
+          placeholder="Enter Password"
+          class="w-full bg-gray-200 rounded-tr rounded-tl shadow-inner focus:outline-0 border border-transparent py-2 pr-4 pl-10 block appearance-none leading-normal"
+        />
+        <button
+          id="submit-btn-protect-with-password-enter-password"
+          class="bg-green-600 w-full preventAutoZoom hover:bg-green-800 px-6 rounded-br rounded-bl text-white py-2"
+        >
+          Submit
+        </button>
+        <button
+          class="absolute px-2 hover:bg-gray-700 rounded-full text-2xl text-white bg-gray-900"
+          style="top: 0; right: 0;"
+          id="cancel-btn-protect-with-password-enter-password"
+        >
+          X
+        </button>
+      </div>
+    </div>
     `
     );
   }

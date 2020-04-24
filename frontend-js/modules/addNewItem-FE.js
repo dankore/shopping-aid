@@ -65,9 +65,6 @@ export default class AddNewItem {
     this.closeAddNewItemModal.addEventListener("click", (_) =>
       this.handleCloseModal()
     );
-    // this.modalOverlay.addEventListener("click", (_) =>
-    //   this.handleCloseModal()
-    // );
   }
 
   // METHODS
@@ -211,7 +208,9 @@ export default class AddNewItem {
               +
             </button>
             </div>
-            <label class="cursor-pointer ml-2" for="${data.item}${"-" + data.cat}"
+            <label class="cursor-pointer ml-2" for="${data.item}${
+      "-" + data.cat
+    }"
             >
             <input
               class="cursor-pointer checkbox-select-item"
@@ -226,8 +225,8 @@ export default class AddNewItem {
           </label>
         </div>
       <button id="delete-item" data-cat="${data.cat}" data-id="${
-        data._id
-      }" data-item="${data.item}" class="text-red-600">X</button>
+      data._id
+    }" data-item="${data.item}" class="text-red-600">X</button>
       </div>
     `;
   }

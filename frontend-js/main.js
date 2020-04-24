@@ -16,7 +16,7 @@ if (document.querySelector(".checkbox-new-item")) {
 if (document.querySelector("#list-section")) {
   new shoppingListSection();
 }
-if (document.querySelector("#open-protect-with-password-modal")) {
+if (document.querySelector("#btn-save-shopping-list-with-password")) {
   new ProtectWithPassword();
 }
 firtTimeVisit();

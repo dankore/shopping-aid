@@ -24,6 +24,9 @@ export default class CategorySection {
     this.modalProtectWithPassword = document.querySelector(
       "#modal-protect-with-password"
     );
+    this.btnOpenModalNewPassword = document.querySelector(
+      "#btn-save-shopping-list-with-password"
+    );
     this.events();
     this.arr = [];
   }
@@ -142,6 +145,7 @@ export default class CategorySection {
     this.titleBeforeSave.focus();
     this.handleStatNumShopListCreated();
     this.arr = [];
+    this.btnOpenModalNewPassword.disabled = true;
   }
 
   handleStatNumShopListCreated() {
@@ -263,6 +267,14 @@ export default class CategorySection {
     }
     // RENDER ARRAY INTO DOM
     this.renderArray();
+    // DIABLE/ENABLE BUTTON
+    this.disableEnableBtn();
+  }
+
+  disableEnableBtn() {
+    if (this.arr.length > 0)
+      this.btnOpenModalNewPassword.removeAttribute("disabled", false);
+    else this.btnOpenModalNewPassword.setAttribute("disabled", true);
   }
 
   renderArray() {

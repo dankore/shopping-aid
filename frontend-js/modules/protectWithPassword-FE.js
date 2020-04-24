@@ -5,7 +5,7 @@ export default class ProtectWithPassword {
     this.listSectionWrapper = document.querySelector("#list-section");
     this.modalOverlay = document.querySelector(".modal-overlay");
     this.btnOpenModalNewPassword = document.querySelector(
-      "#open-protect-with-password-modal"
+      "#btn-save-shopping-list-with-password"
     );
     this.modalCreateNewPassword = document.querySelector(
       "#modal-protect-with-password"

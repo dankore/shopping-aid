@@ -1,18 +1,4 @@
-let s =
-  "dffdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddf";
 
-function g() {
-  console.log(s.length)
-  console.log(s.length < 1 || s.length > 32);
-  if (s.length < 1 || s.length > 32) {
-    console.log("hello from pass check");
-    return;
-  } 
-
-  console.log("jjiejje")
-}
-
-console.log(g());
 // ALT SHIFT ARROW UP DOWN
 // ALT ARROW UP DOWN
 

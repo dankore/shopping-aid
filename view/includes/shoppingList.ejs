@@ -8,7 +8,7 @@
       class="flex justify-between background-color rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase"
     >
       <h2
-        id="list-title"
+        id="<%= list.password ? 'list-title-password-protected' :  'list-title' %>"
         class="w-full p-2"
         style="overflow-wrap: break-word; min-width: 0px;"
       >
@@ -46,7 +46,7 @@
       </div>
       <%})%>
     </ul>
-    <%- include("enterPasswordModalProtectShoppingList") %>
+    <%- include("enterPasswordModalProtectShoppingList", { list }) %>
   </div>
   <%})%> <%}else{%>
   <div id="if-no-shopping-list-items" class="text-white shadow-inner rounded text-center">

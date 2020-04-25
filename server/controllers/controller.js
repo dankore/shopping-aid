@@ -82,6 +82,10 @@ exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
   }
 };
 
+exports.unlockShoppingList = (req, res) => {
+  res.json({ owner: true });
+};
+
 exports.deleteEntireShoppingList = (req, res) => {
   Item.deleteList(req.body.id)
     .then((response) => {

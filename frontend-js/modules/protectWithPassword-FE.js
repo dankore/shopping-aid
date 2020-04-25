@@ -31,9 +31,11 @@ export default class ProtectWithPassword {
         e.target.id == "cancel-btn-protect-with-password-enter-password" &&
         this.handleCloseModals(e);
       e.target &&
-        e.target.style.display == "block" &&
-        e.target.id == "submit-btn-protect-with-password-enter-password" &&
-        this.handleSubmitPasswordProtectedShoppingList(e);
+        e.target.id == "list-title-password-protected" &&
+        this.handleOpenModalEnterPassword(e);
+      e.target &&
+        e.target.id == "submit-btn-unlock-shopping-list" &&
+        this.handleSubmitUnlockShoppingList(e);
     });
     this.btnOpenModalNewPassword.addEventListener("click", () =>
       this.handleOpenModalCreatePassword()
@@ -43,6 +45,30 @@ export default class ProtectWithPassword {
     );
   }
   // METHODS
+  handleSubmitUnlockShoppingList(e) {
+    axios
+      .post("/unlock-shopping-list", {
+        password: e.target.parentElement.children[0].value,
+        id: e.target.parentElement.parentElement.children[0].children[1].getAttribute(
+          "data-id"
+        ),
+      })
+      .then((res) => {
+        if (res.data.owner) {
+          this.modalOverlay.classList.remove("active");
+          e.target.parentElement.style.display = "none";
+          e.target.parentElement.parentElement.children[1].style.display =
+            "block";
+        }
+        if (!res.data.owner) {
+          alert("Wrong Password. Please try again.");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
   handleSubmitPasswordProtectedShoppingList(e) {
     if (e.target.parentElement.children[0].value == "") return;
     axios

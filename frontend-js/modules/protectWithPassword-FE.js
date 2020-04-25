@@ -58,9 +58,11 @@ export default class ProtectWithPassword {
           this.modalOverlay.classList.remove("active");
           e.target.parentElement.style.display = "none";
           e.target.parentElement.parentElement.children[1].style.display =
-            "block";
+            "block"; // <UL> ELEM
+          e.target.parentElement.parentElement.children[0].children[0].id = "list-title"; // <H2> ELEM
+          console.log(e.target.parentElement.parentElement.children);
           e.target.parentElement.parentElement.children[2].children[1].id =
-            "submit-btn-protect-with-password-enter-password";
+            "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON
         }
         if (!res.data.owner) {
           alert("Wrong Password. Please try again.");

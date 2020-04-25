@@ -64,6 +64,19 @@ Item.removeItemFromACategory = (data) => {
 
 Item.saveSelectedItems = (data) => {
   return new Promise(async (resolve, reject) => {
+    // CHECKS
+    if (
+      data.password &&
+      (data.password.length < 1 || data.password.length > 32)
+    ) {
+      reject("Password must be between 1 and 32 characters.");
+      return;
+    }
+    if (data.items.length == 0) {
+      reject("No items select.");
+      return;
+    }
+
     await shoppingListCollection
       .insertOne(data)
       .then((info) => {
@@ -144,4 +157,22 @@ Item.deleteListItem = (data) => {
     }
   });
 };
+
+Item.verifyLoginOnProtectedList = (data) => {
+  return new Promise(async (resolve, reject) => {
+    await shoppingListCollection
+      .findOne({ _id: new ObjectId(data.id) })
+      .then((shoppingList) => {
+        if (shoppingList.password == data.password) {
+          resolve({ verify: true, id: shoppingList._id });
+        } else {
+          resolve({ verify: false });
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 module.exports = Item;

@@ -14,11 +14,27 @@ export default class CategorySection {
     this.noShoppingListItemsContainer = document.querySelector(
       "#if-no-shopping-list-items"
     );
+    this.inputProtectWithPassword = document.querySelector(
+      "#input-protect-with-password"
+    );
+    this.submitBtnProtectWithPassword = document.querySelector(
+      "#submit-btn-protect-with-password"
+    );
+    this.modalOverlay = document.querySelector(".modal-overlay");
+    this.modalProtectWithPassword = document.querySelector(
+      "#modal-protect-with-password"
+    );
+    this.btnOpenModalNewPassword = document.querySelector(
+      "#btn-save-shopping-list-with-password"
+    );
     this.events();
     this.arr = [];
   }
   // EVENTS
   events() {
+    this.submitBtnProtectWithPassword.addEventListener("click", () =>
+      this.handleSubmitPassword()
+    );
     this.mainWrapper.addEventListener("click", (e) => {
       e.target &&
         e.target.classList.contains("checkbox-select-item") &&
@@ -78,17 +94,29 @@ export default class CategorySection {
     }
   }
 
-  handleOpenCloseForSpanElem(e) {
-    if (
-      e.target.parentElement.parentElement.parentElement.children[1].style
-        .display == "none"
-    ) {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display =
-        "block";
-    } else {
-      e.target.parentElement.parentElement.parentElement.children[1].style.display =
-        "none";
-    }
+  handleSubmitPassword() {
+    // DIS-ALLOW EMPTY FIELD
+    if (this.arr.length == 0 || this.inputProtectWithPassword.value == "")
+      return;
+
+    axios
+      .post("/protect-with-password", {
+        title: this.titleBeforeSave.value,
+        items: this.arr,
+        password: this.inputProtectWithPassword.value,
+      })
+      .then((res) => {
+        this.handleCloseModalProtectWithPassword();
+        this.callBackAfterSubmission(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  handleCloseModalProtectWithPassword() {
+    this.modalProtectWithPassword.style.display = "none";
+    this.modalOverlay.classList.remove("active");
   }
 
   handleSubmit() {
@@ -101,18 +129,23 @@ export default class CategorySection {
         items: this.arr,
       })
       .then((res) => {
-        this.noShoppingListItemsContainer &&
-          (this.noShoppingListItemsContainer.style.display = "none");
-        this.listSection.insertAdjacentHTML("afterbegin", this.html(res.data));
-        this.titleBeforeSave.value = "";
-        this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
-        this.titleBeforeSave.focus();
-        this.handleStatNumShopListCreated();
-        this.arr = [];
+        this.callBackAfterSubmission(res.data);
       })
       .catch((err) => {
         alert(err);
       });
+  }
+
+  callBackAfterSubmission(data) {
+    this.noShoppingListItemsContainer &&
+      (this.noShoppingListItemsContainer.style.display = "none");
+    this.listSection.insertAdjacentHTML("afterbegin", this.html(data));
+    this.titleBeforeSave.value = "";
+    this.viewerContainer.innerHTML = ` <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>`;
+    this.titleBeforeSave.focus();
+    this.handleStatNumShopListCreated();
+    this.arr = [];
+    this.btnOpenModalNewPassword.disabled = true;
   }
 
   handleStatNumShopListCreated() {
@@ -125,16 +158,36 @@ export default class CategorySection {
       `<div class="rounded">
             <div class="flex justify-between background-color border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
               <h2
-                id="list-title"
-                class="w-full p-2"
+                id="${
+                  data[0].password
+                    ? "list-title-password-protected"
+                    : "list-title"
+                }"
+                id="${
+                  data[0].password
+                    ? "list-title-password-protected"
+                    : "list-title"
+                }"
+                class="w-full p-2 flex"
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}
-                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${data[0].items.length}</span> items
-              </h2>
-              <button id="delete-list" data-id="${data[0]._id}" class="px-4 rounded-full hover:bg-gray-500">X</button>
+                <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${
+                  data[0].items.length
+                }</span> 
+                <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
+                 ${ data[0].password ? '<img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />' : "" }
+                </h2>
+              <button id="${
+                data[0].password
+                  ? "delete-list-password-protected"
+                  : "delete-list"
+              }" data-id="${
+        data[0]._id
+      }" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
-            <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
+    
+    <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
       data[0].items
         .map((item) => {
           return `<div
@@ -146,8 +199,34 @@ export default class CategorySection {
         })
         .join("") +
       `
-            </ul>
-        </div>
+      </ul>
+      <div
+        id="modal-protect-with-password-enter-password"
+        class="relative modal shadow-2xl bg-white p-2 max-w-md mx-auto"
+        style="display: none;"
+      >
+        <input
+          id="input-protect-with-password-enter-password"
+          type="password"
+          maxlength="32"
+          placeholder="Enter Password"
+          class="w-full bg-gray-200 rounded-tr rounded-tl shadow-inner focus:outline-0 border border-transparent py-2 pr-4 pl-10 block appearance-none leading-normal"
+        />
+        <button
+          id="${ data[0].password ? 'submit-btn-unlock-shopping-list' :  'submit-btn-protect-with-password-enter-password' }"
+          class="bg-green-600 w-full preventAutoZoom hover:bg-green-800 px-6 rounded-br rounded-bl text-white py-2"
+        >
+          Submit
+        </button>
+        <button
+          class="absolute px-2 hover:bg-gray-700 rounded-full text-2xl text-white bg-gray-900"
+          style="top: 0; right: 0;"
+          id="cancel-btn-protect-with-password-enter-password"
+        >
+          X
+        </button>
+      </div>
+    </div>
     `
     );
   }
@@ -201,12 +280,22 @@ export default class CategorySection {
     }
     // RENDER ARRAY INTO DOM
     this.renderArray();
+    // DIABLE/ENABLE BUTTON
+    this.disableEnableBtn();
+  }
+
+  disableEnableBtn() {
+    if (this.arr.length > 0)
+      this.btnOpenModalNewPassword.removeAttribute("disabled", false);
+    else this.btnOpenModalNewPassword.setAttribute("disabled", true);
   }
 
   renderArray() {
     let newArr = "";
     for (let i = 0; i < this.arr.length; i++) {
-      newArr += `<li class="tag shadow-2xl font-mono">${this.htmlize(this.arr[i])}</li>`;
+      newArr += `<li class="tag shadow-2xl font-mono">${this.htmlize(
+        this.arr[i]
+      )}</li>`;
     }
 
     newArr.length > 0
@@ -218,9 +307,7 @@ export default class CategorySection {
   htmlize(str) {
     str = str.replace("]", "").split("[");
 
-    return `<span>${
-      str[0]
-    }</span><span class="ml-2 italic" style="color:crimson">${str[1]}</span>`;
+    return `<span>${str[0]}</span><span class="ml-2 italic" style="color:crimson">${str[1]}</span>`;
   }
   // END CLASS
 }

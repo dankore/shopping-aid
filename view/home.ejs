@@ -24,7 +24,10 @@
           class="list-decimal background-color rounded-tr rounded-tl px-2 py-2"
           style="min-height: 8rem;"
         >
-            <div class="text-center text-gray-400"><div class="text-2xl">Empty</div><div>Selected items appear here</div></div>
+          <div class="text-center text-gray-400">
+            <div class="text-2xl">Empty</div>
+            <div>Selected items appear here</div>
+          </div>
         </ol>
         <textarea
           id="text-area-for-copy"
@@ -36,12 +39,22 @@
           id="title-before-save"
           placeholder="Title...optional"
         />
-        <button
-          id="submit-btn"
-          class="bg-green-600 w-full preventAutoZoom hover:bg-green-800 rounded-br rounded-bl text-white py-2"
-        >
-          Save
-        </button>
+        <div class="flex justify-between">
+          <button
+            disabled
+            id="btn-save-shopping-list-with-password"
+            class="flex justify-between items-center bg-purple-600 preventAutoZoom hover:bg-purple-800 px-3 rounded-br rounded-bl text-white py-2"
+          >
+            <img class="goThruThisElemForEvents" src="/static/lock.svg" />
+            <span class="inline-block ml-2">Save with Password</span>
+          </button>
+          <button
+            id="submit-btn"
+            class="bg-green-600 preventAutoZoom hover:bg-green-800 px-6 rounded-br rounded-bl text-white py-2"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </section>
     <!-- SHOPPING LIST -->
@@ -51,6 +64,8 @@
   </div>
 </main>
 
-<%- include("includes/categoriesChoiceDuringAdd") %>
+<!-- HIDDEN BY DEFAULT -->
+<%- include("includes/categoriesChoiceDuringAdd") %> <%-
+include("includes/protectWithPasswordModal") %>
 <!-- HIDDEN BY DEFAULT -->
 <%- include('includes/footer') %>

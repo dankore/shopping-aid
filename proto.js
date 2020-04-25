@@ -1,11 +1,6 @@
-let str = "Diaper Size 2[15]"; // <span>Banana</span><span>1</span>
 
-function d(){
-  return str.replace("]", "").split("[")
- 
-}
- console.log(d())
-
+// ALT SHIFT ARROW UP DOWN
+// ALT ARROW UP DOWN
 
 // function htmlize() {
 //   let s = {
@@ -13,7 +8,7 @@ function d(){
 //     num: "",
 //   };
 //   for (let i = 0; i < str.length; i++) {
-   
+
 //     str.charCodeAt(i) == 32 && (s.word += "&nbsp;");
 //     !(
 //       str.charCodeAt(i) == 91 ||
@@ -41,7 +36,6 @@ function d(){
 //       str[i] == 0) &&
 //       (s.num += str[i]);
 
-    
 //   }
 //   console.log(s.num)
 //   console.log(s.num.trimLeft());

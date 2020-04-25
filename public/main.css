@@ -62,6 +62,20 @@ body {
   content: "Add New Item";
   margin-top: 5px;
   margin-bottom: 10px;
+  display: block; 
+ }
+
+#modal-protect-with-password::before {
+  content: "Enter New Password";
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+#modal-protect-with-password-enter-password::before {
+  content: "Enter Password";
+  margin-top: 5px;
+  margin-bottom: 10px;
   display: block;
 }
 
@@ -198,7 +212,6 @@ body {
 
 .tag:hover {
   background-color: rgb(216, 208, 208);
-  /* color: white; */
 }
 
 .tag:hover::before {

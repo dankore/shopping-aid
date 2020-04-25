@@ -64,13 +64,35 @@ exports.deleteItemFromCategory = (req, res) => {
     });
 };
 
+exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
+  if (req.body.password == undefined && req.body.id != null) {
+    next();
+  } else {
+    Item.verifyLoginOnProtectedList(req.body)
+      .then((response) => {
+        if (response.verify) {
+          next();
+        } else {
+          res.json({ owner: false, message: "Wrong Password." });
+        }
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+};
+
+exports.unlockShoppingList = (req, res) => {
+  res.json({ owner: true });
+};
+
 exports.deleteEntireShoppingList = (req, res) => {
   Item.deleteList(req.body.id)
     .then((response) => {
-      res.json(response);
+      res.json({ array: response, owner: true });
     })
     .catch((err) => {
-      console.log(err);
+      res.json(err);
     });
 };
 
@@ -79,6 +101,6 @@ exports.deleteShoppingListItem = (req, res) => {
     Item.deleteListItem(req.body);
     res.json("Success!");
   } catch (error) {
-    console.log(error);
+    res.json(error);
   }
 };

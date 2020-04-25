@@ -168,7 +168,7 @@ export default class CategorySection {
                     ? "list-title-password-protected"
                     : "list-title"
                 }"
-                class="w-full p-2 flex"
+                class="w-full p-2 flex items-center"
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}

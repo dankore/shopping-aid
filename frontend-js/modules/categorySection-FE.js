@@ -158,15 +158,26 @@ export default class CategorySection {
       `<div class="rounded">
             <div class="flex justify-between background-color border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase">
               <h2
-                id="list-title"
-                class="w-full p-2"
+                id="${
+                  data[0].password
+                    ? "list-title-password-protected"
+                    : "list-title"
+                }"
+                id="${
+                  data[0].password
+                    ? "list-title-password-protected"
+                    : "list-title"
+                }"
+                class="w-full p-2 flex"
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
                 ${data[0].title}
                 <span id="items-counter" class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents">${
                   data[0].items.length
-                }</span> items
-              </h2>
+                }</span> 
+                <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
+                 <img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />
+                </h2>
               <button id="${
                 data[0].password
                   ? "delete-list-password-protected"
@@ -175,7 +186,8 @@ export default class CategorySection {
         data[0]._id
       }" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
-            <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
+    
+    <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
       data[0].items
         .map((item) => {
           return `<div
@@ -201,7 +213,7 @@ export default class CategorySection {
           class="w-full bg-gray-200 rounded-tr rounded-tl shadow-inner focus:outline-0 border border-transparent py-2 pr-4 pl-10 block appearance-none leading-normal"
         />
         <button
-          id="submit-btn-protect-with-password-enter-password"
+          id="${ data[0].password ? 'submit-btn-unlock-shopping-list' :  'submit-btn-protect-with-password-enter-password' }"
           class="bg-green-600 w-full preventAutoZoom hover:bg-green-800 px-6 rounded-br rounded-bl text-white py-2"
         >
           Submit

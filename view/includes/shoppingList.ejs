@@ -9,16 +9,17 @@
     >
       <h2
         id="<%= list.password ? 'list-title-password-protected' :  'list-title' %>"
-        class="w-full p-2"
+        class="w-full p-2 flex"
         style="overflow-wrap: break-word; min-width: 0px;"
       >
         <%= list.title %>
         <span
-          id=""
           class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents"
-          ><%= list.items.length %></span
-        >
-        items
+          >
+          <%= list.items.length %>
+        </span>
+         <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
+         <img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />
       </h2>
       <button
         id="<%= list.password ? 'delete-list-password-protected' :  'delete-list' %>"

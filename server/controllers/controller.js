@@ -65,7 +65,7 @@ exports.deleteItemFromCategory = (req, res) => {
 };
 
 exports.verifyPasswordBeforeDeletingList = (req, res, next) => {
-  if (!req.body.password) {
+  if (req.body.password == undefined && req.body.id != null) {
     next();
   } else {
     Item.verifyLoginOnProtectedList(req.body)

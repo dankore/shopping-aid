@@ -56,9 +56,14 @@ export default class ProtectWithPassword {
           e.target.parentElement.style.display = "none";
           e.target.parentElement.parentElement.children[1].style.display =
             "block"; // <UL> ELEM
-          e.target.parentElement.parentElement.children[0].children[0].id = "list-title"; // <H2> ELEM
+          e.target.parentElement.parentElement.children[0].children[0].id =
+            "list-title"; // <H2> ELEM
           e.target.parentElement.parentElement.children[2].children[1].id =
             "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON MODAL
+          e.target.parentElement.parentElement.children[0].children[0].children[2].setAttribute(
+            "src",
+            "/static/unlock.svg"
+          ); // <IMG> ELEM
         }
         if (!res.data.owner) {
           alert("Wrong Password. Please try again.");

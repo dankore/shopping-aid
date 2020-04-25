@@ -176,7 +176,7 @@ export default class CategorySection {
                   data[0].items.length
                 }</span> 
                 <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
-                 <img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />
+                 ${ data[0].password ? '<img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />' : "" }
                 </h2>
               <button id="${
                 data[0].password

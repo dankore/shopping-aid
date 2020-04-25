@@ -3,7 +3,9 @@
 </h2>
 <div id="list-section" class="rounded">
   <%if(lists.length > 0){%> <% lists.forEach( list => {%>
-  <div class="border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl rounded">
+  <div
+    class="border-b border-gray-700 rounded-tr rounded-tl rounded-tr rounded-tl rounded"
+  >
     <div
       class="flex justify-between background-color rounded-tr rounded-tl text-white text-xl sm:text-base cursor-pointer uppercase"
     >
@@ -15,11 +17,13 @@
         <%= list.title %>
         <span
           class="inline-block ml-4 rounded-full px-2 text-gray-800 bg-white goThruThisElemForEvents"
-          >
+        >
           <%= list.items.length %>
         </span>
-         <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
-         <img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />
+        <span class="goThruThisElemForEvents ml-1 inline-block">items</span>
+        <%if(list.password){%>
+        <img class="goThruThisElemForEvents ml-8" src="/static/lock.svg" />
+        <%}%>
       </h2>
       <button
         id="<%= list.password ? 'delete-list-password-protected' :  'delete-list' %>"
@@ -30,11 +34,13 @@
       </button>
     </div>
 
-    <ul id="lists-wrapper" class="swing-in-top-fwd border border-gray-200" style="display: none;">
+    <ul
+      id="lists-wrapper"
+      class="swing-in-top-fwd border border-gray-200"
+      style="display: none;"
+    >
       <% list.items.forEach( item => {%>
-      <div
-        class="flex justify-between bg-white px-2 py-1"
-      >
+      <div class="flex justify-between bg-white px-2 py-1">
         <li><%= item %></li>
         <button
           id="delete-a-shopping-lists-item"
@@ -50,7 +56,10 @@
     <%- include("enterPasswordModalProtectShoppingList", { list }) %>
   </div>
   <%})%> <%}else{%>
-  <div id="if-no-shopping-list-items" class="text-white shadow-inner rounded text-center">
+  <div
+    id="if-no-shopping-list-items"
+    class="text-white shadow-inner rounded text-center"
+  >
     <div class="rounded p-12" style="background: rgba(0, 0, 0, 0.5);">
       Empty Shopping Lists.
     </div>

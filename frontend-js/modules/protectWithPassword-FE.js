@@ -23,10 +23,10 @@ export default class ProtectWithPassword {
         this.handleOpenModalEnterPassword(e);
       e.target &&
         e.target.id == "submit-btn-protect-with-password-enter-password" &&
-        this.handleSubmitPasswordProtectedShoppingList(e);
+        this.handleDeletePasswordProtectedShoppingList(e);
       e.target &&
         e.target.id == "modal-protect-with-password-enter-password" &&
-        this.handleSubmitPasswordProtectedShoppingList(e);
+        this.handleDeletePasswordProtectedShoppingList(e);
       e.target &&
         e.target.id == "cancel-btn-protect-with-password-enter-password" &&
         this.handleCloseModals(e);
@@ -72,7 +72,7 @@ export default class ProtectWithPassword {
       });
   }
 
-  handleSubmitPasswordProtectedShoppingList(e) {
+  handleDeletePasswordProtectedShoppingList(e) {
     if (e.target.parentElement.children[0].value == "") return;
     axios
       .post("/delete-shopping-list", {

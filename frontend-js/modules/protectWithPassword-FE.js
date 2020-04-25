@@ -60,9 +60,8 @@ export default class ProtectWithPassword {
           e.target.parentElement.parentElement.children[1].style.display =
             "block"; // <UL> ELEM
           e.target.parentElement.parentElement.children[0].children[0].id = "list-title"; // <H2> ELEM
-          console.log(e.target.parentElement.parentElement.children);
           e.target.parentElement.parentElement.children[2].children[1].id =
-            "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON
+            "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON MODAL
         }
         if (!res.data.owner) {
           alert("Wrong Password. Please try again.");
@@ -105,7 +104,7 @@ export default class ProtectWithPassword {
     ) {
       if (e.target.id == "delete-list-password-protected") {
         e.target.parentElement.parentElement.children[2].children[1].id =
-          "submit-btn-protect-with-password-enter-password";
+          "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON MODAL
       }
       e.target.parentElement.parentElement.children[2].style.display = "block";
       this.modalOverlay.classList.add("active");

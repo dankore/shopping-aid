@@ -43,39 +43,47 @@ export default class ProtectWithPassword {
   }
   // METHODS
   handleSubmitUnlockShoppingList(e) {
-    axios
-      .post("/unlock-shopping-list", {
-        password: e.target.parentElement.children[0].value,
-        id: e.target.parentElement.parentElement.children[0].children[1].getAttribute(
-          "data-id"
-        ),
-      })
-      .then((res) => {
-        if (res.data.owner) {
-          this.modalOverlay.classList.remove("active");
-          e.target.parentElement.style.display = "none";
-          e.target.parentElement.parentElement.children[1].style.display =
-            "block"; // <UL> ELEM
-          e.target.parentElement.parentElement.children[0].children[0].id =
-            "list-title"; // <H2> ELEM
-          e.target.parentElement.parentElement.children[2].children[1].id =
-            "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON MODAL
-          e.target.parentElement.parentElement.children[0].children[0].children[2].setAttribute(
-            "src",
-            "/static/unlock.svg"
-          ); // <IMG> ELEM
-        }
-        if (!res.data.owner) {
-          alert("Wrong Password. Please try again.");
-        }
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    if (e.target.parentElement.children[0].value == ""){
+      alert("Password field is empty!");
+      return;
+    }
+      axios
+        .post("/unlock-shopping-list", {
+          password: e.target.parentElement.children[0].value,
+          id: e.target.parentElement.parentElement.children[0].children[1].getAttribute(
+            "data-id"
+          ),
+        })
+        .then((res) => {
+          if (res.data.owner) {
+            this.modalOverlay.classList.remove("active");
+            e.target.parentElement.style.display = "none";
+            e.target.parentElement.parentElement.children[1].style.display =
+              "block"; // <UL> ELEM
+            e.target.parentElement.parentElement.children[0].children[0].id =
+              "list-title"; // <H2> ELEM
+            e.target.parentElement.parentElement.children[2].children[1].id =
+              "submit-btn-protect-with-password-enter-password"; // SUBMIT BUTTON MODAL
+            e.target.parentElement.parentElement.children[0].children[0].children[2].setAttribute(
+              "src",
+              "/static/unlock.svg"
+            ); // <IMG> ELEM
+          }
+          if (!res.data.owner) {
+            alert("Wrong Password. Please try again.");
+          }
+        })
+        .catch((err) => {
+          alert(err);
+        });
   }
 
   handleDeletePasswordProtectedShoppingList(e) {
-    if (e.target.parentElement.children[0].value == "") return;
+     if (e.target.parentElement.children[0].value == "") {
+       alert("Password field is empty!");
+       return;
+     }
+     
     axios
       .post("/delete-shopping-list", {
         password: e.target.parentElement.children[0].value,

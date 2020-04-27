@@ -6,7 +6,7 @@ const login = require("../server/middlewares/auth");
 router.get("/", controller.home);
 router.post("/add-items", controller.saveShoppingList);
 router.post("/add-new-item", controller.addEachItemToCategory);
-router.post("/delete-item", controller.deleteItemFromCategory);
+router.post("/delete-item", login, controller.deleteItemFromCategory);
 router.post(
   "/delete-shopping-list",
   controller.verifyPasswordBeforeDeletingList,

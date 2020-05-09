@@ -203,7 +203,7 @@ export default class AddNewItem {
             <button id="decrement-btn" data-dec="-1" class="value-button">
               -
             </button>
-            <div id="counter" contenteditable="true">1</div>
+            <div id="counter">1</div>
             <button id="increment-btn" data-inc="1" class="value-button">
               +
             </button>

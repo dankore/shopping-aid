@@ -275,7 +275,7 @@ export default class CategorySection {
     }
     // RENDER ARRAY INTO DOM
     this.renderArray();
-    // DIABLE/ENABLE BUTTON
+    // DISABLE/ENABLE BUTTON
     this.disableEnableBtn();
   }
 

@@ -163,11 +163,6 @@ export default class CategorySection {
                     ? "list-title-password-protected"
                     : "list-title"
                 }"
-                id="${
-                  data[0].password
-                    ? "list-title-password-protected"
-                    : "list-title"
-                }"
                 class="w-full p-2 flex items-center"
                 style="overflow-wrap: break-word; min-width: 0px;"
               >
@@ -187,7 +182,7 @@ export default class CategorySection {
       }" class="px-4 rounded-full hover:bg-gray-500">X</button>
             </div>
     
-    <ul id="lists-wrapper" class="mb-3" style="display: none;">` +
+    <ul id="lists-wrapper" class="swing-in-top-fwd border border-gray-200" style="display: none;">` +
       data[0].items
         .map((item) => {
           return `<div
